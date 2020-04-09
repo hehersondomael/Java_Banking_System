@@ -1,0 +1,6 @@
+Improve overall design of the system
+Finish other Menu
+Include a "Find" button for Destination account
+Invalidate non-numeric inputs on 'financial' text fields
+Include Log In page
+Optimize overall code
