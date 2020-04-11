@@ -5,7 +5,10 @@
  */
 package com.hehersondomael.java_banking_system;
 
-import javax.swing.JDesktopPane;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,6 +21,24 @@ public class MainMenu extends javax.swing.JFrame {
      */
     public MainMenu() {
         initComponents();
+
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                if (JOptionPane.showConfirmDialog(null, "Are you sure you want to leave? You will be logged out.", "Close Window", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
+                {
+                    e.getWindow().dispose();
+                    LoginPage loginPage = new LoginPage();
+                    loginPage.setVisible(true);
+                    loginPage.pack();
+                    loginPage.setLocationRelativeTo(null);
+                }
+                else
+                    setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+            }
+        });
     }
 
     /**
@@ -32,43 +53,135 @@ public class MainMenu extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuAddNew = new javax.swing.JMenu();
+        jMenuItemClient = new javax.swing.JMenuItem();
+        jMenuItemAccount = new javax.swing.JMenuItem();
+        jMenuTransact = new javax.swing.JMenu();
+        jMenuItemDeposit = new javax.swing.JMenuItem();
+        jMenuItemWithdraw = new javax.swing.JMenuItem();
+        jMenuItemTransferFund = new javax.swing.JMenuItem();
+        jMenuView = new javax.swing.JMenu();
+        jMenuItemClientCredentials = new javax.swing.JMenuItem();
+        jMenuItemAccountBalance = new javax.swing.JMenuItem();
+        jMenuSettings = new javax.swing.JMenu();
+        jMenuItemChangePassword = new javax.swing.JMenuItem();
+        jMenuItemLogOut = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        jMenu8 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        jMenu9 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+
+        jDesktopPane1.setMinimumSize(new java.awt.Dimension(1051, 571));
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 815, Short.MAX_VALUE)
+            .addGap(0, 1051, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 495, Short.MAX_VALUE)
+            .addGap(0, 571, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("File");
+        jMenu1.setText("Home");
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_K, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setText("Customer");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK));
+        jMenuItem9.setText("About the System");
+        jMenu1.add(jMenuItem9);
+
+        jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK));
+        jMenuItem10.setText("About the Developer");
+        jMenu1.add(jMenuItem10);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenuAddNew.setText("Add New");
+
+        jMenuItemClient.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItemClient.setText("Client");
+        jMenuItemClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuItemClientActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenuAddNew.add(jMenuItemClient);
+
+        jMenuItemAccount.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItemAccount.setText("Account");
+        jMenuItemAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAccountActionPerformed(evt);
+            }
+        });
+        jMenuAddNew.add(jMenuItemAccount);
+
+        jMenuBar1.add(jMenuAddNew);
+
+        jMenuTransact.setText("Transact");
+
+        jMenuItemDeposit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItemDeposit.setText("Deposit");
+        jMenuItemDeposit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemDepositActionPerformed(evt);
+            }
+        });
+        jMenuTransact.add(jMenuItemDeposit);
+
+        jMenuItemWithdraw.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItemWithdraw.setText("Withdraw");
+        jMenuItemWithdraw.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemWithdrawActionPerformed(evt);
+            }
+        });
+        jMenuTransact.add(jMenuItemWithdraw);
+
+        jMenuItemTransferFund.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItemTransferFund.setText("Transfer Fund");
+        jMenuItemTransferFund.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemTransferFundActionPerformed(evt);
+            }
+        });
+        jMenuTransact.add(jMenuItemTransferFund);
+
+        jMenuBar1.add(jMenuTransact);
+
+        jMenuView.setText("View");
+
+        jMenuItemClientCredentials.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK));
+        jMenuItemClientCredentials.setText("Client Credentials");
+        jMenuView.add(jMenuItemClientCredentials);
+
+        jMenuItemAccountBalance.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK));
+        jMenuItemAccountBalance.setText("Account Balance");
+        jMenuView.add(jMenuItemAccountBalance);
+
+        jMenuBar1.add(jMenuView);
+
+        jMenuSettings.setText("Settings");
+
+        jMenuItemChangePassword.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItemChangePassword.setText("Change Password");
+        jMenuSettings.add(jMenuItemChangePassword);
+
+        jMenuItemLogOut.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItemLogOut.setText("Log Out");
+        jMenuSettings.add(jMenuItemLogOut);
+
+        jMenuBar1.add(jMenuSettings);
+
+        jMenu7.setText("jMenu7");
 
         jMenuItem2.setText("Account");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -76,11 +189,11 @@ public class MainMenu extends javax.swing.JFrame {
                 jMenuItem2ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu7.add(jMenuItem2);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMenu7);
 
-        jMenu2.setText("Transaction");
+        jMenu8.setText("jMenu8");
 
         jMenuItem3.setText("Withdraw");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +201,7 @@ public class MainMenu extends javax.swing.JFrame {
                 jMenuItem3ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem3);
+        jMenu8.add(jMenuItem3);
 
         jMenuItem4.setText("Deposit");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -96,11 +209,11 @@ public class MainMenu extends javax.swing.JFrame {
                 jMenuItem4ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem4);
+        jMenu8.add(jMenuItem4);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jMenu8);
 
-        jMenu3.setText("Transfer");
+        jMenu9.setText("jMenu9");
 
         jMenuItem5.setText("Account to Account");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -108,30 +221,9 @@ public class MainMenu extends javax.swing.JFrame {
                 jMenuItem5ActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem5);
+        jMenu9.add(jMenuItem5);
 
-        jMenuBar1.add(jMenu3);
-
-        jMenu4.setText("Report");
-
-        jMenuItem6.setText("Customer Report");
-        jMenu4.add(jMenuItem6);
-
-        jMenuBar1.add(jMenu4);
-
-        jMenu5.setText("Balance");
-
-        jMenuItem7.setText("Balance Checker");
-        jMenu5.add(jMenuItem7);
-
-        jMenuBar1.add(jMenu5);
-
-        jMenu6.setText("Account");
-
-        jMenuItem8.setText("User Account");
-        jMenu6.add(jMenuItem8);
-
-        jMenuBar1.add(jMenu6);
+        jMenuBar1.add(jMenu9);
 
         setJMenuBar(jMenuBar1);
 
@@ -139,30 +231,15 @@ public class MainMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        Customer cus = new Customer();
-        
-        jDesktopPane1.add(cus);
-        cus.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-        Account account = new Account();
-        jDesktopPane1.add(account);
-        account.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
@@ -184,6 +261,43 @@ public class MainMenu extends javax.swing.JFrame {
         jDesktopPane1.add(transfer);
         transfer.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItemClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClientActionPerformed
+        AddNewClient client = new AddNewClient();
+        jDesktopPane1.add(client);
+        client.setVisible(true);
+    }//GEN-LAST:event_jMenuItemClientActionPerformed
+
+    private void jMenuItemAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAccountActionPerformed
+        AddNewAccount addNewAccount = new AddNewAccount();
+        jDesktopPane1.add(addNewAccount);
+        addNewAccount.setVisible(true);
+    }//GEN-LAST:event_jMenuItemAccountActionPerformed
+
+    private void jMenuItemDepositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDepositActionPerformed
+        DepositFund depositFund = new DepositFund();
+        jDesktopPane1.add(depositFund);
+        depositFund.setVisible(true);
+    }//GEN-LAST:event_jMenuItemDepositActionPerformed
+
+    private void jMenuItemWithdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemWithdrawActionPerformed
+        WithdrawFund withdrawFund = new WithdrawFund();
+        jDesktopPane1.add(withdrawFund);
+        withdrawFund.setVisible(true);
+    }//GEN-LAST:event_jMenuItemWithdrawActionPerformed
+
+    private void jMenuItemTransferFundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTransferFundActionPerformed
+        TransferFund transferFund = new TransferFund();
+        jDesktopPane1.add(transferFund);
+        transferFund.setVisible(true);
+    }//GEN-LAST:event_jMenuItemTransferFundActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        Account account = new Account();
+        jDesktopPane1.add(account);
+        account.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,19 +337,28 @@ public class MainMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
+    private javax.swing.JMenu jMenuAddNew;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem jMenuItemAccount;
+    private javax.swing.JMenuItem jMenuItemAccountBalance;
+    private javax.swing.JMenuItem jMenuItemChangePassword;
+    private javax.swing.JMenuItem jMenuItemClient;
+    private javax.swing.JMenuItem jMenuItemClientCredentials;
+    private javax.swing.JMenuItem jMenuItemDeposit;
+    private javax.swing.JMenuItem jMenuItemLogOut;
+    private javax.swing.JMenuItem jMenuItemTransferFund;
+    private javax.swing.JMenuItem jMenuItemWithdraw;
+    private javax.swing.JMenu jMenuSettings;
+    private javax.swing.JMenu jMenuTransact;
+    private javax.swing.JMenu jMenuView;
     // End of variables declaration//GEN-END:variables
 }

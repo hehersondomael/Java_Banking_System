@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 09, 2020 at 06:59 PM
+-- Generation Time: Apr 11, 2020 at 03:07 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -41,8 +41,8 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`id`, `acc_id`, `cust_id`, `acc_type`, `balance`) VALUES
-(1, 'A0001', 'CS001', 'Savings', 15000),
-(2, 'A0002', 'CS002', 'Fixed', -9000);
+(1, 'A0001', 'CS001', 'Savings', 8000),
+(2, 'A0002', 'CS002', 'Fixed', 1000);
 
 -- --------------------------------------------------------
 
@@ -62,6 +62,41 @@ CREATE TABLE `branch` (
 INSERT INTO `branch` (`id`, `branch`) VALUES
 (1, 'Makati'),
 (2, 'Quezon City');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clients`
+--
+
+CREATE TABLE `clients` (
+  `id` int(11) NOT NULL,
+  `clientID` varchar(5) NOT NULL,
+  `lastName` varchar(100) NOT NULL,
+  `firstName` varchar(50) NOT NULL,
+  `middleName` varchar(50) NOT NULL,
+  `genderAtBirth` varchar(6) NOT NULL,
+  `dateOfBirth` date NOT NULL,
+  `civilStatus` varchar(20) NOT NULL,
+  `homeAddress` varchar(255) NOT NULL,
+  `mobileNo` bigint(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `branch` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `clients`
+--
+
+INSERT INTO `clients` (`id`, `clientID`, `lastName`, `firstName`, `middleName`, `genderAtBirth`, `dateOfBirth`, `civilStatus`, `homeAddress`, `mobileNo`, `email`, `branch`) VALUES
+(1, 'C0001', 'Dela Cruz', 'Pedro', 'Santos', 'Male', '2000-06-12', 'Single', '100 Muralla St., Intramuros, Manila', 9982355489, 'pedro.delacruz@gmail.com', 'Manila'),
+(2, 'C0002', 'Go', 'Mark', 'Sy', 'Male', '1970-05-19', 'Single', '1 Makati Ave., Makati City', 9275449851, 'markgo@gmail.com', 'Makati'),
+(3, 'C0003', 'Lopez', 'Jose', 'Flores', 'Male', '1983-08-21', 'Married', '1 Carriedo St., Quiapo, Manila', 9203495834, 'lopez.jose@gmail.com', 'Manila'),
+(4, 'C0004', 'Salvador', 'Amanda', 'Perez', 'Female', '1991-06-10', 'Separated', '33 Ortigas Ave., Pasig City', 9102223457, 'apsalvador@yahoo.com', 'Pasig'),
+(5, 'C0004', 'Salvador', 'Amanda', 'Perez', 'Female', '1991-06-10', 'Separated', '33 Ortigas Ave., Pasig City', 9102223457, 'apsalvador@yahoo.com', 'Pasig'),
+(6, 'C0005', 'Reyes', 'Martha', 'Cruz', 'Female', '1999-07-26', 'Single', '7 Lawton Ave., Taguig City', 9273348987, 'm.c.reyes@outlook.com', 'Taguig'),
+(7, 'C0006', 'Domingo', 'Andrew', 'Padilla', 'Male', '1986-05-13', 'Single', '3565 Alabang-Zapote Rd., Alabang, Muntinlupa City', 9754839113, 'adomingo13@gmail.com', 'Muntinlupa'),
+(8, 'C0007', 'Dominguez', 'Ernesto', 'Rodriguez', 'Male', '1964-04-05', 'Married', '455 Pinaglaban St., San Juan City', 9233349567, 'erd.04051964@gmail.com', 'San Juan');
 
 -- --------------------------------------------------------
 
@@ -87,7 +122,8 @@ CREATE TABLE `customer` (
 INSERT INTO `customer` (`id`, `cust_id`, `firstname`, `lastname`, `street`, `city`, `branch`, `phone`) VALUES
 (1, 'CS001', 'Jose', 'Romulo', 'Balut St.', 'Manila', 'Quezon City', 9558483948),
 (2, 'CS002', 'Pedro', 'Romero', 'Times St.', 'Quezon City', 'Quezon City', 9756671231),
-(3, 'CS003', 'Carlos', 'Padilla', 'Ayala Ave.', 'Makati', 'Makati', 9984677896);
+(3, 'CS003', 'Carlos', 'Padilla', 'Ayala Ave.', 'Makati', 'Makati', 9984677896),
+(4, 'CS004', 'Mariam', 'Delos Reyes', 'McKinley Highway', 'Taguig', 'Makati', 9473389876);
 
 -- --------------------------------------------------------
 
@@ -111,7 +147,9 @@ CREATE TABLE `deposit` (
 INSERT INTO `deposit` (`id`, `acc_id`, `cust_id`, `date`, `balance`, `deposit`) VALUES
 (1, 'a0001', 'CS001', '2020-04-09', 5000, 5000),
 (2, 'A0001', 'CS001', '2020-04-09', 10000, 5000),
-(3, 'A0001', 'CS001', '2020-04-09', 15000, 2000);
+(3, 'A0001', 'CS001', '2020-04-09', 15000, 2000),
+(4, 'A0002', 'CS002', '2020-04-10', -9000, 9000),
+(5, 'A0002', 'CS002', '2020-04-10', 0, 1000);
 
 -- --------------------------------------------------------
 
@@ -136,6 +174,25 @@ INSERT INTO `transfer` (`id`, `f_account`, `t_account`, `amount`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
+  `userPass` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `userPass`) VALUES
+(1, 'user', 'userpass');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `withdraw`
 --
 
@@ -154,7 +211,9 @@ CREATE TABLE `withdraw` (
 
 INSERT INTO `withdraw` (`id`, `acc_id`, `cust_id`, `date`, `balance`, `withdraw`) VALUES
 (1, 'A0001', 'CS001', '2020-04-09', 17000, 5000),
-(2, 'A0001', 'CS001', '2020-04-09', 17000, 5000);
+(2, 'A0001', 'CS001', '2020-04-09', 17000, 5000),
+(3, 'A0001', 'CS001', '2020-04-10', 15000, 7000),
+(4, 'A0001', 'CS001', '2020-04-10', 15000, 7000);
 
 --
 -- Indexes for dumped tables
@@ -173,6 +232,12 @@ ALTER TABLE `branch`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `clients`
+--
+ALTER TABLE `clients`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
@@ -188,6 +253,12 @@ ALTER TABLE `deposit`
 -- Indexes for table `transfer`
 --
 ALTER TABLE `transfer`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -213,16 +284,22 @@ ALTER TABLE `branch`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `clients`
+--
+ALTER TABLE `clients`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `deposit`
 --
 ALTER TABLE `deposit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `transfer`
@@ -231,10 +308,16 @@ ALTER TABLE `transfer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `withdraw`
 --
 ALTER TABLE `withdraw`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
