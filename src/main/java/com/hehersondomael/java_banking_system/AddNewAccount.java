@@ -5,12 +5,12 @@
  */
 package com.hehersondomael.java_banking_system;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,13 +22,12 @@ public class AddNewAccount extends javax.swing.JInternalFrame {
     MY_CONNECTION my_connection = new MY_CONNECTION();
 
     /**
-     * Creates new form Customer
+     * Creates new form AddNewAccount
      */
     public AddNewAccount() {
         initComponents();
         jLabelClientIDNotFound.setText(" ");
-        autoID();
-//        branch();
+        GenerateAccountID();
     }
 
     /**
@@ -40,88 +39,111 @@ public class AddNewAccount extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jComboBoxGenderAtBirth = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jTextFieldHomeAddress1 = new javax.swing.JTextField();
+        jLabelBanking = new javax.swing.JLabel();
+        jLabelTheHBankLogo = new javax.swing.JLabel();
+        jLabelManagement = new javax.swing.JLabel();
+        jLabelSystem = new javax.swing.JLabel();
+        jLabelTheHBankText = new javax.swing.JLabel();
+        jPanelAddNewAccount = new javax.swing.JPanel();
+        jLabelClientID = new javax.swing.JLabel();
+        jLabelLastName = new javax.swing.JLabel();
+        jLabelFirstName = new javax.swing.JLabel();
+        jLabelBalanceInPHP = new javax.swing.JLabel();
+        jLabelAccountType = new javax.swing.JLabel();
+        jButtonAddAccount = new javax.swing.JButton();
+        jComboBoxAccountType = new javax.swing.JComboBox<>();
+        jButtonClearFields = new javax.swing.JButton();
+        jButtonExit = new javax.swing.JButton();
+        jButtonFindClientID = new javax.swing.JButton();
+        jLabelAccountID = new javax.swing.JLabel();
+        jLabelMiddleName = new javax.swing.JLabel();
+        jLabelBranch = new javax.swing.JLabel();
+        jTextFieldBalanceInPHP = new javax.swing.JTextField();
         jLabelClientIDNotFound = new javax.swing.JLabel();
         jTextFieldAccountID = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
+        jTextFieldClientID = new javax.swing.JTextField();
+        jTextFieldLastName = new javax.swing.JTextField();
+        jTextFieldFirstName = new javax.swing.JTextField();
+        jTextFieldMiddleName = new javax.swing.JTextField();
+        jTextFieldBranch = new javax.swing.JTextField();
+        jLabelDescription1 = new javax.swing.JLabel();
+        jLabelDescription2 = new javax.swing.JLabel();
+        jLabelDescription3 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1051, 571));
         setPreferredSize(new java.awt.Dimension(1051, 571));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("BANKING");
+        jLabelBanking.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabelBanking.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelBanking.setText("BANKING");
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Heherson Domael\\Pictures\\Downloaded\\Logos\\H.png")); // NOI18N
-        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabelTheHBankLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTheHBankLogo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Heherson Domael\\Pictures\\Downloaded\\Logos\\H.png")); // NOI18N
+        jLabelTheHBankLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("MANAGEMENT");
+        jLabelManagement.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabelManagement.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelManagement.setText("MANAGEMENT");
 
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("SYSTEM");
+        jLabelSystem.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabelSystem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelSystem.setText("SYSTEM");
 
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setText("THE H BANK");
+        jLabelTheHBankText.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelTheHBankText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTheHBankText.setText("THE H BANK");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add New Account", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jPanelAddNewAccount.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Add New Account", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jLabel1.setText("Client ID:");
+        jLabelClientID.setText("Client ID:");
 
-        jLabel2.setText("Last Name:");
+        jLabelLastName.setText("Last Name:");
 
-        jLabel3.setText("First Name:");
+        jLabelFirstName.setText("First Name:");
 
-        jLabel6.setText("Current Balance:");
+        jLabelBalanceInPHP.setText("Balance (in PHP):");
 
-        jLabel7.setText("Account Type:");
+        jLabelAccountType.setText("Account Type:");
 
-        jButton1.setText("Add Account");
+        jButtonAddAccount.setText("Add Account");
+        jButtonAddAccount.setFocusable(false);
+        jButtonAddAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddAccountActionPerformed(evt);
+            }
+        });
 
-        jComboBoxGenderAtBirth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Savings", "Fixed", "Current" }));
-        jComboBoxGenderAtBirth.setSelectedIndex(-1);
+        jComboBoxAccountType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Savings", "Fixed", "Current" }));
+        jComboBoxAccountType.setSelectedIndex(-1);
 
-        jButton2.setText("Clear Fields");
+        jButtonClearFields.setText("Clear Fields");
+        jButtonClearFields.setFocusable(false);
+        jButtonClearFields.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearFieldsActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Exit");
+        jButtonExit.setText("Exit");
+        jButtonExit.setFocusable(false);
+        jButtonExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExitActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Find");
+        jButtonFindClientID.setText("Find");
+        jButtonFindClientID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFindClientIDActionPerformed(evt);
+            }
+        });
 
-        jLabel20.setText("Account ID:");
+        jLabelAccountID.setText("Account ID:");
 
-        jLabel21.setText("Middle Name:");
+        jLabelMiddleName.setText("Middle Name:");
 
-        jLabel22.setText("Branch:");
+        jLabelBranch.setText("Branch:");
 
         jLabelClientIDNotFound.setForeground(new java.awt.Color(255, 0, 0));
         jLabelClientIDNotFound.setText("Client ID not found.");
@@ -130,109 +152,117 @@ public class AddNewAccount extends javax.swing.JInternalFrame {
         jTextFieldAccountID.setBackground(new java.awt.Color(204, 204, 204));
         jTextFieldAccountID.setFocusable(false);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jTextFieldLastName.setEditable(false);
+        jTextFieldLastName.setBackground(new java.awt.Color(204, 204, 204));
+
+        jTextFieldFirstName.setEditable(false);
+        jTextFieldFirstName.setBackground(new java.awt.Color(204, 204, 204));
+
+        jTextFieldMiddleName.setEditable(false);
+        jTextFieldMiddleName.setBackground(new java.awt.Color(204, 204, 204));
+
+        jTextFieldBranch.setEditable(false);
+        jTextFieldBranch.setBackground(new java.awt.Color(204, 204, 204));
+
+        javax.swing.GroupLayout jPanelAddNewAccountLayout = new javax.swing.GroupLayout(jPanelAddNewAccount);
+        jPanelAddNewAccount.setLayout(jPanelAddNewAccountLayout);
+        jPanelAddNewAccountLayout.setHorizontalGroup(
+            jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAddNewAccountLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(1, 1, 1)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel1)))
-                                    .addComponent(jLabel22)
-                                    .addComponent(jLabel7))
-                                .addGap(35, 35, 35))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(23, 23, 23)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextField2)
+                .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelAddNewAccountLayout.createSequentialGroup()
+                        .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelBranch)
+                            .addComponent(jLabelAccountType)
+                            .addGroup(jPanelAddNewAccountLayout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelFirstName)
+                                    .addComponent(jLabelClientID)
+                                    .addComponent(jLabelAccountID))))
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAddNewAccountLayout.createSequentialGroup()
+                                .addComponent(jTextFieldClientID)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton4))
+                                .addComponent(jButtonFindClientID))
                             .addComponent(jTextFieldAccountID)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jComboBoxGenderAtBirth, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextFieldHomeAddress1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldLastName, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldFirstName, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jComboBoxAccountType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextFieldMiddleName, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldBranch, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldBalanceInPHP, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanelAddNewAccountLayout.createSequentialGroup()
+                                .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelClientIDNotFound)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanelAddNewAccountLayout.createSequentialGroup()
+                                        .addComponent(jButtonAddAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton2)
+                                        .addComponent(jButtonClearFields)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jButtonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel21)
-                            .addComponent(jLabel6))
+                    .addGroup(jPanelAddNewAccountLayout.createSequentialGroup()
+                        .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelMiddleName)
+                            .addComponent(jLabelBalanceInPHP))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(40, 40, 40))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanelAddNewAccountLayout.setVerticalGroup(
+            jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAddNewAccountLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelAccountID)
                     .addComponent(jTextFieldAccountID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelClientIDNotFound)
                 .addGap(1, 1, 1)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonFindClientID)
+                    .addComponent(jLabelClientID, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldClientID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5))
+                .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelMiddleName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldMiddleName))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldBranch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelBranch, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxGenderAtBirth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxAccountType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelAccountType, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextFieldHomeAddress1, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE))
+                .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelBalanceInPHP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldBalanceInPHP, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAddAccount)
+                    .addComponent(jButtonClearFields)
+                    .addComponent(jButtonExit))
                 .addGap(108, 108, 108))
         );
 
-        jLabel11.setText("Your bank transactions are all set in this system!");
+        jLabelDescription1.setText("Your bank transactions are all set in this system!");
 
-        jLabel13.setText("Setup an account for your valued clients by");
+        jLabelDescription2.setText("Setup an account for your valued clients by");
 
-        jLabel19.setText("filling up the form on the left.");
+        jLabelDescription3.setText("filling up the form on the left.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -240,24 +270,24 @@ public class AddNewAccount extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelAddNewAccount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(125, 125, 125)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelTheHBankLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel17)))
+                            .addComponent(jLabelBanking)
+                            .addComponent(jLabelManagement)
+                            .addComponent(jLabelSystem)
+                            .addComponent(jLabelTheHBankText)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(145, 145, 145)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelDescription3, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(jLabelDescription1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabelDescription2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(170, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -267,108 +297,258 @@ public class AddNewAccount extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(67, 67, 67)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
+                            .addComponent(jLabelTheHBankLogo)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel17)
+                                .addComponent(jLabelTheHBankText)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel5)
+                                .addComponent(jLabelBanking)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel15)
+                                .addComponent(jLabelManagement)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel14)
+                                .addComponent(jLabelSystem)
                                 .addGap(8, 8, 8)))
                         .addGap(157, 157, 157)
-                        .addComponent(jLabel11)
+                        .addComponent(jLabelDescription1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel13)
+                        .addComponent(jLabelDescription2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel19))
+                        .addComponent(jLabelDescription3))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanelAddNewAccount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    Connection con;
-    PreparedStatement insert;
+    private void jButtonAddAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddAccountActionPerformed
+        String accountID = jTextFieldAccountID.getText();
+        String clientID = jTextFieldClientID.getText().toUpperCase();
+        String accountType = "";
+        String balance = jTextFieldBalanceInPHP.getText();
 
-    public void autoID() {
+        boolean accountTypePointer;
+
+        try {
+            accountTypePointer = false;
+            accountType = jComboBoxAccountType.getSelectedItem().toString();
+        } catch(NullPointerException ex) {
+            accountTypePointer = true;
+          }
+
+        // Include NumericPointerException for Mobile No.
+
+        if(jTextFieldLastName.getText().trim().equals("") || jTextFieldFirstName.getText().trim().equals("") || 
+                jTextFieldMiddleName.getText().trim().equals("") || jTextFieldBranch.getText().trim().equals("") ||
+                accountTypePointer || jTextFieldBalanceInPHP.getText().trim().equals(""))
+            JOptionPane.showMessageDialog(rootPane, "Please fill up the form completetely.", "All fields required", JOptionPane.ERROR_MESSAGE);
+        else
+        {
+            // c0006 vs C0006 client id has been replaced
+            if(IsClientIDReplaced())
+                JOptionPane.showMessageDialog(rootPane, "Client ID has been modified!", "Credentials matching error", JOptionPane.ERROR_MESSAGE);
+            else
+            {
+                double currentBalance = Double.valueOf(balance);
+                if (currentBalance <= 10000)
+                    JOptionPane.showMessageDialog(rootPane, "Balance cannot be lower than PHP 10,000.00!", "Minimum balance required", JOptionPane.ERROR_MESSAGE);
+                else
+                {
+                    PreparedStatement ps;
+                    String insertQuery = "INSERT INTO accounts (accountID, clientID, accountType, currentBalance) VALUES (?,?,?,?)"; 
+
+                    try {
+                        ps = my_connection.createConnection().prepareStatement(insertQuery);
+                        ps.setString(1, accountID.trim());
+                        ps.setString(2, clientID.trim());
+                        ps.setString(3, accountType.trim());
+                        ps.setDouble(4, currentBalance);
+
+                        if(ps.executeUpdate() > 0)
+                        {
+                            JOptionPane.showMessageDialog(this, "Account added successfully.");
+                            GenerateAccountID();
+                            jTextFieldClientID.setText("");
+                            jTextFieldLastName.setText("");
+                            jTextFieldFirstName.setText("");
+                            jTextFieldMiddleName.setText("");
+                            jTextFieldBranch.setText("");
+                            jComboBoxAccountType.setSelectedIndex(-1);
+                            jTextFieldBalanceInPHP.setText("");
+                            jTextFieldClientID.requestFocus();
+                        }
+                        else
+                            JOptionPane.showMessageDialog(this, "Account NOT added successfully.");
+                    } catch (SQLException ex) {
+                        Logger.getLogger(AddNewAccount.class.getName()).log(Level.SEVERE, null, ex);
+                      }
+                }
+            }
+        }
+    }//GEN-LAST:event_jButtonAddAccountActionPerformed
+
+    private void jButtonFindClientIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFindClientIDActionPerformed
+        String clientID = jTextFieldClientID.getText().trim().toUpperCase();
+
         try {
             PreparedStatement ps;
             ResultSet rs;
-            String selectQuery = "SELECT Max(cust_id) FROM customer";
+            String query = "SELECT * FROM clients WHERE clientID=?";
+
+            ps = my_connection.createConnection().prepareStatement(query);
+            ps.setString(1,clientID);
+
+            rs = ps.executeQuery();
+
+            if(!rs.next())
+            {
+                jLabelClientIDNotFound.setText("Client ID not found.");
+                jTextFieldLastName.setText("");
+                jTextFieldFirstName.setText("");
+                jTextFieldMiddleName.setText("");
+                jTextFieldBranch.setText("");
+            }
+            else
+            {
+                try {
+                    PreparedStatement ps_count;
+                    ResultSet rs_count;
+                    String countQuery = "SELECT COUNT(clientID) FROM accounts WHERE clientID=?";
+
+                    ps_count = my_connection.createConnection().prepareStatement(countQuery);
+                    ps_count.setString(1,clientID);
+
+                    rs_count = ps_count.executeQuery();
+                    rs_count.next();
+
+                    if (rs_count.getInt("COUNT(clientID)") >= 2)
+                    {
+                        jLabelClientIDNotFound.setText("Account ownership limit reached!");
+                        jTextFieldLastName.setText("");
+                        jTextFieldFirstName.setText("");
+                        jTextFieldMiddleName.setText("");
+                        jTextFieldBranch.setText("");
+                        jComboBoxAccountType.setSelectedIndex(-1);
+                        jTextFieldBalanceInPHP.setText("");             
+                    }
+                    else
+                    {
+                        jLabelClientIDNotFound.setText(" ");
+                        jTextFieldLastName.setText(rs.getString("lastName"));
+                        jTextFieldFirstName.setText(rs.getString("firstName"));
+                        jTextFieldMiddleName.setText(rs.getString("middleName"));
+                        jTextFieldBranch.setText(rs.getString("branch"));
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(AddNewAccount.class.getName()).log(Level.SEVERE, null, ex);
+                  }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AddNewAccount.class.getName()).log(Level.SEVERE, null, ex);
+          }
+    }//GEN-LAST:event_jButtonFindClientIDActionPerformed
+
+    private void jButtonClearFieldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearFieldsActionPerformed
+        GenerateAccountID();
+        jTextFieldClientID.setText("");
+        jTextFieldLastName.setText("");
+        jTextFieldFirstName.setText("");
+        jTextFieldMiddleName.setText("");
+        jTextFieldBranch.setText("");
+        jComboBoxAccountType.setSelectedIndex(-1);
+        jTextFieldBalanceInPHP.setText("");
+        jLabelClientIDNotFound.setText(" ");
+        jTextFieldClientID.requestFocus();
+    }//GEN-LAST:event_jButtonClearFieldsActionPerformed
+
+    private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "Are you sure you want to leave?", "Close Frame", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
+        {
+            setVisible(false);
+            dispose();
+        }
+        else
+            setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+    }//GEN-LAST:event_jButtonExitActionPerformed
+
+    private void GenerateAccountID() {
+        try {
+            PreparedStatement ps;
+            ResultSet rs;
+            String selectQuery = "SELECT Max(accountID) FROM accounts";
             long id;
 
             ps = my_connection.createConnection().prepareStatement(selectQuery);
             rs = ps.executeQuery();
             rs.next();
-            rs.getString("Max(cust_id)");
 
-            if(rs.getString("Max(cust_id)")==null)
-                jTextFieldAccountID.setText("C0001");
+            if(rs.getString("Max(accountID)")==null)
+                jTextFieldAccountID.setText("A0001");
             else
             {
-                id = Long.parseLong(rs.getString("Max(cust_id)").substring(2,rs.getString("Max(cust_id)").length()));
+                id = Long.parseLong(rs.getString("Max(accountID)").substring(2,rs.getString("Max(accountID)").length()));
                 id++;
-                jTextFieldAccountID.setText("C" + String.format("%04d",id));
+                jTextFieldAccountID.setText("A" + String.format("%04d",id));
             }
         }  catch (SQLException ex) {
             Logger.getLogger(AddNewAccount.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void branch() {
-        try {
-            PreparedStatement ps;
-            ResultSet rs;
-            String selectQuery = "SELECT * FROM branch";
-            ps = my_connection.createConnection().prepareStatement(selectQuery);
-            rs = ps.executeQuery();
+    private boolean IsClientIDReplaced()
+    {
+            PreparedStatement ps_select;
+            ResultSet rs_select;
+            String selectedClientID = "";
+            String selectQuery = "SELECT clientID FROM clients WHERE lastName=? AND firstName=? AND middleName=?;";
+
+            try {
+                ps_select = my_connection.createConnection().prepareStatement(selectQuery);
+
+                ps_select.setString(1, jTextFieldLastName.getText().trim());
+                ps_select.setString(2, jTextFieldFirstName.getText().trim());
+                ps_select.setString(3, jTextFieldMiddleName.getText().trim());                    
+                rs_select = ps_select.executeQuery();
+                rs_select.next();
+                selectedClientID = rs_select.getString("clientID").trim();
+            } catch (SQLException ex) {
+                Logger.getLogger(AddNewAccount.class.getName()).log(Level.SEVERE, null, ex);
+              }
             
-            while (rs.next())
-            {
-                //jComboBox1.addItem(rs.getString(2));
-            }
-        }  catch (SQLException ex) {
-            Logger.getLogger(AddNewAccount.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+            return !selectedClientID.equals(jTextFieldClientID.getText().trim());
     }
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBoxGenderAtBirth;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JButton jButtonAddAccount;
+    private javax.swing.JButton jButtonClearFields;
+    private javax.swing.JButton jButtonExit;
+    private javax.swing.JButton jButtonFindClientID;
+    private javax.swing.JComboBox<String> jComboBoxAccountType;
+    private javax.swing.JLabel jLabelAccountID;
+    private javax.swing.JLabel jLabelAccountType;
+    private javax.swing.JLabel jLabelBalanceInPHP;
+    private javax.swing.JLabel jLabelBanking;
+    private javax.swing.JLabel jLabelBranch;
+    private javax.swing.JLabel jLabelClientID;
     private javax.swing.JLabel jLabelClientIDNotFound;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JLabel jLabelDescription1;
+    private javax.swing.JLabel jLabelDescription2;
+    private javax.swing.JLabel jLabelDescription3;
+    private javax.swing.JLabel jLabelFirstName;
+    private javax.swing.JLabel jLabelLastName;
+    private javax.swing.JLabel jLabelManagement;
+    private javax.swing.JLabel jLabelMiddleName;
+    private javax.swing.JLabel jLabelSystem;
+    private javax.swing.JLabel jLabelTheHBankLogo;
+    private javax.swing.JLabel jLabelTheHBankText;
+    private javax.swing.JPanel jPanelAddNewAccount;
     private javax.swing.JTextField jTextFieldAccountID;
-    private javax.swing.JTextField jTextFieldHomeAddress1;
+    private javax.swing.JTextField jTextFieldBalanceInPHP;
+    private javax.swing.JTextField jTextFieldBranch;
+    private javax.swing.JTextField jTextFieldClientID;
+    private javax.swing.JTextField jTextFieldFirstName;
+    private javax.swing.JTextField jTextFieldLastName;
+    private javax.swing.JTextField jTextFieldMiddleName;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,12 +5,14 @@
  */
 package com.hehersondomael.java_banking_system;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,6 +22,7 @@ import javax.swing.JOptionPane;
 public class DepositFund extends javax.swing.JInternalFrame {
 
     MY_CONNECTION my_connection = new MY_CONNECTION();
+    Date date = new Date();
 
     /**
      * Creates new form Customer
@@ -27,8 +30,8 @@ public class DepositFund extends javax.swing.JInternalFrame {
     public DepositFund() {
         initComponents();
         jLabelClientIDNotFound.setText(" ");
-        autoID();
-//        branch();
+        SimpleDateFormat format_1 = new SimpleDateFormat("MMM. dd, yyyy");
+        jLabelTodayIsDate.setText(format_1.format(date));
     }
 
     /**
@@ -40,220 +43,239 @@ public class DepositFund extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jComboBoxGenderAtBirth = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jLabelBanking = new javax.swing.JLabel();
+        jLabelTheHBankLogo = new javax.swing.JLabel();
+        jLabelManagement = new javax.swing.JLabel();
+        jLabelSystem = new javax.swing.JLabel();
+        jLabelTheHBank = new javax.swing.JLabel();
+        jPanelDepositFund = new javax.swing.JPanel();
+        jLabelFullName = new javax.swing.JLabel();
+        jLabelBranch = new javax.swing.JLabel();
+        jLabelAmountToBeDeposited = new javax.swing.JLabel();
+        jButtonDeposit = new javax.swing.JButton();
+        jButtonClearFields = new javax.swing.JButton();
+        jButtonExit = new javax.swing.JButton();
+        jButtonFind = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jTextFieldHomeAddress1 = new javax.swing.JTextField();
+        jLabelAccountType = new javax.swing.JLabel();
+        jLabelBalanceInPHP = new javax.swing.JLabel();
+        jLabelTodayIs = new javax.swing.JLabel();
+        jLabelTodayIsDate = new javax.swing.JLabel();
+        jTextFieldAmountToBeDeposited = new javax.swing.JTextField();
         jLabelClientIDNotFound = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldAccountID = new javax.swing.JTextField();
         jTextFieldClientID = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel25 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jTextFieldHomeAddress2 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabelClientIDNotFound1 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
+        jTextFieldBranch = new javax.swing.JTextField();
+        jTextFieldAccountType = new javax.swing.JTextField();
+        jTextFieldBalanceInPHP = new javax.swing.JTextField();
+        jLabelClientID = new javax.swing.JLabel();
+        jTextFieldFullName = new javax.swing.JTextField();
+        jLabelThisWillBeDeducted = new javax.swing.JLabel();
+        jLabelDescription1 = new javax.swing.JLabel();
+        jLabelDescription2 = new javax.swing.JLabel();
+        jLabelDescription3 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1051, 571));
         setPreferredSize(new java.awt.Dimension(1051, 571));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("BANKING");
+        jLabelBanking.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabelBanking.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelBanking.setText("BANKING");
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Heherson Domael\\Pictures\\Downloaded\\Logos\\H.png")); // NOI18N
-        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabelTheHBankLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTheHBankLogo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Heherson Domael\\Pictures\\Downloaded\\Logos\\H.png")); // NOI18N
+        jLabelTheHBankLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("MANAGEMENT");
+        jLabelManagement.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabelManagement.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelManagement.setText("MANAGEMENT");
 
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("SYSTEM");
+        jLabelSystem.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabelSystem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelSystem.setText("SYSTEM");
 
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setText("THE H BANK");
+        jLabelTheHBank.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelTheHBank.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTheHBank.setText("THE H BANK");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Deposit Fund", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jPanelDepositFund.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Deposit Fund", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jLabel2.setText("Last Name:");
+        jLabelFullName.setText("Full Name:");
 
-        jLabel3.setText("First Name:");
+        jLabelBranch.setText("Branch:");
 
-        jLabel6.setText("Current Balance:");
+        jLabelAmountToBeDeposited.setText("Amount to be Deposited:");
 
-        jLabel7.setText("Account Type:");
+        jButtonDeposit.setText("Deposit");
+        jButtonDeposit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDepositActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("Deposit");
+        jButtonClearFields.setText("Clear Fields");
+        jButtonClearFields.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearFieldsActionPerformed(evt);
+            }
+        });
 
-        jComboBoxGenderAtBirth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Savings", "Fixed", "Current" }));
-        jComboBoxGenderAtBirth.setSelectedIndex(-1);
+        jButtonExit.setText("Exit");
+        jButtonExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExitActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Clear Fields");
-
-        jButton3.setText("Exit");
-
-        jButton4.setText("Find");
+        jButtonFind.setText("Find");
+        jButtonFind.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFindActionPerformed(evt);
+            }
+        });
 
         jLabel20.setText("Account ID:");
 
-        jLabel21.setText("Middle Name:");
+        jLabelAccountType.setText("Account Type:");
 
-        jLabel22.setText("Branch:");
+        jLabelBalanceInPHP.setText("Balance (in PHP):");
 
-        jLabel23.setText("Today is:");
+        jLabelTodayIs.setText("Today is:");
 
-        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel24.setText(" Apr. 11, 2020");
+        jLabelTodayIsDate.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabelTodayIsDate.setText(" Dec. 31, 1999");
+        jLabelTodayIsDate.setFocusable(false);
 
         jLabelClientIDNotFound.setForeground(new java.awt.Color(255, 0, 0));
-        jLabelClientIDNotFound.setText("Client ID not found.");
+        jLabelClientIDNotFound.setText("Account ID not found.");
 
-        jLabel25.setText("Client ID:");
+        jTextFieldClientID.setEditable(false);
+        jTextFieldClientID.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldClientID.setFocusable(false);
 
-        jLabel8.setText("Amount to be Deposited:");
+        jTextFieldBranch.setEditable(false);
+        jTextFieldBranch.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldBranch.setFocusable(false);
 
-        jLabelClientIDNotFound1.setText("This will be added to the account's balance.");
+        jTextFieldAccountType.setEditable(false);
+        jTextFieldAccountType.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldAccountType.setFocusable(false);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        jTextFieldBalanceInPHP.setEditable(false);
+        jTextFieldBalanceInPHP.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldBalanceInPHP.setFocusable(false);
+
+        jLabelClientID.setText("Client ID:");
+
+        jTextFieldFullName.setEditable(false);
+        jTextFieldFullName.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldFullName.setFocusable(false);
+
+        jLabelThisWillBeDeducted.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+        jLabelThisWillBeDeducted.setText("This will be added to the account's balance.");
+
+        javax.swing.GroupLayout jPanelDepositFundLayout = new javax.swing.GroupLayout(jPanelDepositFund);
+        jPanelDepositFund.setLayout(jPanelDepositFundLayout);
+        jPanelDepositFundLayout.setHorizontalGroup(
+            jPanelDepositFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDepositFundLayout.createSequentialGroup()
+                .addGroup(jPanelDepositFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelDepositFundLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelClientIDNotFound1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabelThisWillBeDeducted))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelDepositFundLayout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanelDepositFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelDepositFundLayout.createSequentialGroup()
                                 .addGap(1, 1, 1)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanelDepositFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelTodayIs, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel22)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel21)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel8))
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabelFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelBranch)
+                                    .addComponent(jLabelClientID, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabelBalanceInPHP)
+                            .addComponent(jLabelAccountType)
+                            .addComponent(jLabelAmountToBeDeposited, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelDepositFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelDepositFundLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButtonDeposit, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jButtonClearFields, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jTextFieldClientID, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jComboBoxGenderAtBirth, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextFieldHomeAddress1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextField2)
+                            .addComponent(jTextFieldBranch, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldAccountType, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldBalanceInPHP, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldAmountToBeDeposited, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDepositFundLayout.createSequentialGroup()
+                                .addComponent(jTextFieldAccountID)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton4))
-                            .addComponent(jTextField7)
-                            .addComponent(jTextFieldHomeAddress2)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel24)
-                                    .addComponent(jLabelClientIDNotFound))
+                                .addComponent(jButtonFind))
+                            .addComponent(jTextFieldFullName)
+                            .addGroup(jPanelDepositFundLayout.createSequentialGroup()
+                                .addGroup(jPanelDepositFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelClientIDNotFound, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelTodayIsDate, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(50, 50, 50))
+                .addGap(51, 51, 51))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+        jPanelDepositFundLayout.setVerticalGroup(
+            jPanelDepositFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDepositFundLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanelDepositFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelTodayIsDate, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelTodayIs, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelClientIDNotFound)
                 .addGap(1, 1, 1)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelDepositFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonFind)
+                    .addComponent(jTextFieldAccountID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelDepositFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelClientID, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldClientID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelDepositFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelDepositFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelBranch, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldBranch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelDepositFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelAccountType, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldAccountType))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelDepositFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldBalanceInPHP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelBalanceInPHP, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelDepositFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelAmountToBeDeposited, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldAmountToBeDeposited, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxGenderAtBirth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextFieldHomeAddress1, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE))
-                .addGap(8, 8, 8)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldHomeAddress2, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(1, 1, 1)
-                .addComponent(jLabelClientIDNotFound1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addGap(29, 29, 29))
+                .addComponent(jLabelThisWillBeDeducted, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanelDepositFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonDeposit)
+                    .addComponent(jButtonClearFields)
+                    .addComponent(jButtonExit))
+                .addGap(51, 51, 51))
         );
 
-        jLabel11.setText("Your bank transactions are all set in this system!");
+        jLabelDescription1.setText("Your bank transactions are all set in this system!");
 
-        jLabel13.setText("Deposit fund to your client's account by");
+        jLabelDescription2.setText("Deposit fund from your client's account");
 
-        jLabel19.setText("filling up the form on the left.");
+        jLabelDescription3.setText("filling up the form on the left.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -261,25 +283,25 @@ public class DepositFund extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelDepositFund, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(61, 61, 61)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelTheHBankLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel17)))
+                            .addComponent(jLabelBanking)
+                            .addComponent(jLabelManagement)
+                            .addComponent(jLabelSystem)
+                            .addComponent(jLabelTheHBank)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(81, 81, 81)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelDescription3, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(184, Short.MAX_VALUE))
+                                .addComponent(jLabelDescription1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabelDescription2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,113 +310,223 @@ public class DepositFund extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(67, 67, 67)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
+                            .addComponent(jLabelTheHBankLogo)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel17)
+                                .addComponent(jLabelTheHBank)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel5)
+                                .addComponent(jLabelBanking)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel15)
+                                .addComponent(jLabelManagement)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel14)
+                                .addComponent(jLabelSystem)
                                 .addGap(8, 8, 8)))
                         .addGap(157, 157, 157)
-                        .addComponent(jLabel11)
+                        .addComponent(jLabelDescription1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel13)
+                        .addComponent(jLabelDescription2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel19))
+                        .addComponent(jLabelDescription3))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanelDepositFund, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    Connection con;
-    PreparedStatement insert;
+    private void jButtonFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFindActionPerformed
+        String accountID = jTextFieldAccountID.getText().trim().toUpperCase();
 
-    public void autoID() {
-        try {
+        try {      
             PreparedStatement ps;
             ResultSet rs;
-            String selectQuery = "SELECT Max(cust_id) FROM customer";
-            long id;
+            String query = "SELECT c.clientID,c.lastName,c.firstName,c.middleName,c.branch,a.accountType,a.currentBalance FROM clients c, accounts a WHERE c.clientID=a.clientID AND a.accountID=?";
 
-            ps = my_connection.createConnection().prepareStatement(selectQuery);
+            ps = my_connection.createConnection().prepareStatement(query);
+
+            ps.setString(1, accountID);
             rs = ps.executeQuery();
-            rs.next();
-            rs.getString("Max(cust_id)");
 
-            if(rs.getString("Max(cust_id)")==null)
-                jTextFieldClientID.setText("C0001");
+            if(!rs.next())
+            {
+                jLabelClientIDNotFound.setText("Account ID not found.");
+                ClearFields();
+            }
             else
             {
-                id = Long.parseLong(rs.getString("Max(cust_id)").substring(2,rs.getString("Max(cust_id)").length()));
-                id++;
-                jTextFieldClientID.setText("C" + String.format("%04d",id));
+                jLabelClientIDNotFound.setText(" ");
+                String clientID = rs.getString(1);
+                String lastName = rs.getString(2);
+                String firstName = rs.getString(3);
+                String middleName = rs.getString(4).trim();
+                String branch = rs.getString(5);
+                String accountType = rs.getString(6);
+                String balance = rs.getString(7);
+                jTextFieldClientID.setText(clientID.trim());
+                jTextFieldFullName.setText(lastName.trim() + ", " + firstName.trim() + " " + middleName.substring(0,1) + ".");
+                jTextFieldBranch.setText(branch.trim());
+                jTextFieldAccountType.setText(accountType.trim());
+                jTextFieldBalanceInPHP.setText(balance.trim());
+                jTextFieldAmountToBeDeposited.requestFocus();
             }
-        }  catch (SQLException ex) {
-            Logger.getLogger(DepositFund.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+        } catch (SQLException ex) {
+                    Logger.getLogger(DepositFund.class.getName()).log(Level.SEVERE, null, ex);
+          }
+    }//GEN-LAST:event_jButtonFindActionPerformed
 
-    public void branch() {
-        try {
-            PreparedStatement ps;
-            ResultSet rs;
-            String selectQuery = "SELECT * FROM branch";
-            ps = my_connection.createConnection().prepareStatement(selectQuery);
-            rs = ps.executeQuery();
-            
-            while (rs.next())
+    private void jButtonDepositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDepositActionPerformed
+        String accountID = jTextFieldAccountID.getText().trim().toUpperCase();
+        String clientID = jTextFieldClientID.getText().trim();
+        SimpleDateFormat format_2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String timestamp = format_2.format(date).trim();
+
+        if(accountID.equals("") || clientID.equals("") || jTextFieldBalanceInPHP.getText().trim().equals("") ||
+                jTextFieldAmountToBeDeposited.getText().trim().equals(""))
+            JOptionPane.showMessageDialog(rootPane, "Please fill up the form completetely.", "All fields required", JOptionPane.ERROR_MESSAGE);
+        else
+        {
+            if(IsAccountIDReplaced())
+                JOptionPane.showMessageDialog(rootPane, "Account ID has been modified!", "Credentials matching error", JOptionPane.ERROR_MESSAGE);
+            else
             {
-                //jComboBox1.addItem(rs.getString(2));
+                // check if input balances are nonnumeric
+                double previousBalance = Double.valueOf(jTextFieldBalanceInPHP.getText().trim());
+                double amountDeposited = Double.valueOf(jTextFieldAmountToBeDeposited.getText());
+
+                if (amountDeposited <= 0)
+                    JOptionPane.showMessageDialog(rootPane, "Invalid input Amount to be Deposited.", 
+                            "Input amount error", JOptionPane.ERROR_MESSAGE);
+                else
+                {
+//                    In case the bank needs to limit the amount of money to be entered into an account:
+//                    if (previousBalance+amountDeposited < 1000000)
+//                        JOptionPane.showMessageDialog(rootPane, "New balance cannot exceed"
+//                                + " PHP 1,000,000.00!", "Input amount error", JOptionPane.ERROR_MESSAGE);
+//                    else
+//                    {
+                        try {
+                            PreparedStatement ps;
+                            String query = "INSERT INTO deposit (accountID, clientID, timestamp,"
+                                    + "previousBalance, amountDeposited, newBalance) VALUES (?,?,?,?,?,?)";
+
+                            ps = my_connection.createConnection().prepareStatement(query);
+
+                            ps.setString(1, accountID);
+                            ps.setString(2, clientID.trim());
+                            ps.setString(3, timestamp.trim());
+                            ps.setDouble(4, previousBalance);
+                            ps.setDouble(5, amountDeposited);
+                            ps.setDouble(6, previousBalance+amountDeposited);
+
+                            if(ps.executeUpdate() > 0)
+                            {
+                                PreparedStatement ps_update;
+
+                                String query_update = "UPDATE accounts SET currentBalance=? WHERE accountID=?";
+                                ps_update = my_connection.createConnection().prepareStatement(query_update);
+
+                                ps_update.setDouble(1, previousBalance+amountDeposited);
+                                ps_update.setString(2, accountID);
+
+                                if(ps_update.executeUpdate() > 0)
+                                {
+                                    JOptionPane.showMessageDialog(this, "Deposit successful.");
+                                    ClearFields();
+                                }
+                            }
+                            else
+                                System.out.println("Deposit unsuccessful.");
+                        } catch (SQLException ex) {
+                                    Logger.getLogger(DepositFund.class.getName()).log(Level.SEVERE, null, ex);
+                          }
+//                    }
+                }
             }
-        }  catch (SQLException ex) {
-            Logger.getLogger(DepositFund.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+    }//GEN-LAST:event_jButtonDepositActionPerformed
+
+    private void jButtonClearFieldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearFieldsActionPerformed
+        ClearFields();
+    }//GEN-LAST:event_jButtonClearFieldsActionPerformed
+
+    private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "Are you sure you want to leave?", "Close Frame", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
+        {
+            setVisible(false);
+            dispose();
+        }
+        else
+        {
+            setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+            jTextFieldAccountID.requestFocus();
+        }
+    }//GEN-LAST:event_jButtonExitActionPerformed
+
+    private boolean IsAccountIDReplaced()
+    {
+        boolean result=false;
+            try {
+        ResultSet rs_select;
+                PreparedStatement ps_select;
+
+            String selectQuery = "SELECT a.accountID, c.lastName, c.firstName, c.middleName FROM accounts a, clients c WHERE a.accountID=? AND c.clientID=a.clientID";
+
+            ps_select = my_connection.createConnection().prepareStatement(selectQuery);
+            ps_select.setString(1, jTextFieldAccountID.getText().trim());
+            rs_select = ps_select.executeQuery();
+            rs_select.next();
+            return rs_select.getRow()==0;
+            } catch (SQLException ex) {
+                Logger.getLogger(DepositFund.class.getName()).log(Level.SEVERE, null, ex);
+              }
+            System.out.println(result);
+            return result;
     }
     
+    private void ClearFields()
+    {
+        jTextFieldAccountID.setText("");
+        jTextFieldClientID.setText("");
+        jTextFieldFullName.setText("");
+        jTextFieldBranch.setText("");
+        jTextFieldAccountType.setText("");
+        jTextFieldBalanceInPHP.setText("");
+        jTextFieldAmountToBeDeposited.setText("");
+        jTextFieldAccountID.requestFocus();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBoxGenderAtBirth;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton jButtonClearFields;
+    private javax.swing.JButton jButtonDeposit;
+    private javax.swing.JButton jButtonExit;
+    private javax.swing.JButton jButtonFind;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabelAccountType;
+    private javax.swing.JLabel jLabelAmountToBeDeposited;
+    private javax.swing.JLabel jLabelBalanceInPHP;
+    private javax.swing.JLabel jLabelBanking;
+    private javax.swing.JLabel jLabelBranch;
+    private javax.swing.JLabel jLabelClientID;
     private javax.swing.JLabel jLabelClientIDNotFound;
-    private javax.swing.JLabel jLabelClientIDNotFound1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JLabel jLabelDescription1;
+    private javax.swing.JLabel jLabelDescription2;
+    private javax.swing.JLabel jLabelDescription3;
+    private javax.swing.JLabel jLabelFullName;
+    private javax.swing.JLabel jLabelManagement;
+    private javax.swing.JLabel jLabelSystem;
+    private javax.swing.JLabel jLabelTheHBank;
+    private javax.swing.JLabel jLabelTheHBankLogo;
+    private javax.swing.JLabel jLabelThisWillBeDeducted;
+    private javax.swing.JLabel jLabelTodayIs;
+    private javax.swing.JLabel jLabelTodayIsDate;
+    private javax.swing.JPanel jPanelDepositFund;
+    private javax.swing.JTextField jTextFieldAccountID;
+    private javax.swing.JTextField jTextFieldAccountType;
+    private javax.swing.JTextField jTextFieldAmountToBeDeposited;
+    private javax.swing.JTextField jTextFieldBalanceInPHP;
+    private javax.swing.JTextField jTextFieldBranch;
     private javax.swing.JTextField jTextFieldClientID;
-    private javax.swing.JTextField jTextFieldHomeAddress1;
-    private javax.swing.JTextField jTextFieldHomeAddress2;
+    private javax.swing.JTextField jTextFieldFullName;
     // End of variables declaration//GEN-END:variables
 }

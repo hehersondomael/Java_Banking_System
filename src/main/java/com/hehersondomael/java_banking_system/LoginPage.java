@@ -135,7 +135,7 @@ public class LoginPage extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("The top hypotethical bank in the Philippines");
+        jLabel3.setText("The leading hypotethical bank in the Philippines");
 
         jLabelOverview1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabelOverview1.setText("This banking management system");

@@ -254,7 +254,7 @@
           <Font name="Tahoma" size="11" style="2"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="The top hypotethical bank in the Philippines"/>
+        <Property name="text" type="java.lang.String" value="The leading hypotethical bank in the Philippines"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelOverview1">

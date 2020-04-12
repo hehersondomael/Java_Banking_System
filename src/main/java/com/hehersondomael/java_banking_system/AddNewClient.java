@@ -389,7 +389,7 @@ public class AddNewClient extends javax.swing.JInternalFrame {
                 jTextFieldMiddleName.getText().trim().equals("") || genderAtBirthPointer ||
                 dateOfBirthPointer || civilStatusPointer || jTextFieldHomeAddress.getText().trim().equals("") ||
                 jTextFieldMobileNo.getText().trim().equals("") || jTextFieldEmail.getText().trim().equals("") || branchPointer)
-            JOptionPane.showMessageDialog(rootPane, "Please fill up the form completetely.","All fields required", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Please fill up the form completetely.", "All fields required", JOptionPane.ERROR_MESSAGE);
         else
         {
             long mobileNo = Long.valueOf(mobile);
@@ -415,17 +415,7 @@ public class AddNewClient extends javax.swing.JInternalFrame {
                 {
                     JOptionPane.showMessageDialog(this, "Client added successfully.");
                     GenerateClientID();
-                    jTextFieldLastName.setText("");
-                    jTextFieldFirstName.setText("");
-                    jTextFieldMiddleName.setText("");
-                    jComboBoxGenderAtBirth.setSelectedIndex(-1);
-                    jDateChooserDateOfBirth.setDate(null);
-                    jComboBoxCivilStatus.setSelectedIndex(-1);
-                    jTextFieldHomeAddress.setText("");
-                    jTextFieldMobileNo.setText("");
-                    jTextFieldEmail.setText("");
-                    jComboBoxBranch.setSelectedIndex(-1);
-                    jTextFieldLastName.requestFocus();
+                    ClearFields();
                 }
                 else
                     JOptionPane.showMessageDialog(this, "Client NOT added successfully.");
@@ -437,17 +427,7 @@ public class AddNewClient extends javax.swing.JInternalFrame {
 
     private void jButtonClearFieldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearFieldsActionPerformed
         GenerateClientID();
-        jTextFieldLastName.setText("");
-        jTextFieldFirstName.setText("");
-        jTextFieldMiddleName.setText("");
-        jComboBoxGenderAtBirth.setSelectedIndex(-1);
-        jDateChooserDateOfBirth.setDate(null);
-        jComboBoxCivilStatus.setSelectedIndex(-1);
-        jTextFieldHomeAddress.setText("");
-        jTextFieldMobileNo.setText("");
-        jTextFieldEmail.setText("");
-        jComboBoxBranch.setSelectedIndex(-1);
-        jTextFieldLastName.requestFocus();
+        ClearFields();
     }//GEN-LAST:event_jButtonClearFieldsActionPerformed
 
     private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
@@ -460,7 +440,8 @@ public class AddNewClient extends javax.swing.JInternalFrame {
             setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }//GEN-LAST:event_jButtonExitActionPerformed
 
-    private void GenerateClientID() {
+    private void GenerateClientID()
+    {
         try {
             PreparedStatement ps;
             ResultSet rs;
@@ -483,8 +464,25 @@ public class AddNewClient extends javax.swing.JInternalFrame {
             Logger.getLogger(AddNewClient.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    private void ClearFields()
+    {
+        jTextFieldLastName.setText("");
+        jTextFieldFirstName.setText("");
+        jTextFieldMiddleName.setText("");
+        jComboBoxGenderAtBirth.setSelectedIndex(-1);
+        jDateChooserDateOfBirth.setDate(null);
+        jComboBoxCivilStatus.setSelectedIndex(-1);
+        jTextFieldHomeAddress.setText("");
+        jTextFieldMobileNo.setText("");
+        jTextFieldEmail.setText("");
+        jComboBoxBranch.setSelectedIndex(-1);
+        jTextFieldLastName.requestFocus();        
+    }
 
-//    public void GetBankBranches() {
+//    IN CASE SELECT BOX ITEMS ARE TO BE RETRIEVED IN THE DATABASE
+//    public void GetBankBranches()
+//    {
 //        try {
 //            PreparedStatement ps;
 //            ResultSet rs;

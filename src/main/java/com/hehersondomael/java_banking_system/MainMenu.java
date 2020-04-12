@@ -68,8 +68,6 @@ public class MainMenu extends javax.swing.JFrame {
         jMenuSettings = new javax.swing.JMenu();
         jMenuItemChangePassword = new javax.swing.JMenuItem();
         jMenuItemLogOut = new javax.swing.JMenuItem();
-        jMenu7 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -181,18 +179,6 @@ public class MainMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuSettings);
 
-        jMenu7.setText("jMenu7");
-
-        jMenuItem2.setText("Account");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu7.add(jMenuItem2);
-
-        jMenuBar1.add(jMenu7);
-
         jMenu8.setText("jMenu8");
 
         jMenuItem3.setText("Withdraw");
@@ -292,13 +278,6 @@ public class MainMenu extends javax.swing.JFrame {
         transferFund.setVisible(true);
     }//GEN-LAST:event_jMenuItemTransferFundActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-        Account account = new Account();
-        jDesktopPane1.add(account);
-        account.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -337,13 +316,11 @@ public class MainMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenu jMenuAddNew;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;

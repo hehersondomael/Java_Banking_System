@@ -29,31 +29,31 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-              <Component id="jPanelDepositFund" min="-2" max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                      <Component id="jLabelTheHBankLogo" min="-2" pref="118" max="-2" attributes="0"/>
+                      <Component id="jLabel4" min="-2" pref="118" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabelBanking" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelManagement" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelSystem" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelTheHBank" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabelDescription3" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
+                          <Component id="jLabel19" alignment="0" min="-2" pref="237" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLabelDescription1" max="32767" attributes="0"/>
-                              <Component id="jLabelDescription2" max="32767" attributes="0"/>
+                              <Component id="jLabel11" max="32767" attributes="0"/>
+                              <Component id="jLabel13" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="186" max="32767" attributes="0"/>
+              <EmptySpace pref="184" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -64,28 +64,28 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabelTheHBankLogo" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="jLabelTheHBank" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabelBanking" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabelManagement" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabelSystem" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
-                      <Component id="jLabelDescription1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabelDescription2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabelDescription3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                      <Component id="jPanelDepositFund" min="-2" max="-2" attributes="0"/>
+                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -94,7 +94,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabelBanking">
+    <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="3"/>
@@ -103,7 +103,7 @@
         <Property name="text" type="java.lang.String" value="BANKING"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelTheHBankLogo">
+    <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -112,7 +112,7 @@
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelManagement">
+    <Component class="javax.swing.JLabel" name="jLabel15">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="3"/>
@@ -121,7 +121,7 @@
         <Property name="text" type="java.lang.String" value="MANAGEMENT"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelSystem">
+    <Component class="javax.swing.JLabel" name="jLabel14">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="3"/>
@@ -130,7 +130,7 @@
         <Property name="text" type="java.lang.String" value="SYSTEM"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelTheHBank">
+    <Component class="javax.swing.JLabel" name="jLabel17">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
@@ -139,7 +139,7 @@
         <Property name="text" type="java.lang.String" value="THE H BANK"/>
       </Properties>
     </Component>
-    <Container class="javax.swing.JPanel" name="jPanelDepositFund">
+    <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -157,64 +157,65 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jLabelThisWillBeDeducted" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelThisWillBeAdded" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabelTodayIs" min="-2" pref="78" max="-2" attributes="0"/>
-                                      <Component id="jLabel20" min="-2" pref="78" max="-2" attributes="0"/>
-                                      <Component id="jLabelFullName" alignment="0" min="-2" pref="69" max="-2" attributes="0"/>
-                                      <Component id="jLabelBranch" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelAccountID" min="-2" pref="78" max="-2" attributes="0"/>
+                                      <Component id="jLabelLastName" alignment="0" min="-2" pref="69" max="-2" attributes="0"/>
                                       <Component id="jLabelClientID" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jLabelBalanceInPHP" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelBranch" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelAccountType" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelAmountToBeDeposited" min="-2" pref="139" max="-2" attributes="0"/>
+                              <Component id="jLabelBalanceInPHP" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelAmountToBeDeposited" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="jButtonDeposit" min="-2" pref="91" max="-2" attributes="0"/>
+                                  <Component id="jButton1" min="-2" pref="103" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButtonClearFields" min="-2" pref="99" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButtonExit" min="-2" pref="65" max="-2" attributes="0"/>
+                                  <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jButton3" min="-2" pref="57" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jTextFieldClientID" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jTextFieldBranch" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jTextFieldAccountType" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jTextFieldBalanceInPHP" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jTextFieldAmountToBeDeposited" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jTextField4" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jTextField5" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jTextField6" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jTextFieldHomeAddress1" alignment="1" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jTextFieldAccountID" max="32767" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jButtonFind" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jTextFieldFullName" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jTextField7" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jTextFieldHomeAddress2" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabelClientIDNotFound" min="-2" pref="118" max="-2" attributes="0"/>
-                                      <Component id="jLabelTodayIsDate" min="-2" pref="90" max="-2" attributes="0"/>
+                                      <Component id="jLabelTodayIsDate" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelClientIDNotFound" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelTodayIsDate" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="jLabelTodayIs" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
@@ -225,102 +226,62 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButtonFind" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextFieldAccountID" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel20" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="jLabelAccountID" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabelClientID" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="jTextFieldClientID" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabelClientID" min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="jTextFieldClientID" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabelLastName" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="jTextField7" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabelFullName" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="jTextFieldFullName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelBranch" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabelBranch" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="jTextFieldBranch" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jTextField5" alignment="3" max="32767" attributes="0"/>
                       <Component id="jLabelAccountType" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="jTextFieldAccountType" alignment="3" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextFieldBalanceInPHP" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelBalanceInPHP" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
+                      <Component id="jTextField6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelBalanceInPHP" alignment="3" max="32767" attributes="0"/>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jTextFieldHomeAddress1" alignment="3" pref="21" max="32767" attributes="0"/>
+                      <Component id="jLabelAmountToBeDeposited" alignment="3" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="jTextFieldHomeAddress2" pref="21" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                  <Component id="jLabelThisWillBeAdded" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabelAmountToBeDeposited" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="jTextFieldAmountToBeDeposited" alignment="3" pref="21" max="32767" attributes="0"/>
+                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabelThisWillBeDeducted" min="-2" pref="14" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButtonDeposit" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButtonClearFields" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButtonExit" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabelFullName">
+        <Component class="javax.swing.JLabel" name="jLabelLastName">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Full Name:"/>
+            <Property name="text" type="java.lang.String" value="Last Name:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelBranch">
+        <Component class="javax.swing.JLabel" name="jLabelBalanceInPHP">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Branch:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabelAmountToBeDeposited">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Amount to be Deposited:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="jButtonDeposit">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Deposit"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDepositActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="jButtonClearFields">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Clear Fields"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonClearFieldsActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="jButtonExit">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Exit"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonExitActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="jButtonFind">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Find"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonFindActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel20">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Account ID:"/>
+            <Property name="text" type="java.lang.String" value="Balance (in PHP):"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelAccountType">
@@ -328,9 +289,34 @@
             <Property name="text" type="java.lang.String" value="Account Type:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelBalanceInPHP">
+        <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Balance (in PHP):"/>
+            <Property name="text" type="java.lang.String" value="Deposit"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Clear Fields"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Exit"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButtonFind">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Find"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelAccountID">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Account ID:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelBranch">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Branch:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelTodayIs">
@@ -343,93 +329,61 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value=" Dec. 31, 1999"/>
-            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="text" type="java.lang.String" value=" Apr. 11, 2020"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldAmountToBeDeposited">
+        <Component class="javax.swing.JTextField" name="jTextFieldHomeAddress1">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelClientIDNotFound">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Account ID not found."/>
+            <Property name="text" type="java.lang.String" value="Client ID not found."/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldAccountID">
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldClientID">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="cc" red="cc" type="rgb"/>
-            </Property>
-            <Property name="focusable" type="boolean" value="false"/>
-          </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldBranch">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="cc" red="cc" type="rgb"/>
-            </Property>
-            <Property name="focusable" type="boolean" value="false"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="jTextField4">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldAccountType">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="cc" red="cc" type="rgb"/>
-            </Property>
-            <Property name="focusable" type="boolean" value="false"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="jTextField5">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldBalanceInPHP">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="cc" red="cc" type="rgb"/>
-            </Property>
-            <Property name="focusable" type="boolean" value="false"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="jTextField6">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelClientID">
           <Properties>
             <Property name="text" type="java.lang.String" value="Client ID:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldFullName">
+        <Component class="javax.swing.JTextField" name="jTextField7">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldHomeAddress2">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelAmountToBeDeposited">
           <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="cc" red="cc" type="rgb"/>
-            </Property>
-            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="text" type="java.lang.String" value="Amount to be Deposited:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelThisWillBeDeducted">
+        <Component class="javax.swing.JLabel" name="jLabelThisWillBeAdded">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="2"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="This will be added to the account&apos;s balance."/>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabelDescription1">
+    <Component class="javax.swing.JLabel" name="jLabel11">
       <Properties>
         <Property name="text" type="java.lang.String" value="Your bank transactions are all set in this system!"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelDescription2">
+    <Component class="javax.swing.JLabel" name="jLabel13">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Deposit fund from your client&apos;s account"/>
+        <Property name="text" type="java.lang.String" value="Deposit fund to your client&apos;s account by"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelDescription3">
+    <Component class="javax.swing.JLabel" name="jLabel19">
       <Properties>
         <Property name="text" type="java.lang.String" value="filling up the form on the left."/>
       </Properties>

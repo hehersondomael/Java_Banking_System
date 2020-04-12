@@ -277,60 +277,9 @@ public class Withdraw extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        String accno = jTextField1.getText();
-        String cust_id = jLabel6.getText();
-        String firstname = jLabel7.getText();
-        String lastname = jLabel8.getText();
-        String date = jLabel9.getText();
-        String balance = jLabel11.getText();
-        String amount = jTextField2.getText();
-
-        try {
-            PreparedStatement ps;
-            ResultSet rs;
-            String query = "INSERT INTO withdraw (acc_id,cust_id,date,balance,withdraw) VALUES (?,?,?,?,?)";
-
-            ps = my_connection.createConnection().prepareStatement(query);
-
-            ps.setString(1, accno);
-            ps.setString(2, cust_id);
-            ps.setString(3, date);
-            ps.setString(4, balance);
-            ps.setString(5, amount);
-            ps.executeUpdate();
-
-            if(ps.executeUpdate() > 0)
-            {
-                System.out.println("YOW");
-                PreparedStatement ps2;
-
-                String query2 = "UPDATE account SET balance=balance-? WHERE acc_id=?";
-                ps2 = my_connection.createConnection().prepareStatement(query2);
-
-                ps2.setString(1, amount);
-                ps2.setString(2, accno);
-                
-                if(ps2.executeUpdate() > 0)
-                {
-                    JOptionPane.showMessageDialog(this, "Withdraw counted successfully.");
-                    jTextField2.setText("");
-                }
-
-            }
-            else
-                System.out.println("Error");
-
-        } catch (SQLException ex) {
-                    Logger.getLogger(Withdraw.class.getName()).log(Level.SEVERE, null, ex);
-                }
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        setVisible(false);
-        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

@@ -16,7 +16,6 @@ import java.util.logging.Logger;
  * @author Heherson Domael
  */
 public class MY_CONNECTION {
-    // in this class we will make our connection with the mysql database
     public Connection createConnection()
     {
         Connection connection = null;
@@ -36,5 +35,4 @@ public class MY_CONNECTION {
 
         return connection;
     }
-    
 }
