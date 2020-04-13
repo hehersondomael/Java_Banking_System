@@ -338,7 +338,7 @@ public class DepositFund extends javax.swing.JInternalFrame {
     private void jButtonFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFindActionPerformed
         String accountID = jTextFieldAccountID.getText().trim().toUpperCase();
 
-        try {      
+        try {
             PreparedStatement ps;
             ResultSet rs;
             String query = "SELECT c.clientID,c.lastName,c.firstName,c.middleName,c.branch,a.accountType,a.currentBalance FROM clients c, accounts a WHERE c.clientID=a.clientID AND a.accountID=?";
@@ -436,7 +436,7 @@ public class DepositFund extends javax.swing.JInternalFrame {
                                 }
                             }
                             else
-                                System.out.println("Deposit unsuccessful.");
+                                JOptionPane.showMessageDialog(this, "Deposit unsuccessful.");
                         } catch (SQLException ex) {
                                     Logger.getLogger(DepositFund.class.getName()).log(Level.SEVERE, null, ex);
                           }

@@ -6,12 +6,14 @@
 package com.hehersondomael.java_banking_system;
 
 import java.awt.Color;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,14 +23,17 @@ import javax.swing.JOptionPane;
 public class TransferFund extends javax.swing.JInternalFrame {
 
     MY_CONNECTION my_connection = new MY_CONNECTION();
+    Date date = new Date();
+    String storedSourceAccountID = "";
+    String storedDestinationAccountID = "";
 
     /**
      * Creates new form TransferFund
      */
     public TransferFund() {
         initComponents();
-        //Color redColor = new Color(255,0,0);
-        //jLabelClientIDNotFound.setForeground(redColor);
+        SimpleDateFormat format_1 = new SimpleDateFormat("MMM. dd, yyyy");
+        jLabelTodayIsDate.setText(format_1.format(date));
     }
 
     /**
@@ -48,24 +53,23 @@ public class TransferFund extends javax.swing.JInternalFrame {
         jPanelTransferFund = new javax.swing.JPanel();
         jLabelSourceAccountType = new javax.swing.JLabel();
         jLabelDestinationBalanceInPHP = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jButtonTransfer = new javax.swing.JButton();
+        jButtonClearFields = new javax.swing.JButton();
+        jButtonExit = new javax.swing.JButton();
         jButtonFindSource = new javax.swing.JButton();
         jLabelDestinationAccountID = new javax.swing.JLabel();
         jLabelSourceBalanceInPHP = new javax.swing.JLabel();
         jLabelTodayIs = new javax.swing.JLabel();
         jLabelTodayIsDate = new javax.swing.JLabel();
         jTextFieldDestinationAccountType = new javax.swing.JTextField();
-        jLabelClientIDNotFound = new javax.swing.JLabel();
-        jTextFieldSourceAccountID = new javax.swing.JTextField();
+        jLabelSourceAccountIDNotFound = new javax.swing.JLabel();
         jTextFieldSourceClientID = new javax.swing.JTextField();
         jTextFieldSourceAccountType = new javax.swing.JTextField();
-        jTextFieldBalanceInPHP = new javax.swing.JTextField();
+        jTextFieldSourceBalanceInPHP = new javax.swing.JTextField();
         jTextFieldDestinationFullName = new javax.swing.JTextField();
         jLabelSourceFullName = new javax.swing.JLabel();
         jTextFieldSourceFullName = new javax.swing.JTextField();
-        jTextFieldlDestinationBalanceInPHP = new javax.swing.JTextField();
+        jTextFieldDestinationBalanceInPHP = new javax.swing.JTextField();
         jLabelAmountToBeTransferred = new javax.swing.JLabel();
         jLabelDestinationAccountIDNotFound = new javax.swing.JLabel();
         jButtonFindDestination = new javax.swing.JButton();
@@ -77,6 +81,7 @@ public class TransferFund extends javax.swing.JInternalFrame {
         jLabelSourceClientID = new javax.swing.JLabel();
         jLabelDestinationClientID = new javax.swing.JLabel();
         jTextFieldDestinationClientID = new javax.swing.JTextField();
+        jTextFieldSourceAccountID = new javax.swing.JTextField();
         jLabelDescription1 = new javax.swing.JLabel();
         jLabelDescription2 = new javax.swing.JLabel();
         jLabelDescription3 = new javax.swing.JLabel();
@@ -86,6 +91,16 @@ public class TransferFund extends javax.swing.JInternalFrame {
         jLabelDescription5_3 = new javax.swing.JLabel();
         jLabelDescription5_4 = new javax.swing.JLabel();
         jLabelDescription5 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabelDescription5_5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabelDescription5_6 = new javax.swing.JLabel();
+        jLabelDescription5_7 = new javax.swing.JLabel();
+        jLabelDescription5_8 = new javax.swing.JLabel();
+        jLabelDescription5_9 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1051, 571));
         setPreferredSize(new java.awt.Dimension(1051, 571));
@@ -116,13 +131,33 @@ public class TransferFund extends javax.swing.JInternalFrame {
 
         jLabelDestinationBalanceInPHP.setText("Balance (in PHP):");
 
-        jButton1.setText("Transfer");
+        jButtonTransfer.setText("Transfer");
+        jButtonTransfer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTransferActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Clear Fields");
+        jButtonClearFields.setText("Clear Fields");
+        jButtonClearFields.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearFieldsActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Exit");
+        jButtonExit.setText("Exit");
+        jButtonExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExitActionPerformed(evt);
+            }
+        });
 
         jButtonFindSource.setText("Find");
+        jButtonFindSource.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFindSourceActionPerformed(evt);
+            }
+        });
 
         jLabelDestinationAccountID.setText("Destination Account ID:");
 
@@ -137,8 +172,8 @@ public class TransferFund extends javax.swing.JInternalFrame {
         jTextFieldDestinationAccountType.setBackground(new java.awt.Color(204, 204, 204));
         jTextFieldDestinationAccountType.setFocusable(false);
 
-        jLabelClientIDNotFound.setForeground(new java.awt.Color(220, 220, 220));
-        jLabelClientIDNotFound.setText("Client ID not found.");
+        jLabelSourceAccountIDNotFound.setForeground(new java.awt.Color(220, 220, 220));
+        jLabelSourceAccountIDNotFound.setText("Account ID not found.");
 
         jTextFieldSourceClientID.setEditable(false);
         jTextFieldSourceClientID.setBackground(new java.awt.Color(204, 204, 204));
@@ -148,9 +183,9 @@ public class TransferFund extends javax.swing.JInternalFrame {
         jTextFieldSourceAccountType.setBackground(new java.awt.Color(204, 204, 204));
         jTextFieldSourceAccountType.setFocusable(false);
 
-        jTextFieldBalanceInPHP.setEditable(false);
-        jTextFieldBalanceInPHP.setBackground(new java.awt.Color(204, 204, 204));
-        jTextFieldBalanceInPHP.setFocusable(false);
+        jTextFieldSourceBalanceInPHP.setEditable(false);
+        jTextFieldSourceBalanceInPHP.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldSourceBalanceInPHP.setFocusable(false);
 
         jTextFieldDestinationFullName.setEditable(false);
         jTextFieldDestinationFullName.setBackground(new java.awt.Color(204, 204, 204));
@@ -162,16 +197,21 @@ public class TransferFund extends javax.swing.JInternalFrame {
         jTextFieldSourceFullName.setBackground(new java.awt.Color(204, 204, 204));
         jTextFieldSourceFullName.setFocusable(false);
 
-        jTextFieldlDestinationBalanceInPHP.setEditable(false);
-        jTextFieldlDestinationBalanceInPHP.setBackground(new java.awt.Color(204, 204, 204));
-        jTextFieldlDestinationBalanceInPHP.setFocusable(false);
+        jTextFieldDestinationBalanceInPHP.setEditable(false);
+        jTextFieldDestinationBalanceInPHP.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldDestinationBalanceInPHP.setFocusable(false);
 
         jLabelAmountToBeTransferred.setText("Amount to be Transferred:");
 
         jLabelDestinationAccountIDNotFound.setForeground(new java.awt.Color(220, 220, 220));
-        jLabelDestinationAccountIDNotFound.setText("Client ID not found.");
+        jLabelDestinationAccountIDNotFound.setText("Account ID not found.");
 
         jButtonFindDestination.setText("Find");
+        jButtonFindDestination.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFindDestinationActionPerformed(evt);
+            }
+        });
 
         jLabel26.setText("Source Account ID:");
 
@@ -195,65 +235,67 @@ public class TransferFund extends javax.swing.JInternalFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTransferFundLayout.createSequentialGroup()
-                        .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelDestinationBalanceInPHP)
-                            .addComponent(jLabelAccountType, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelDestinationFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelDestinationAccountID)
-                            .addComponent(jLabelSourceBalanceInPHP)
-                            .addComponent(jLabelSourceAccountType, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelSourceFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel26))
-                        .addGap(32, 32, 32))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTransferFundLayout.createSequentialGroup()
                         .addComponent(jLabelAmountToBeTransferred)
                         .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTransferFundLayout.createSequentialGroup()
+                        .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabelDestinationBalanceInPHP, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelAccountType, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelDestinationFullName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelSourceBalanceInPHP, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelSourceAccountType, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelSourceFullName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(64, 64, 64))
                     .addGroup(jPanelTransferFundLayout.createSequentialGroup()
-                        .addComponent(jLabelTodayIs, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelTodayIs, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelDestinationAccountID)
+                            .addComponent(jLabel26))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTextFieldDestinationFullName)
                     .addComponent(jTextFieldDestinationAccountType)
-                    .addComponent(jTextFieldSourceFullName, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldlDestinationBalanceInPHP, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldDestinationBalanceInPHP, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldSourceAccountType, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldBalanceInPHP, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelTransferFundLayout.createSequentialGroup()
-                        .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelTodayIsDate, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelTransferFundLayout.createSequentialGroup()
-                                .addComponent(jLabelClientIDNotFound)
-                                .addGap(78, 78, 78)
-                                .addComponent(jLabelSourceClientID))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelTransferFundLayout.createSequentialGroup()
-                                .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanelTransferFundLayout.createSequentialGroup()
-                                        .addComponent(jTextFieldDestinationAccountID, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButtonFindDestination, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabelDestinationAccountIDNotFound))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelDestinationClientID)
-                                    .addComponent(jTextFieldDestinationClientID, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jTextFieldSourceBalanceInPHP, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldAmountToBeTransferred)
                     .addGroup(jPanelTransferFundLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanelTransferFundLayout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButtonTransfer, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButtonClearFields, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jButtonExit, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE))
                             .addGroup(jPanelTransferFundLayout.createSequentialGroup()
-                                .addComponent(jTextFieldSourceAccountID, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonFindSource, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldSourceClientID, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(55, 55, 55))
+                                .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelSourceAccountIDNotFound)
+                                    .addGroup(jPanelTransferFundLayout.createSequentialGroup()
+                                        .addComponent(jTextFieldSourceAccountID, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButtonFindSource, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelSourceClientID)
+                                    .addComponent(jTextFieldSourceClientID)))))
+                    .addComponent(jTextFieldSourceFullName)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelTransferFundLayout.createSequentialGroup()
+                        .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelTransferFundLayout.createSequentialGroup()
+                                .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelDestinationAccountIDNotFound)
+                                    .addGroup(jPanelTransferFundLayout.createSequentialGroup()
+                                        .addComponent(jTextFieldDestinationAccountID, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButtonFindDestination)))
+                                .addGap(10, 10, 10)
+                                .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelDestinationClientID)
+                                    .addComponent(jTextFieldDestinationClientID, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabelTodayIsDate, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(47, 47, 47))
         );
         jPanelTransferFundLayout.setVerticalGroup(
             jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,16 +306,16 @@ public class TransferFund extends javax.swing.JInternalFrame {
                     .addComponent(jLabelTodayIs, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelClientIDNotFound)
+                    .addComponent(jLabelSourceAccountIDNotFound)
                     .addComponent(jLabelSourceClientID))
                 .addGap(1, 1, 1)
                 .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonFindSource)
-                    .addComponent(jTextFieldSourceAccountID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldSourceClientID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldSourceAccountID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelSourceFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldSourceFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -282,41 +324,41 @@ public class TransferFund extends javax.swing.JInternalFrame {
                     .addComponent(jTextFieldSourceAccountType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldBalanceInPHP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldSourceBalanceInPHP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelSourceBalanceInPHP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabelDestinationAccountIDNotFound, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelDestinationClientID, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelTransferFundLayout.createSequentialGroup()
-                        .addGap(16, 16, 16)
+                        .addComponent(jLabelDestinationClientID, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonFindDestination)
                             .addComponent(jLabelDestinationAccountID, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldDestinationAccountID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldDestinationClientID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldDestinationFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelDestinationFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelDestinationFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldDestinationFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldDestinationAccountType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelAccountType, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldlDestinationBalanceInPHP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldDestinationBalanceInPHP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelDestinationBalanceInPHP, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldAmountToBeTransferred, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelAmountToBeTransferred))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanelTransferFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addContainerGap())
+                    .addComponent(jButtonTransfer)
+                    .addComponent(jButtonClearFields)
+                    .addComponent(jButtonExit))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         jLabelDescription1.setText("Your bank transactions are all set in this system!");
@@ -327,15 +369,35 @@ public class TransferFund extends javax.swing.JInternalFrame {
 
         jLabelDescription4.setText("When transferring fund from one account to another,");
 
-        jLabelDescription5_1.setText("Homogenous transfer (e.g. Savings to Savings): PHP 100.00");
+        jLabelDescription5_1.setText("For Source Account:");
 
-        jLabelDescription5_2.setText("Savings to Fixed & Savings to Current (or vice versa): PHP 200.00");
+        jLabelDescription5_2.setText("Savings:");
 
-        jLabelDescription5_3.setText("Fixed to Current: PHP 300.00");
+        jLabelDescription5_3.setText("Fixed:");
 
-        jLabelDescription5_4.setText("Current to Fixed: PHP 500.00");
+        jLabelDescription5_4.setText("Current:");
 
         jLabelDescription5.setText("the following transfer fees are imposed:");
+
+        jLabel1.setText("PHP 60.00");
+
+        jLabel2.setText("PHP 80.00");
+
+        jLabel3.setText("PHP 50.00");
+
+        jLabelDescription5_5.setText("Savings:");
+
+        jLabel4.setText("PHP 75.00");
+
+        jLabelDescription5_6.setText("Fixed:");
+
+        jLabelDescription5_7.setText("PHP 40.00");
+
+        jLabelDescription5_8.setText("PHP 50.00");
+
+        jLabelDescription5_9.setText("Current:");
+
+        jLabel5.setText("For Destination Account:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -344,39 +406,69 @@ public class TransferFund extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jPanelTransferFund, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelDescription4)
-                    .addComponent(jLabelDescription3, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabelDescription1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelDescription2))
-                    .addComponent(jLabelDescription5)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelDescription5_1)
-                            .addComponent(jLabelDescription5_2)
-                            .addComponent(jLabelDescription5_3)
-                            .addComponent(jLabelDescription5_4)))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
                         .addComponent(jLabelTheHBankLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelBanking)
                             .addComponent(jLabelManagement)
                             .addComponent(jLabelSystem)
-                            .addComponent(jLabelTheHBank))))
-                .addContainerGap(110, Short.MAX_VALUE))
+                            .addComponent(jLabelTheHBank)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelDescription4)
+                            .addComponent(jLabelDescription3, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabelDescription1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabelDescription2))
+                            .addComponent(jLabelDescription5)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabelDescription5_2, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jLabelDescription5_4, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                                                .addComponent(jLabelDescription5_3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabelDescription5_7)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                    .addComponent(jLabelDescription5_1))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(40, 40, 40)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabelDescription5_5, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                                            .addComponent(jLabelDescription5_6, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabelDescription5_9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(jLabelDescription5_8)))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addGap(4, 4, 4)
+                                                .addComponent(jLabel2))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(30, 30, 30)
+                                        .addComponent(jLabel5)))))))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jPanelTransferFund, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(67, 67, 67)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabelTheHBankLogo)
@@ -389,7 +481,7 @@ public class TransferFund extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabelSystem)
                                 .addGap(8, 8, 8)))
-                        .addGap(99, 99, 99)
+                        .addGap(74, 74, 74)
                         .addComponent(jLabelDescription1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabelDescription2)
@@ -400,32 +492,390 @@ public class TransferFund extends javax.swing.JInternalFrame {
                         .addGap(3, 3, 3)
                         .addComponent(jLabelDescription5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelDescription5_1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelDescription5_1)
+                            .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelDescription5_2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelDescription5_2)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabelDescription5_5)
+                            .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelDescription5_3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelDescription5_3)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabelDescription5_6)
+                            .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelDescription5_4)))
-                .addContainerGap(86, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelDescription5_4)
+                            .addComponent(jLabelDescription5_7)
+                            .addComponent(jLabelDescription5_8)
+                            .addComponent(jLabelDescription5_9))))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    private void jButtonFindSourceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFindSourceActionPerformed
+        String accountID = jTextFieldSourceAccountID.getText().trim().toUpperCase();
+
+        try {
+            PreparedStatement ps;
+            ResultSet rs;
+            String query = "SELECT c.clientID,c.lastName,c.firstName,c.middleName,a.accountType,a.currentBalance FROM clients c, accounts a WHERE c.clientID=a.clientID AND a.accountID=?";
+
+            ps = my_connection.createConnection().prepareStatement(query);
+
+            ps.setString(1, accountID);
+            rs = ps.executeQuery();
+
+            if(!rs.next())
+            {
+                Color redColor = new Color(255,0,0);
+                jLabelSourceAccountIDNotFound.setForeground(redColor);
+                ClearSourceFields();
+            }
+            else
+            {
+                // check if input accountID has been inputted at the destination
+                Color transparentColor = new Color(220,220,220);
+                jLabelSourceAccountIDNotFound.setForeground(transparentColor);
+                String clientID = rs.getString(1);
+                String lastName = rs.getString(2);
+                String firstName = rs.getString(3);
+                String middleName = rs.getString(4).trim();
+                String accountType = rs.getString(5);
+                String balance = rs.getString(6);
+                jTextFieldSourceClientID.setText(clientID.trim());
+                jTextFieldSourceFullName.setText(lastName.trim() + ", " + firstName.trim() + " " + middleName.substring(0,1) + ".");
+                jTextFieldSourceAccountType.setText(accountType.trim());
+                jTextFieldSourceBalanceInPHP.setText(balance.trim());
+                jTextFieldDestinationAccountID.requestFocus();
+                storedSourceAccountID = jTextFieldSourceAccountID.getText().trim().toUpperCase();
+            }
+        } catch (SQLException ex) {
+                    Logger.getLogger(TransferFund.class.getName()).log(Level.SEVERE, null, ex);
+          }
+    }//GEN-LAST:event_jButtonFindSourceActionPerformed
+
+    private void jButtonFindDestinationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFindDestinationActionPerformed
+        String accountID = jTextFieldDestinationAccountID.getText().trim().toUpperCase();
+
+        try {
+            PreparedStatement ps;
+            ResultSet rs;
+            String query = "SELECT c.clientID,c.lastName,c.firstName,c.middleName,a.accountType,a.currentBalance FROM clients c, accounts a WHERE c.clientID=a.clientID AND a.accountID=?";
+
+            ps = my_connection.createConnection().prepareStatement(query);
+
+            ps.setString(1, accountID);
+            rs = ps.executeQuery();
+
+            if(!rs.next())
+            {
+                Color redColor = new Color(255,0,0);
+                jLabelDestinationAccountIDNotFound.setForeground(redColor);
+                ClearDestinationFields();
+            }
+            else
+            {
+                Color transparentColor = new Color(220,220,220);
+                jLabelDestinationAccountIDNotFound.setForeground(transparentColor);
+                String clientID = rs.getString(1);
+                String lastName = rs.getString(2);
+                String firstName = rs.getString(3);
+                String middleName = rs.getString(4).trim();
+                String accountType = rs.getString(5);
+                String balance = rs.getString(6);
+                jTextFieldDestinationClientID.setText(clientID.trim());
+                jTextFieldDestinationFullName.setText(lastName.trim() + ", " + firstName.trim() + " " + middleName.substring(0,1) + ".");
+                jTextFieldDestinationAccountType.setText(accountType.trim());
+                jTextFieldDestinationBalanceInPHP.setText(balance.trim());
+                jTextFieldAmountToBeTransferred.requestFocus();
+                storedDestinationAccountID = jTextFieldDestinationAccountID.getText().trim().toUpperCase();
+            }
+        } catch (SQLException ex) {
+                    Logger.getLogger(TransferFund.class.getName()).log(Level.SEVERE, null, ex);
+          }
+    }//GEN-LAST:event_jButtonFindDestinationActionPerformed
+
+    private void jButtonTransferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransferActionPerformed
+        SimpleDateFormat format_2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String timestamp = format_2.format(date).trim();
+        String sourceAccountID = jTextFieldSourceAccountID.getText().toUpperCase();
+        String sourceClientID = jTextFieldSourceClientID.getText();
+        String sourceAccountType = jTextFieldSourceAccountType.getText();
+        String sourceBalanceInPHP = jTextFieldSourceBalanceInPHP.getText();
+        String destinationAccountID = jTextFieldDestinationAccountID.getText().toUpperCase();
+        String destinationClientID = jTextFieldDestinationClientID.getText();
+        String destinationAccountType = jTextFieldDestinationAccountType.getText();
+        String destinationBalanceInPHP = jTextFieldDestinationBalanceInPHP.getText();
+        String amount = jTextFieldAmountToBeTransferred.getText();        
+        
+        if(sourceAccountID.equals("") || sourceClientID.equals("") || destinationAccountID.equals("") || destinationClientID.equals("") || amount.trim().equals(""))
+            JOptionPane.showMessageDialog(rootPane, "Please fill up the form completetely.", "All fields required", JOptionPane.ERROR_MESSAGE);
+        else
+        {
+            if(IsSourceAccountIDReplaced() && IsDestinationAccountIDReplaced())
+                JOptionPane.showMessageDialog(rootPane, "Source and Destination Account ID has been modified!", "Credentials matching error", JOptionPane.ERROR_MESSAGE);
+            else if(IsSourceAccountIDReplaced())
+                JOptionPane.showMessageDialog(rootPane, "Source Account ID has been modified!", "Credentials matching error", JOptionPane.ERROR_MESSAGE);
+            else if(IsDestinationAccountIDReplaced())
+                JOptionPane.showMessageDialog(rootPane, "Destination Account ID has been modified!", "Credentials matching error", JOptionPane.ERROR_MESSAGE);
+            else
+            {
+                int sourceClientIDKey = 1;
+                int destinationClientIDKey = 1;
+                int sourceAccountIDKey = 1;
+                int destinationAccountIDKey = 1;
+
+                PreparedStatement psa;
+                ResultSet rsa;
+                String querya = "SELECT id FROM clients WHERE clientID=?";
+                try {
+                    psa = my_connection.createConnection().prepareStatement(querya);
+                    psa.setString(1, sourceClientID);
+                    rsa = psa.executeQuery();
+                    rsa.next();
+                    sourceClientIDKey = rsa.getInt("id");
+                } catch (SQLException ex) {
+                    Logger.getLogger(TransferFund.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                PreparedStatement psb;
+                ResultSet rsb;
+                String queryb = "SELECT id FROM clients WHERE clientID=?";
+                try {
+                    psb = my_connection.createConnection().prepareStatement(queryb);
+                    psb.setString(1, destinationClientID);
+                    rsb = psb.executeQuery();
+                    rsb.next();
+                    destinationClientIDKey = rsb.getInt("id");
+                } catch (SQLException ex) {
+                    Logger.getLogger(TransferFund.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                PreparedStatement psc;
+                ResultSet rsc;
+                String queryc = "SELECT id FROM accounts WHERE accountID=?";
+                try {
+                    psc = my_connection.createConnection().prepareStatement(queryc);
+                    psc.setString(1, sourceAccountID);
+                    rsc = psc.executeQuery();
+                    rsc.next();
+                    sourceAccountIDKey = rsc.getInt("id");
+                } catch (SQLException ex) {
+                    Logger.getLogger(TransferFund.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                PreparedStatement psd;
+                ResultSet rsd;
+                String queryd = "SELECT id FROM accounts WHERE accountID=?";
+                try {
+                    psd = my_connection.createConnection().prepareStatement(queryd);
+                    psd.setString(1, destinationAccountID);
+                    rsd = psd.executeQuery();
+                    rsd.next();
+                    destinationAccountIDKey = rsd.getInt("id");
+                } catch (SQLException ex) {
+                    Logger.getLogger(TransferFund.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                if (destinationClientIDKey==sourceClientIDKey && sourceAccountID.equals(destinationAccountID))
+                {
+                    JOptionPane.showMessageDialog(rootPane, "Source and destination Account ID cannot be the same!", "Input Account ID error", JOptionPane.ERROR_MESSAGE);
+                    jTextFieldDestinationAccountID.requestFocus();
+                }
+                else if(destinationClientIDKey==sourceClientIDKey)
+                {
+                    JOptionPane.showMessageDialog(rootPane, "Fund transfer to account also owned by source client not allowed!", "Transfer not allowed", JOptionPane.ERROR_MESSAGE);
+                    jTextFieldDestinationAccountID.requestFocus();
+                }
+                else
+                {
+                    try {
+                        double sourceBalance = Double.valueOf(sourceBalanceInPHP);
+                        double destinationBalance = Double.valueOf(destinationBalanceInPHP);
+                        double amountToBeTransferred = Double.valueOf(amount);
+
+                        if (amountToBeTransferred <= 0)
+                            JOptionPane.showMessageDialog(rootPane, "Invalid input Amount to be Transferred.", "Input amount error", JOptionPane.ERROR_MESSAGE);
+                        else
+                        {
+                            double sourceTransferFee = 0.0;
+                            double destinationTransferFee = 0.0;
+                            switch (sourceAccountType)
+                            {
+                                case "Savings": sourceTransferFee=60.0; break;
+                                case "Fixed":   sourceTransferFee=50.0; break;
+                                case "Current": sourceTransferFee=40.0; break;
+                            }
+                            switch (destinationAccountType)
+                            {
+                                case "Savings": destinationTransferFee=80.0; break;
+                                case "Fixed":   destinationTransferFee=75.0; break;
+                                case "Current": destinationTransferFee=50.0; break;
+                            }
+
+                            double newBalance_source = sourceBalance - amountToBeTransferred - sourceTransferFee;
+                            double newBalance_destination = destinationBalance + amountToBeTransferred - destinationTransferFee;
+
+                            PreparedStatement ps_update_source;
+                            String query_update_source = "UPDATE accounts SET currentBalance=? WHERE accountID=?";
+                            ps_update_source = my_connection.createConnection().prepareStatement(query_update_source);
+                            ps_update_source.setDouble(1, newBalance_source);
+                            ps_update_source.setString(2, sourceAccountID);
+
+                            if(ps_update_source.executeUpdate()>0)
+                            {
+                                PreparedStatement ps_update_destination;
+                                String query_update_destination = "UPDATE accounts SET currentBalance=? WHERE accountID=?";
+                                ps_update_destination = my_connection.createConnection().prepareStatement(query_update_destination);
+                                ps_update_destination.setDouble(1, newBalance_destination);
+                                ps_update_destination.setString(2, destinationAccountID);
+
+                                if(ps_update_destination.executeUpdate()>0)
+                                {
+                                    PreparedStatement ps4;
+                                    String query4 = "INSERT INTO transfer (timestamp, sourceAccountID, sourceClientID, destinationAccountID, "
+                                            + "destinationClientID, amountToBeTransferred, sourcePreviousBalance, sourceTransferFee, sourceNewBalance, "
+                                            + "destinationPreviousBalance, destinationTransferFee, destinationNewBalance) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+                                    ps4 = my_connection.createConnection().prepareStatement(query4);
+                                    ps4.setString(1, timestamp);
+                                    ps4.setString(2, sourceAccountID);
+                                    ps4.setString(3, sourceClientID);
+                                    ps4.setString(4, destinationAccountID);
+                                    ps4.setString(5, destinationClientID);
+                                    ps4.setDouble(6, amountToBeTransferred);
+                                    ps4.setDouble(7, sourceBalance);
+                                    ps4.setDouble(8, sourceTransferFee);
+                                    ps4.setDouble(9, newBalance_source);
+                                    ps4.setDouble(10, destinationBalance);
+                                    ps4.setDouble(11, destinationTransferFee);
+                                    ps4.setDouble(12, newBalance_destination);
+
+                                    if(ps4.executeUpdate()>0)
+                                    {
+                                        JOptionPane.showMessageDialog(this, "Transfer successful.");
+                                        ClearDestinationFields();
+                                        ClearSourceFields();
+                                        jTextFieldSourceAccountID.setText("");
+                                        jTextFieldDestinationAccountID.setText("");
+                                        jTextFieldAmountToBeTransferred.setText("");
+                                        jTextFieldSourceAccountID.requestFocus();
+                                    }
+                                }
+                                else
+                                    JOptionPane.showMessageDialog(this, "Transfer unsuccessful.");
+                            }
+                        }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(TransferFund.class.getName()).log(Level.SEVERE, null, ex);
+                      }
+                }
+            }
+        }
+    }//GEN-LAST:event_jButtonTransferActionPerformed
+
+    private void jButtonClearFieldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearFieldsActionPerformed
+        ClearDestinationFields();
+        ClearSourceFields();
+        jTextFieldSourceAccountID.setText("");
+        jTextFieldDestinationAccountID.setText("");
+        Color transparentColor = new Color(220,220,220);
+        jLabelSourceAccountIDNotFound.setForeground(transparentColor);
+        jLabelDestinationAccountIDNotFound.setForeground(transparentColor);
+        jTextFieldAmountToBeTransferred.setText("");
+        jTextFieldSourceAccountID.requestFocus();
+    }//GEN-LAST:event_jButtonClearFieldsActionPerformed
+
+    private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "Are you sure you want to leave?", "Close Frame", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
+        {
+            setVisible(false);
+            dispose();
+        }
+        else
+        {
+            setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+            jTextFieldSourceAccountID.requestFocus();
+        }
+    }//GEN-LAST:event_jButtonExitActionPerformed
+
+    private void ClearSourceFields()
+    {
+        jTextFieldSourceClientID.setText("");
+        jTextFieldSourceFullName.setText("");
+        jTextFieldSourceAccountType.setText("");
+        jTextFieldSourceBalanceInPHP.setText("");
+    }
+
+    private void ClearDestinationFields()
+    {
+        jTextFieldDestinationClientID.setText("");
+        jTextFieldDestinationFullName.setText("");
+        jTextFieldDestinationAccountType.setText("");
+        jTextFieldDestinationBalanceInPHP.setText("");
+    }
+
+    private boolean IsSourceAccountIDReplaced()
+    {
+        try {
+            ResultSet rs_select;
+            PreparedStatement ps_select;
+            String selectQuery = "SELECT accountID FROM accounts WHERE accountID=?";
+
+            ps_select = my_connection.createConnection().prepareStatement(selectQuery);
+            ps_select.setString(1, jTextFieldSourceAccountID.getText().trim().toUpperCase());
+            rs_select = ps_select.executeQuery();
+            rs_select.next();
+
+            return rs_select.getRow()==0 ? true : !rs_select.getString("accountID").equals(storedSourceAccountID);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(TransferFund.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+          }
+    }
+
+    private boolean IsDestinationAccountIDReplaced()
+    {
+        try {
+            ResultSet rs_select;
+            PreparedStatement ps_select;
+            String selectQuery = "SELECT accountID FROM accounts WHERE accountID=?";
+
+            ps_select = my_connection.createConnection().prepareStatement(selectQuery);
+            ps_select.setString(1, jTextFieldDestinationAccountID.getText().trim().toUpperCase());
+            rs_select = ps_select.executeQuery();
+            rs_select.next();
+
+            return rs_select.getRow()==0 ? true : !rs_select.getString("accountID").equals(storedDestinationAccountID);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(TransferFund.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+          }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButtonClearFields;
+    private javax.swing.JButton jButtonExit;
     private javax.swing.JButton jButtonFindDestination;
     private javax.swing.JButton jButtonFindSource;
+    private javax.swing.JButton jButtonTransfer;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelAccountType;
     private javax.swing.JLabel jLabelAmountToBeTransferred;
     private javax.swing.JLabel jLabelBanking;
-    private javax.swing.JLabel jLabelClientIDNotFound;
     private javax.swing.JLabel jLabelDescription1;
     private javax.swing.JLabel jLabelDescription2;
     private javax.swing.JLabel jLabelDescription3;
@@ -435,12 +885,18 @@ public class TransferFund extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelDescription5_2;
     private javax.swing.JLabel jLabelDescription5_3;
     private javax.swing.JLabel jLabelDescription5_4;
+    private javax.swing.JLabel jLabelDescription5_5;
+    private javax.swing.JLabel jLabelDescription5_6;
+    private javax.swing.JLabel jLabelDescription5_7;
+    private javax.swing.JLabel jLabelDescription5_8;
+    private javax.swing.JLabel jLabelDescription5_9;
     private javax.swing.JLabel jLabelDestinationAccountID;
     private javax.swing.JLabel jLabelDestinationAccountIDNotFound;
     private javax.swing.JLabel jLabelDestinationBalanceInPHP;
     private javax.swing.JLabel jLabelDestinationClientID;
     private javax.swing.JLabel jLabelDestinationFullName;
     private javax.swing.JLabel jLabelManagement;
+    private javax.swing.JLabel jLabelSourceAccountIDNotFound;
     private javax.swing.JLabel jLabelSourceAccountType;
     private javax.swing.JLabel jLabelSourceBalanceInPHP;
     private javax.swing.JLabel jLabelSourceClientID;
@@ -452,15 +908,15 @@ public class TransferFund extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelTodayIsDate;
     private javax.swing.JPanel jPanelTransferFund;
     private javax.swing.JTextField jTextFieldAmountToBeTransferred;
-    private javax.swing.JTextField jTextFieldBalanceInPHP;
     private javax.swing.JTextField jTextFieldDestinationAccountID;
     private javax.swing.JTextField jTextFieldDestinationAccountType;
+    private javax.swing.JTextField jTextFieldDestinationBalanceInPHP;
     private javax.swing.JTextField jTextFieldDestinationClientID;
     private javax.swing.JTextField jTextFieldDestinationFullName;
     private javax.swing.JTextField jTextFieldSourceAccountID;
     private javax.swing.JTextField jTextFieldSourceAccountType;
+    private javax.swing.JTextField jTextFieldSourceBalanceInPHP;
     private javax.swing.JTextField jTextFieldSourceClientID;
     private javax.swing.JTextField jTextFieldSourceFullName;
-    private javax.swing.JTextField jTextFieldlDestinationBalanceInPHP;
     // End of variables declaration//GEN-END:variables
 }

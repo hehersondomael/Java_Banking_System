@@ -345,44 +345,51 @@ public class AddNewAccount extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "Please fill up the form completetely.", "All fields required", JOptionPane.ERROR_MESSAGE);
         else
         {
-            // c0006 vs C0006 client id has been replaced
             if(IsClientIDReplaced())
                 JOptionPane.showMessageDialog(rootPane, "Client ID has been modified!", "Credentials matching error", JOptionPane.ERROR_MESSAGE);
             else
             {
                 double currentBalance = Double.valueOf(balance);
-                if (currentBalance <= 10000)
-                    JOptionPane.showMessageDialog(rootPane, "Balance cannot be lower than PHP 10,000.00!", "Minimum balance required", JOptionPane.ERROR_MESSAGE);
+                if (OwnsAccountOfType(clientID, accountType))
+                {
+                    JOptionPane.showMessageDialog(rootPane, "Client already owns an account of the input Account Type!", "Account type ownership limit reached", JOptionPane.ERROR_MESSAGE);
+                    jComboBoxAccountType.requestFocus();
+                }
                 else
                 {
-                    PreparedStatement ps;
-                    String insertQuery = "INSERT INTO accounts (accountID, clientID, accountType, currentBalance) VALUES (?,?,?,?)"; 
+                    if (currentBalance <= 10000)
+                        JOptionPane.showMessageDialog(rootPane, "Balance cannot be lower than PHP 10,000.00!", "Minimum balance required", JOptionPane.ERROR_MESSAGE);
+                    else
+                    {
+                        PreparedStatement ps;
+                        String insertQuery = "INSERT INTO accounts (accountID, clientID, accountType, currentBalance) VALUES (?,?,?,?)"; 
 
-                    try {
-                        ps = my_connection.createConnection().prepareStatement(insertQuery);
-                        ps.setString(1, accountID.trim());
-                        ps.setString(2, clientID.trim());
-                        ps.setString(3, accountType.trim());
-                        ps.setDouble(4, currentBalance);
+                        try {
+                            ps = my_connection.createConnection().prepareStatement(insertQuery);
+                            ps.setString(1, accountID.trim());
+                            ps.setString(2, clientID.trim());
+                            ps.setString(3, accountType.trim());
+                            ps.setDouble(4, currentBalance);
 
-                        if(ps.executeUpdate() > 0)
-                        {
-                            JOptionPane.showMessageDialog(this, "Account added successfully.");
-                            GenerateAccountID();
-                            jTextFieldClientID.setText("");
-                            jTextFieldLastName.setText("");
-                            jTextFieldFirstName.setText("");
-                            jTextFieldMiddleName.setText("");
-                            jTextFieldBranch.setText("");
-                            jComboBoxAccountType.setSelectedIndex(-1);
-                            jTextFieldBalanceInPHP.setText("");
-                            jTextFieldClientID.requestFocus();
-                        }
-                        else
-                            JOptionPane.showMessageDialog(this, "Account NOT added successfully.");
-                    } catch (SQLException ex) {
-                        Logger.getLogger(AddNewAccount.class.getName()).log(Level.SEVERE, null, ex);
-                      }
+                            if(ps.executeUpdate() > 0)
+                            {
+                                JOptionPane.showMessageDialog(this, "Account added successfully.");
+                                GenerateAccountID();
+                                jTextFieldClientID.setText("");
+                                jTextFieldLastName.setText("");
+                                jTextFieldFirstName.setText("");
+                                jTextFieldMiddleName.setText("");
+                                jTextFieldBranch.setText("");
+                                jComboBoxAccountType.setSelectedIndex(-1);
+                                jTextFieldBalanceInPHP.setText("");
+                                jTextFieldClientID.requestFocus();
+                            }
+                            else
+                                JOptionPane.showMessageDialog(this, "Account NOT added successfully.");
+                        } catch (SQLException ex) {
+                            Logger.getLogger(AddNewAccount.class.getName()).log(Level.SEVERE, null, ex);
+                          }
+                    }
                 }
             }
         }
@@ -422,9 +429,9 @@ public class AddNewAccount extends javax.swing.JInternalFrame {
                     rs_count = ps_count.executeQuery();
                     rs_count.next();
 
-                    if (rs_count.getInt("COUNT(clientID)") >= 2)
+                    if (rs_count.getInt("COUNT(clientID)")>=3)
                     {
-                        jLabelClientIDNotFound.setText("Account ownership limit reached!");
+                        jLabelClientIDNotFound.setText("Client already owns an account!");
                         jTextFieldLastName.setText("");
                         jTextFieldFirstName.setText("");
                         jTextFieldMiddleName.setText("");
@@ -515,8 +522,26 @@ public class AddNewAccount extends javax.swing.JInternalFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(AddNewAccount.class.getName()).log(Level.SEVERE, null, ex);
               }
-            
-            return !selectedClientID.equals(jTextFieldClientID.getText().trim());
+
+            return !selectedClientID.equals(jTextFieldClientID.getText().trim().toUpperCase());
+    }
+
+    private boolean OwnsAccountOfType(String clientID, String accountType)
+    {
+        PreparedStatement ps;
+        ResultSet rs;
+        String query = "SELECT * FROM clients WHERE clientID=? AND accountType=?";
+        try {
+        ps = my_connection.createConnection().prepareStatement(query);
+        ps.setString(1,clientID);
+        ps.setString(2, accountType);
+        rs = ps.executeQuery();
+        rs.next();
+
+        return rs.getRow() != 0;
+        } catch(SQLException ex) {
+            return true;
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
