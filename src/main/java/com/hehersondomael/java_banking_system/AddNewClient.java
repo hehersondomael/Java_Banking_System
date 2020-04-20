@@ -477,7 +477,7 @@ public class AddNewClient extends javax.swing.JInternalFrame {
         jTextFieldMobileNo.setText("");
         jTextFieldEmail.setText("");
         jComboBoxBranch.setSelectedIndex(-1);
-        jTextFieldLastName.requestFocus();        
+        jTextFieldLastName.requestFocus();
     }
 
 //    IN CASE SELECT BOX ITEMS ARE TO BE RETRIEVED IN THE DATABASE

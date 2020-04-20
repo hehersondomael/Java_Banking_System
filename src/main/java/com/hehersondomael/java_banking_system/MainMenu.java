@@ -159,6 +159,11 @@ public class MainMenu extends javax.swing.JFrame {
 
         jMenuItemClientCredentials.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK));
         jMenuItemClientCredentials.setText("Client Credentials");
+        jMenuItemClientCredentials.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemClientCredentialsActionPerformed(evt);
+            }
+        });
         jMenuView.add(jMenuItemClientCredentials);
 
         jMenuItemAccountBalance.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK));
@@ -277,6 +282,12 @@ public class MainMenu extends javax.swing.JFrame {
         jDesktopPane1.add(transferFund);
         transferFund.setVisible(true);
     }//GEN-LAST:event_jMenuItemTransferFundActionPerformed
+
+    private void jMenuItemClientCredentialsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClientCredentialsActionPerformed
+        ClientCredentials clientCredentials = new ClientCredentials();
+        jDesktopPane1.add(clientCredentials);
+        clientCredentials.setVisible(true);
+    }//GEN-LAST:event_jMenuItemClientCredentialsActionPerformed
 
     /**
      * @param args the command line arguments
