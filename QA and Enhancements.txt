@@ -1,13 +1,12 @@
 THE H BANK
 *Hypothetical bank
 *Minimum balance required to secure account: P10,000.00
-*Imposes payments on Account-to-Account Fund Transfer
 *Client can earn only up to two (2) accounts
-*Fund transfer imposes charges
-	Homogenous 		PHP 100.00
-	S-F/S-C (or vice versa) PHP 200.00
-	F-C			PHP 300.00
-	C-F			PHP 500.00
+*Account-to-account fund transfer fee
+	For Source Account:		For Source Account:
+	Savings	PHP 60.00		Savings	PHP 80.00
+	Fixed	PHP 50.00		Fixed	PHP 75.00
+	Current	PHP 40.00		Current	PHP 50.00
 *No interest bank
 
 *Shall have a Minimum amount to be deposited
@@ -16,9 +15,6 @@ Finish other Menu
 Invalidate non-numeric inputs on 'financial' text fields
 Include a search bar
 Set Enter key as "default Submit button"
-Amount in Pesos
-Add logout type password
-On Customer list, click one table then display further values in a text field
 Optimize overall code
 
 On launch of Customer
@@ -79,6 +75,10 @@ Deposit Fund
 
 Withdraw Fund
 *Added an alert box that will prompt user if "Amount to be Withdrawn" is less than or equal to 0
+
+Client Credentials
+*Added a sortable, clickable, and uneditable table of registered clients which, upon clicking a data row, will display complete client credentials
+*Added a feature that will allow user to modify existing client credentials
 
 Other
 *Improved overall design of internal frames
