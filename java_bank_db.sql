@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2020 at 03:07 PM
+-- Generation Time: Apr 20, 2020 at 09:25 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -25,24 +25,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `account`
+-- Table structure for table `accounts`
 --
 
-CREATE TABLE `account` (
+CREATE TABLE `accounts` (
   `id` int(11) NOT NULL,
-  `acc_id` varchar(255) NOT NULL,
-  `cust_id` varchar(255) NOT NULL,
-  `acc_type` varchar(255) NOT NULL,
-  `balance` double NOT NULL
+  `accountID` varchar(5) NOT NULL,
+  `clientID` varchar(5) NOT NULL,
+  `accountType` varchar(20) NOT NULL,
+  `currentBalance` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `account`
+-- Dumping data for table `accounts`
 --
 
-INSERT INTO `account` (`id`, `acc_id`, `cust_id`, `acc_type`, `balance`) VALUES
-(1, 'A0001', 'CS001', 'Savings', 8000),
-(2, 'A0002', 'CS002', 'Fixed', 1000);
+INSERT INTO `accounts` (`id`, `accountID`, `clientID`, `accountType`, `currentBalance`) VALUES
+(1, 'A0001', 'C0001', 'Savings', 5660),
+(2, 'A0002', 'C0002', 'Savings', 20460),
+(3, 'A0003', 'C0003', 'Savings', 17700),
+(4, 'A0004', 'C0005', 'Savings', 18760),
+(5, 'A0005', 'C0001', 'Fixed', 25000);
 
 -- --------------------------------------------------------
 
@@ -89,41 +92,12 @@ CREATE TABLE `clients` (
 --
 
 INSERT INTO `clients` (`id`, `clientID`, `lastName`, `firstName`, `middleName`, `genderAtBirth`, `dateOfBirth`, `civilStatus`, `homeAddress`, `mobileNo`, `email`, `branch`) VALUES
-(1, 'C0001', 'Dela Cruz', 'Pedro', 'Santos', 'Male', '2000-06-12', 'Single', '100 Muralla St., Intramuros, Manila', 9982355489, 'pedro.delacruz@gmail.com', 'Manila'),
-(2, 'C0002', 'Go', 'Mark', 'Sy', 'Male', '1970-05-19', 'Single', '1 Makati Ave., Makati City', 9275449851, 'markgo@gmail.com', 'Makati'),
-(3, 'C0003', 'Lopez', 'Jose', 'Flores', 'Male', '1983-08-21', 'Married', '1 Carriedo St., Quiapo, Manila', 9203495834, 'lopez.jose@gmail.com', 'Manila'),
-(4, 'C0004', 'Salvador', 'Amanda', 'Perez', 'Female', '1991-06-10', 'Separated', '33 Ortigas Ave., Pasig City', 9102223457, 'apsalvador@yahoo.com', 'Pasig'),
-(5, 'C0004', 'Salvador', 'Amanda', 'Perez', 'Female', '1991-06-10', 'Separated', '33 Ortigas Ave., Pasig City', 9102223457, 'apsalvador@yahoo.com', 'Pasig'),
-(6, 'C0005', 'Reyes', 'Martha', 'Cruz', 'Female', '1999-07-26', 'Single', '7 Lawton Ave., Taguig City', 9273348987, 'm.c.reyes@outlook.com', 'Taguig'),
-(7, 'C0006', 'Domingo', 'Andrew', 'Padilla', 'Male', '1986-05-13', 'Single', '3565 Alabang-Zapote Rd., Alabang, Muntinlupa City', 9754839113, 'adomingo13@gmail.com', 'Muntinlupa'),
-(8, 'C0007', 'Dominguez', 'Ernesto', 'Rodriguez', 'Male', '1964-04-05', 'Married', '455 Pinaglaban St., San Juan City', 9233349567, 'erd.04051964@gmail.com', 'San Juan');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `customer`
---
-
-CREATE TABLE `customer` (
-  `id` int(11) NOT NULL,
-  `cust_id` varchar(255) NOT NULL,
-  `firstname` varchar(255) NOT NULL,
-  `lastname` varchar(255) NOT NULL,
-  `street` varchar(255) NOT NULL,
-  `city` varchar(255) NOT NULL,
-  `branch` varchar(255) NOT NULL,
-  `phone` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `customer`
---
-
-INSERT INTO `customer` (`id`, `cust_id`, `firstname`, `lastname`, `street`, `city`, `branch`, `phone`) VALUES
-(1, 'CS001', 'Jose', 'Romulo', 'Balut St.', 'Manila', 'Quezon City', 9558483948),
-(2, 'CS002', 'Pedro', 'Romero', 'Times St.', 'Quezon City', 'Quezon City', 9756671231),
-(3, 'CS003', 'Carlos', 'Padilla', 'Ayala Ave.', 'Makati', 'Makati', 9984677896),
-(4, 'CS004', 'Mariam', 'Delos Reyes', 'McKinley Highway', 'Taguig', 'Makati', 9473389876);
+(1, 'C0001', 'Dela Cruz', 'Pedro', 'Santos', 'Male', '2000-06-12', 'Single', '1 Blumentritt St., Sta. Cruz, Manila', 9982355489, 'pedro.delacruz@gmail.com', 'Quezon City'),
+(2, 'C0002', 'Go', 'Mark', 'Sy', 'Male', '1970-05-19', 'Single', '1 Makati Ave., Makati City', 9194569125, 'markgo@gmail.com', 'Makati'),
+(3, 'C0003', 'Salvador', 'Amanda', 'Perez', 'Female', '1991-06-10', 'Separated', '33 Ortigas Ave., Pasig City', 9102223457, 'apsalvador@yahoo.com', 'Pasig'),
+(4, 'C0004', 'Reyes', 'Martha', 'Cruz', 'Female', '1999-07-26', 'Single', '7 Lawton Ave., Taguig City', 9273348987, 'm.c.reyes@outlook.com', 'Taguig'),
+(5, 'C0005', 'Domingo', 'Andrew', 'Padilla', 'Male', '1986-05-13', 'Single', '3565 Alabang-Zapote Rd., Alabang, Muntinlupa City', 9754839113, 'adomingo13@gmail.com', 'Muntinlupa'),
+(6, 'C0006', 'Dominguez', 'Ernesto', 'Rodriguez', 'Male', '1964-04-05', 'Married', '455 Pinaglaban St., San Juan City', 9233349567, 'erd.04051964@gmail.com', 'San Juan');
 
 -- --------------------------------------------------------
 
@@ -133,23 +107,21 @@ INSERT INTO `customer` (`id`, `cust_id`, `firstname`, `lastname`, `street`, `cit
 
 CREATE TABLE `deposit` (
   `id` int(11) NOT NULL,
-  `acc_id` varchar(255) NOT NULL,
-  `cust_id` varchar(255) NOT NULL,
-  `date` date NOT NULL,
-  `balance` double NOT NULL,
-  `deposit` double NOT NULL
+  `accountID` varchar(5) NOT NULL,
+  `clientID` varchar(5) NOT NULL,
+  `timestamp` datetime NOT NULL,
+  `previousBalance` double NOT NULL,
+  `amountDeposited` double NOT NULL,
+  `newBalance` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `deposit`
 --
 
-INSERT INTO `deposit` (`id`, `acc_id`, `cust_id`, `date`, `balance`, `deposit`) VALUES
-(1, 'a0001', 'CS001', '2020-04-09', 5000, 5000),
-(2, 'A0001', 'CS001', '2020-04-09', 10000, 5000),
-(3, 'A0001', 'CS001', '2020-04-09', 15000, 2000),
-(4, 'A0002', 'CS002', '2020-04-10', -9000, 9000),
-(5, 'A0002', 'CS002', '2020-04-10', 0, 1000);
+INSERT INTO `deposit` (`id`, `accountID`, `clientID`, `timestamp`, `previousBalance`, `amountDeposited`, `newBalance`) VALUES
+(1, 'A0001', 'C0001', '2020-04-12 19:02:11', 10000, 50000, 60000),
+(2, 'A0002', 'C0002', '2020-04-12 19:51:18', 37000, 39000, 76000);
 
 -- --------------------------------------------------------
 
@@ -159,17 +131,40 @@ INSERT INTO `deposit` (`id`, `acc_id`, `cust_id`, `date`, `balance`, `deposit`) 
 
 CREATE TABLE `transfer` (
   `id` int(11) NOT NULL,
-  `f_account` varchar(255) NOT NULL,
-  `t_account` varchar(255) NOT NULL,
-  `amount` double NOT NULL
+  `timestamp` datetime NOT NULL,
+  `sourceAccountID` varchar(5) NOT NULL,
+  `sourceClientID` varchar(5) NOT NULL,
+  `destinationAccountID` varchar(5) NOT NULL,
+  `destinationClientID` varchar(5) NOT NULL,
+  `amountToBeTransferred` double NOT NULL,
+  `sourcePreviousBalance` double NOT NULL,
+  `sourceTransferFee` double NOT NULL,
+  `sourceNewBalance` double NOT NULL,
+  `destinationPreviousBalance` double NOT NULL,
+  `destinationTransferFee` double NOT NULL,
+  `destinationNewBalance` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `transfer`
 --
 
-INSERT INTO `transfer` (`id`, `f_account`, `t_account`, `amount`) VALUES
-(1, 'A0002', 'A0001', 3000);
+INSERT INTO `transfer` (`id`, `timestamp`, `sourceAccountID`, `sourceClientID`, `destinationAccountID`, `destinationClientID`, `amountToBeTransferred`, `sourcePreviousBalance`, `sourceTransferFee`, `sourceNewBalance`, `destinationPreviousBalance`, `destinationTransferFee`, `destinationNewBalance`) VALUES
+(1, '2020-04-13 12:40:19', 'A0002', 'C0002', 'A0001', 'C0001', 8000, 76000, 0, 68000, 60000, 0, 68000),
+(2, '2020-04-13 12:49:18', 'A0004', 'C0001', 'A0003', 'C0003', 4900, 25000, 0, 20100, 15200, 0, 20100),
+(3, '2020-04-13 13:18:48', 'A0001', 'C0001', 'A0002', 'C0002', 2000, 68000, 60, 65940, 68000, 80, 69920),
+(5, '2020-04-13 15:16:01', 'A0004', 'C0001', 'A0001', 'C0001', 1000, 20100, 60, 19040, 67060, 80, 67980),
+(6, '2020-04-13 15:17:28', 'A0004', 'C0001', 'A0001', 'C0001', 1000, 19040, 60, 17980, 67980, 80, 68900),
+(7, '2020-04-13 15:18:43', 'A0001', 'C0001', 'A0001', 'C0003', 1000, 68900, 60, 67840, 20100, 80, 21020),
+(8, '2020-04-13 16:01:09', 'A0001', 'C0001', 'A0002', 'C0002', 1000, 21020, 60, 19960, 69920, 80, 70840),
+(9, '2020-04-13 16:01:09', 'A0001', 'C0001', 'A0003', 'C0002', 1000, 19960, 60, 18900, 70840, 80, 71760),
+(10, '2020-04-13 16:13:28', 'A0003', 'C0001', 'A0002', 'C0002', 1000, 18900, 60, 17840, 70840, 80, 71760),
+(11, '2020-04-13 16:14:10', 'A0002', 'C0001', 'A0003', 'C0003', 1000, 18900, 60, 17840, 17840, 80, 18760),
+(12, '2020-04-13 16:18:52', 'A0002', 'C0003', 'A0004', 'C0005', 1000, 18760, 60, 17700, 17980, 80, 18900),
+(13, '2020-04-13 16:36:26', 'A0004', 'C0005', 'A0002', 'C0002', 1000, 18900, 60, 17840, 17700, 80, 18620),
+(14, '2020-04-13 16:43:28', 'A0001', 'C0001', 'A0002', 'C0002', 1000, 8840, 60, 7780, 18620, 80, 19540),
+(15, '2020-04-13 16:50:52', 'A0001', 'C0001', 'A0002', 'C0002', 1000, 7780, 60, 6720, 19540, 80, 20460),
+(16, '2020-04-13 16:50:52', 'A0001', 'C0001', 'A0004', 'C0005', 1000, 6720, 60, 5660, 17840, 80, 18760);
 
 -- --------------------------------------------------------
 
@@ -198,31 +193,33 @@ INSERT INTO `users` (`id`, `username`, `userPass`) VALUES
 
 CREATE TABLE `withdraw` (
   `id` int(11) NOT NULL,
-  `acc_id` varchar(255) NOT NULL,
-  `cust_id` varchar(255) NOT NULL,
-  `date` date NOT NULL,
-  `balance` double NOT NULL,
-  `withdraw` double NOT NULL
+  `accountID` varchar(5) NOT NULL,
+  `clientID` varchar(5) NOT NULL,
+  `timestamp` datetime NOT NULL,
+  `previousBalance` double NOT NULL,
+  `amountWithdrawn` double NOT NULL,
+  `newBalance` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `withdraw`
 --
 
-INSERT INTO `withdraw` (`id`, `acc_id`, `cust_id`, `date`, `balance`, `withdraw`) VALUES
-(1, 'A0001', 'CS001', '2020-04-09', 17000, 5000),
-(2, 'A0001', 'CS001', '2020-04-09', 17000, 5000),
-(3, 'A0001', 'CS001', '2020-04-10', 15000, 7000),
-(4, 'A0001', 'CS001', '2020-04-10', 15000, 7000);
+INSERT INTO `withdraw` (`id`, `accountID`, `clientID`, `timestamp`, `previousBalance`, `amountWithdrawn`, `newBalance`) VALUES
+(1, 'A0002', 'C0002', '2020-04-12 16:18:28', 45000, 5000, 40000),
+(2, 'A0003', 'C0003', '2020-04-12 16:38:34', 25000, 7000, 18000),
+(3, 'A0002', 'C0002', '2020-04-12 16:40:23', 40000, 3000, 37000),
+(4, 'A0003', 'C0003', '2020-04-12 16:58:27', 18000, 2000, 16000),
+(5, 'A0003', 'C0003', '2020-04-12 18:27:07', 16000, 800, 15200);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `account`
+-- Indexes for table `accounts`
 --
-ALTER TABLE `account`
+ALTER TABLE `accounts`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -235,12 +232,6 @@ ALTER TABLE `branch`
 -- Indexes for table `clients`
 --
 ALTER TABLE `clients`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `customer`
---
-ALTER TABLE `customer`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -272,10 +263,10 @@ ALTER TABLE `withdraw`
 --
 
 --
--- AUTO_INCREMENT for table `account`
+-- AUTO_INCREMENT for table `accounts`
 --
-ALTER TABLE `account`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `accounts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `branch`
@@ -287,25 +278,19 @@ ALTER TABLE `branch`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `customer`
---
-ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `deposit`
 --
 ALTER TABLE `deposit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `transfer`
 --
 ALTER TABLE `transfer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -317,7 +302,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `withdraw`
 --
 ALTER TABLE `withdraw`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
