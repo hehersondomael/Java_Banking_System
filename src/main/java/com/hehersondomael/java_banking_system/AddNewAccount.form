@@ -195,9 +195,9 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabelClientIDNotFound" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="jButtonAddAccount" min="-2" pref="103" max="-2" attributes="0"/>
+                                  <Component id="jButtonAddAccount" min="-2" pref="99" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButtonClearFields" min="-2" pref="91" max="-2" attributes="0"/>
+                                  <Component id="jButtonClearFields" min="-2" pref="95" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jTextFieldClientID" min="-2" pref="204" max="-2" attributes="0"/>

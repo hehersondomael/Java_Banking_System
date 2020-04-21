@@ -168,6 +168,11 @@ public class MainMenu extends javax.swing.JFrame {
 
         jMenuItemAccountBalance.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK));
         jMenuItemAccountBalance.setText("Account Balance");
+        jMenuItemAccountBalance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAccountBalanceActionPerformed(evt);
+            }
+        });
         jMenuView.add(jMenuItemAccountBalance);
 
         jMenuBar1.add(jMenuView);
@@ -288,6 +293,12 @@ public class MainMenu extends javax.swing.JFrame {
         jDesktopPane1.add(viewClientCredentials);
         viewClientCredentials.setVisible(true);
     }//GEN-LAST:event_jMenuItemClientCredentialsActionPerformed
+
+    private void jMenuItemAccountBalanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAccountBalanceActionPerformed
+        ViewAccountBalance viewAccountBalance = new ViewAccountBalance();
+        jDesktopPane1.add(viewAccountBalance);
+        viewAccountBalance.setVisible(true);
+    }//GEN-LAST:event_jMenuItemAccountBalanceActionPerformed
 
     /**
      * @param args the command line arguments
