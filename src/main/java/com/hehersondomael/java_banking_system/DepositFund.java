@@ -268,7 +268,7 @@ public class DepositFund extends javax.swing.JInternalFrame {
                     .addComponent(jButtonDeposit)
                     .addComponent(jButtonClearFields)
                     .addComponent(jButtonExit))
-                .addGap(51, 51, 51))
+                .addGap(53, 53, 53))
         );
 
         jLabelDescription1.setText("Your bank transactions are all set in this system!");
@@ -301,7 +301,7 @@ public class DepositFund extends javax.swing.JInternalFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabelDescription1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabelDescription2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addContainerGap(174, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

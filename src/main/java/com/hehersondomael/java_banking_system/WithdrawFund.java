@@ -268,7 +268,7 @@ public class WithdrawFund extends javax.swing.JInternalFrame {
                     .addComponent(jButtonWithdraw)
                     .addComponent(jButtonClearFields)
                     .addComponent(jButtonExit))
-                .addGap(51, 51, 51))
+                .addGap(53, 53, 53))
         );
 
         jLabelDescription1.setText("Your bank transactions are all set in this system!");

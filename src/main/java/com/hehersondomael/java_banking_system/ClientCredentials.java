@@ -329,11 +329,12 @@ public class ClientCredentials extends javax.swing.JInternalFrame {
                     .addComponent(jLabelBranch, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxBranch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanelClientCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelClientCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonModify)
-                    .addComponent(jButtonEdit)
-                    .addComponent(jButtonBack)
-                    .addComponent(jButtonExit))
+                    .addGroup(jPanelClientCredentialsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonEdit)
+                        .addComponent(jButtonBack)
+                        .addComponent(jButtonExit)))
                 .addGap(33, 33, 33))
         );
 
@@ -637,7 +638,6 @@ public class ClientCredentials extends javax.swing.JInternalFrame {
         jButtonEdit.setEnabled(false);
         jButtonModify.setEnabled(true);
         jButtonBack.setEnabled(true);
-        
     }//GEN-LAST:event_jButtonEditActionPerformed
 
     private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed

@@ -284,9 +284,9 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemTransferFundActionPerformed
 
     private void jMenuItemClientCredentialsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClientCredentialsActionPerformed
-        ClientCredentials clientCredentials = new ClientCredentials();
-        jDesktopPane1.add(clientCredentials);
-        clientCredentials.setVisible(true);
+        ViewClientCredentials viewClientCredentials = new ViewClientCredentials();
+        jDesktopPane1.add(viewClientCredentials);
+        viewClientCredentials.setVisible(true);
     }//GEN-LAST:event_jMenuItemClientCredentialsActionPerformed
 
     /**
