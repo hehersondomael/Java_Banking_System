@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2020 at 09:25 AM
+-- Generation Time: Apr 22, 2020 at 03:00 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -33,19 +33,20 @@ CREATE TABLE `accounts` (
   `accountID` varchar(5) NOT NULL,
   `clientID` varchar(5) NOT NULL,
   `accountType` varchar(20) NOT NULL,
-  `currentBalance` double NOT NULL
+  `currentBalance` double NOT NULL,
+  `dateCreated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `accounts`
 --
 
-INSERT INTO `accounts` (`id`, `accountID`, `clientID`, `accountType`, `currentBalance`) VALUES
-(1, 'A0001', 'C0001', 'Savings', 5660),
-(2, 'A0002', 'C0002', 'Savings', 20460),
-(3, 'A0003', 'C0003', 'Savings', 17700),
-(4, 'A0004', 'C0005', 'Savings', 18760),
-(5, 'A0005', 'C0001', 'Fixed', 25000);
+INSERT INTO `accounts` (`id`, `accountID`, `clientID`, `accountType`, `currentBalance`, `dateCreated`) VALUES
+(1, 'A0001', 'C0001', 'Savings', 5660, '2019-12-31 17:00:00'),
+(2, 'A0002', 'C0002', 'Savings', 20460, '2019-12-31 17:00:00'),
+(3, 'A0003', 'C0003', 'Savings', 17700, '2019-12-31 17:00:00'),
+(4, 'A0004', 'C0005', 'Savings', 18760, '2019-12-31 17:00:00'),
+(5, 'A0005', 'C0001', 'Fixed', 25000, '2019-12-31 17:00:00');
 
 -- --------------------------------------------------------
 
@@ -94,10 +95,11 @@ CREATE TABLE `clients` (
 INSERT INTO `clients` (`id`, `clientID`, `lastName`, `firstName`, `middleName`, `genderAtBirth`, `dateOfBirth`, `civilStatus`, `homeAddress`, `mobileNo`, `email`, `branch`) VALUES
 (1, 'C0001', 'Dela Cruz', 'Pedro', 'Santos', 'Male', '2000-06-12', 'Single', '1 Blumentritt St., Sta. Cruz, Manila', 9982355489, 'pedro.delacruz@gmail.com', 'Quezon City'),
 (2, 'C0002', 'Go', 'Mark', 'Sy', 'Male', '1970-05-19', 'Single', '1 Makati Ave., Makati City', 9194569125, 'markgo@gmail.com', 'Makati'),
-(3, 'C0003', 'Salvador', 'Amanda', 'Perez', 'Female', '1991-06-10', 'Separated', '33 Ortigas Ave., Pasig City', 9102223457, 'apsalvador@yahoo.com', 'Pasig'),
+(3, 'C0003', 'Salvador', 'Amanda', 'Perez', 'Female', '1991-06-10', 'Divorced', '33 Ortigas Ave., Pasig City', 9102223457, 'apsalvador@yahoo.com', 'Pasig'),
 (4, 'C0004', 'Reyes', 'Martha', 'Cruz', 'Female', '1999-07-26', 'Single', '7 Lawton Ave., Taguig City', 9273348987, 'm.c.reyes@outlook.com', 'Taguig'),
 (5, 'C0005', 'Domingo', 'Andrew', 'Padilla', 'Male', '1986-05-13', 'Single', '3565 Alabang-Zapote Rd., Alabang, Muntinlupa City', 9754839113, 'adomingo13@gmail.com', 'Muntinlupa'),
-(6, 'C0006', 'Dominguez', 'Ernesto', 'Rodriguez', 'Male', '1964-04-05', 'Married', '455 Pinaglaban St., San Juan City', 9233349567, 'erd.04051964@gmail.com', 'San Juan');
+(6, 'C0006', 'Dominguez', 'Ernesto', 'Rodriguez', 'Male', '1964-04-05', 'Married', '455 Pinaglaban St., San Juan City', 9233349567, 'erd.04051964@gmail.com', 'San Juan'),
+(7, 'C0007', 'Roque', 'Santino', 'San Pedro', 'Male', '1995-09-17', 'Single', '100 EDSA cor. Roosevelt Ave., Quezon City', 9283459014, 'santino.roque@gmail.com', 'Quezon City');
 
 -- --------------------------------------------------------
 
@@ -144,27 +146,6 @@ CREATE TABLE `transfer` (
   `destinationTransferFee` double NOT NULL,
   `destinationNewBalance` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `transfer`
---
-
-INSERT INTO `transfer` (`id`, `timestamp`, `sourceAccountID`, `sourceClientID`, `destinationAccountID`, `destinationClientID`, `amountToBeTransferred`, `sourcePreviousBalance`, `sourceTransferFee`, `sourceNewBalance`, `destinationPreviousBalance`, `destinationTransferFee`, `destinationNewBalance`) VALUES
-(1, '2020-04-13 12:40:19', 'A0002', 'C0002', 'A0001', 'C0001', 8000, 76000, 0, 68000, 60000, 0, 68000),
-(2, '2020-04-13 12:49:18', 'A0004', 'C0001', 'A0003', 'C0003', 4900, 25000, 0, 20100, 15200, 0, 20100),
-(3, '2020-04-13 13:18:48', 'A0001', 'C0001', 'A0002', 'C0002', 2000, 68000, 60, 65940, 68000, 80, 69920),
-(5, '2020-04-13 15:16:01', 'A0004', 'C0001', 'A0001', 'C0001', 1000, 20100, 60, 19040, 67060, 80, 67980),
-(6, '2020-04-13 15:17:28', 'A0004', 'C0001', 'A0001', 'C0001', 1000, 19040, 60, 17980, 67980, 80, 68900),
-(7, '2020-04-13 15:18:43', 'A0001', 'C0001', 'A0001', 'C0003', 1000, 68900, 60, 67840, 20100, 80, 21020),
-(8, '2020-04-13 16:01:09', 'A0001', 'C0001', 'A0002', 'C0002', 1000, 21020, 60, 19960, 69920, 80, 70840),
-(9, '2020-04-13 16:01:09', 'A0001', 'C0001', 'A0003', 'C0002', 1000, 19960, 60, 18900, 70840, 80, 71760),
-(10, '2020-04-13 16:13:28', 'A0003', 'C0001', 'A0002', 'C0002', 1000, 18900, 60, 17840, 70840, 80, 71760),
-(11, '2020-04-13 16:14:10', 'A0002', 'C0001', 'A0003', 'C0003', 1000, 18900, 60, 17840, 17840, 80, 18760),
-(12, '2020-04-13 16:18:52', 'A0002', 'C0003', 'A0004', 'C0005', 1000, 18760, 60, 17700, 17980, 80, 18900),
-(13, '2020-04-13 16:36:26', 'A0004', 'C0005', 'A0002', 'C0002', 1000, 18900, 60, 17840, 17700, 80, 18620),
-(14, '2020-04-13 16:43:28', 'A0001', 'C0001', 'A0002', 'C0002', 1000, 8840, 60, 7780, 18620, 80, 19540),
-(15, '2020-04-13 16:50:52', 'A0001', 'C0001', 'A0002', 'C0002', 1000, 7780, 60, 6720, 19540, 80, 20460),
-(16, '2020-04-13 16:50:52', 'A0001', 'C0001', 'A0004', 'C0005', 1000, 6720, 60, 5660, 17840, 80, 18760);
 
 -- --------------------------------------------------------
 
@@ -278,7 +259,7 @@ ALTER TABLE `branch`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `deposit`
@@ -290,7 +271,7 @@ ALTER TABLE `deposit`
 -- AUTO_INCREMENT for table `transfer`
 --
 ALTER TABLE `transfer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`

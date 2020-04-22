@@ -8,10 +8,19 @@ package com.hehersondomael.java_banking_system;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -26,8 +35,8 @@ public class ViewAccountBalance extends javax.swing.JInternalFrame {
      */
     public ViewAccountBalance() {
         initComponents();
-        //jLabelClientIDNotFound.setText(" ");
-        //GenerateAccountID();
+        FillAccountTable(jTableAccount);
+        jLabelAccountTransactionLogAccountID.setText(" ");
     }
 
     /**
@@ -57,24 +66,25 @@ public class ViewAccountBalance extends javax.swing.JInternalFrame {
         jPanelAddNewAccount = new javax.swing.JPanel();
         jLabelClientID = new javax.swing.JLabel();
         jLabelLastName = new javax.swing.JLabel();
-        jLabelFirstName = new javax.swing.JLabel();
         jLabelBalanceInPHP = new javax.swing.JLabel();
         jLabelAccountType = new javax.swing.JLabel();
-        jButtonAddAccount = new javax.swing.JButton();
         jComboBoxAccountType = new javax.swing.JComboBox<>();
-        jButtonClearFields = new javax.swing.JButton();
-        jButtonExit = new javax.swing.JButton();
         jLabelAccountID = new javax.swing.JLabel();
-        jLabelMiddleName = new javax.swing.JLabel();
-        jLabelBranch = new javax.swing.JLabel();
         jTextFieldBalanceInPHP = new javax.swing.JTextField();
         jTextFieldAccountID = new javax.swing.JTextField();
         jTextFieldClientID = new javax.swing.JTextField();
-        jTextFieldLastName = new javax.swing.JTextField();
-        jTextFieldFirstName = new javax.swing.JTextField();
-        jTextFieldMiddleName = new javax.swing.JTextField();
+        jTextFieldFullName = new javax.swing.JTextField();
+        jComboBoxGenderAtBirth = new javax.swing.JComboBox<>();
+        jLabelGenderAtBirth = new javax.swing.JLabel();
+        jLabelDateOfBirth = new javax.swing.JLabel();
+        jDateChooserDateOfBirth = new com.toedter.calendar.JDateChooser();
+        jLabelMobileNo = new javax.swing.JLabel();
+        jTextFieldEmail = new javax.swing.JTextField();
+        jLabelEmail = new javax.swing.JLabel();
         jTextFieldBranch = new javax.swing.JTextField();
-        jButtonRefreshData2 = new javax.swing.JButton();
+        jLabelBranch2 = new javax.swing.JLabel();
+        jTextFieldMobileNo = new javax.swing.JTextField();
+        jButtonRefreshAllData = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTableAccount = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
@@ -83,9 +93,9 @@ public class ViewAccountBalance extends javax.swing.JInternalFrame {
         jLabelBanking3 = new javax.swing.JLabel();
         jLabelTheHBankText2 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTableClient4 = new javax.swing.JTable();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jTableAccountTransactionLog = new javax.swing.JTable();
+        jLabelAccountTransactionLog = new javax.swing.JLabel();
+        jLabelAccountTransactionLogAccountID = new javax.swing.JLabel();
 
         jLabelTheHBankText1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabelTheHBankText1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -204,21 +214,11 @@ public class ViewAccountBalance extends javax.swing.JInternalFrame {
 
         jLabelClientID.setText("Client ID:");
 
-        jLabelLastName.setText("Last Name:");
-
-        jLabelFirstName.setText("First Name:");
+        jLabelLastName.setText("Full Name:");
 
         jLabelBalanceInPHP.setText("Balance (in PHP):");
 
         jLabelAccountType.setText("Account Type:");
-
-        jButtonAddAccount.setText("Add Account");
-        jButtonAddAccount.setFocusable(false);
-        jButtonAddAccount.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAddAccountActionPerformed(evt);
-            }
-        });
 
         jComboBoxAccountType.setBackground(new java.awt.Color(204, 204, 204));
         jComboBoxAccountType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Savings", "Fixed", "Current" }));
@@ -226,27 +226,7 @@ public class ViewAccountBalance extends javax.swing.JInternalFrame {
         jComboBoxAccountType.setEnabled(false);
         jComboBoxAccountType.setFocusable(false);
 
-        jButtonClearFields.setText("Clear Fields");
-        jButtonClearFields.setFocusable(false);
-        jButtonClearFields.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonClearFieldsActionPerformed(evt);
-            }
-        });
-
-        jButtonExit.setText("Exit");
-        jButtonExit.setFocusable(false);
-        jButtonExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonExitActionPerformed(evt);
-            }
-        });
-
         jLabelAccountID.setText("Account ID:");
-
-        jLabelMiddleName.setText("Middle Name:");
-
-        jLabelBranch.setText("Branch:");
 
         jTextFieldBalanceInPHP.setEditable(false);
         jTextFieldBalanceInPHP.setFocusable(false);
@@ -259,63 +239,65 @@ public class ViewAccountBalance extends javax.swing.JInternalFrame {
         jTextFieldClientID.setBackground(new java.awt.Color(204, 204, 204));
         jTextFieldClientID.setFocusable(false);
 
-        jTextFieldLastName.setEditable(false);
-        jTextFieldLastName.setBackground(new java.awt.Color(204, 204, 204));
-        jTextFieldLastName.setFocusable(false);
+        jTextFieldFullName.setEditable(false);
+        jTextFieldFullName.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldFullName.setFocusable(false);
 
-        jTextFieldFirstName.setEditable(false);
-        jTextFieldFirstName.setBackground(new java.awt.Color(204, 204, 204));
-        jTextFieldFirstName.setFocusable(false);
+        jComboBoxGenderAtBirth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
+        jComboBoxGenderAtBirth.setSelectedIndex(-1);
+        jComboBoxGenderAtBirth.setEnabled(false);
 
-        jTextFieldMiddleName.setEditable(false);
-        jTextFieldMiddleName.setBackground(new java.awt.Color(204, 204, 204));
-        jTextFieldMiddleName.setFocusable(false);
+        jLabelGenderAtBirth.setText("Gender at Birth:");
 
-        jTextFieldBranch.setEditable(false);
+        jLabelDateOfBirth.setText("Date of Birth:");
+
+        jDateChooserDateOfBirth.setEnabled(false);
+
+        jLabelMobileNo.setText("Mobile No.:");
+
+        jTextFieldEmail.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldEmail.setFocusable(false);
+
+        jLabelEmail.setText("Email:");
+
         jTextFieldBranch.setBackground(new java.awt.Color(204, 204, 204));
         jTextFieldBranch.setFocusable(false);
+
+        jLabelBranch2.setText("Branch:");
+
+        jTextFieldMobileNo.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldMobileNo.setFocusable(false);
 
         javax.swing.GroupLayout jPanelAddNewAccountLayout = new javax.swing.GroupLayout(jPanelAddNewAccount);
         jPanelAddNewAccount.setLayout(jPanelAddNewAccountLayout);
         jPanelAddNewAccountLayout.setHorizontalGroup(
             jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAddNewAccountLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
                 .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelAddNewAccountLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelBranch)
-                            .addComponent(jLabelAccountType)
-                            .addGroup(jPanelAddNewAccountLayout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelFirstName)
-                                    .addComponent(jLabelClientID)))
-                            .addComponent(jLabelMiddleName)
-                            .addComponent(jLabelBalanceInPHP)))
-                    .addGroup(jPanelAddNewAccountLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabelAccountID, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabelLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelClientID)
+                    .addComponent(jLabelGenderAtBirth)
+                    .addComponent(jLabelDateOfBirth)
+                    .addComponent(jLabelMobileNo)
+                    .addComponent(jLabelEmail)
+                    .addComponent(jLabelBranch2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelAccountType, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelBalanceInPHP)
+                    .addComponent(jLabelAccountID, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButtonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextFieldBalanceInPHP, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxAccountType, javax.swing.GroupLayout.Alignment.LEADING, 0, 263, Short.MAX_VALUE)
-                            .addComponent(jTextFieldBranch, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldMiddleName, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldFirstName, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jTextFieldAccountID, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextFieldLastName, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanelAddNewAccountLayout.createSequentialGroup()
-                            .addComponent(jButtonAddAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButtonClearFields, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(63, 63, 63))
-                        .addComponent(jTextFieldClientID, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addComponent(jTextFieldAccountID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                        .addComponent(jTextFieldFullName, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextFieldClientID, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jComboBoxGenderAtBirth, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateChooserDateOfBirth, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldBranch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxAccountType, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldBalanceInPHP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldMobileNo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanelAddNewAccountLayout.setVerticalGroup(
@@ -332,39 +314,44 @@ public class ViewAccountBalance extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelMiddleName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldMiddleName))
+                    .addComponent(jComboBoxGenderAtBirth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelGenderAtBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jDateChooserDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldMobileNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelMobileNo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldBranch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelBranch, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabelBranch2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
                 .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxAccountType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelAccountType, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextFieldBalanceInPHP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelBalanceInPHP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAddAccount)
-                    .addComponent(jButtonClearFields)
-                    .addComponent(jButtonExit))
-                .addGap(195, 195, 195))
+                    .addGroup(jPanelAddNewAccountLayout.createSequentialGroup()
+                        .addComponent(jLabelBalanceInPHP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(3, 3, 3)))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
 
-        jButtonRefreshData2.setText("Refresh Data");
-        jButtonRefreshData2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonRefreshAllData.setText("Refresh Data");
+        jButtonRefreshAllData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRefreshData2ActionPerformed(evt);
+                jButtonRefreshAllDataActionPerformed(evt);
             }
         });
 
@@ -375,14 +362,14 @@ public class ViewAccountBalance extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Account ID", "Owner (Client ID)", "Account Type"
+                "Account ID", "Account Owner", "Client ID", "Account Type"
             }
         )
 
         // make the jTable cells not editable
         {
-            Class[] types = { String.class, String.class, String.class};
-            boolean[] canEdit = { false, false, false };
+            Class[] types = { String.class, String.class, String.class, String.class};
+            boolean[] canEdit = { false, false, false, false };
 
             @Override
             public Class getColumnClass(int columnIndex) {
@@ -420,14 +407,13 @@ public class ViewAccountBalance extends javax.swing.JInternalFrame {
         jLabelTheHBankText2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTheHBankText2.setText("THE H BANK");
 
-        jTableClient4.setAutoCreateRowSorter(true);
-        jTableClient4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTableClient4.setModel(new javax.swing.table.DefaultTableModel(
+        jTableAccountTransactionLog.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTableAccountTransactionLog.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Timestamp", "Transaction", "Amount", "New Balance"
+                "Timestamp", "Amount", "Accm. Balance", "Fee"
             }
         )
 
@@ -445,17 +431,18 @@ public class ViewAccountBalance extends javax.swing.JInternalFrame {
                 return this.canEdit[columnIndex];
             }
         });
-        jTableClient4.setFocusable(false);
-        jTableClient4.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTableAccountTransactionLog.setEnabled(false);
+        jTableAccountTransactionLog.setFocusable(false);
+        jTableAccountTransactionLog.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableClient4MouseClicked(evt);
+                jTableAccountTransactionLogMouseClicked(evt);
             }
         });
-        jScrollPane5.setViewportView(jTableClient4);
+        jScrollPane5.setViewportView(jTableAccountTransactionLog);
 
-        jLabel4.setText("Account Transaction Log:");
+        jLabelAccountTransactionLog.setText("Account Transaction Log:");
 
-        jLabel5.setText("A0001");
+        jLabelAccountTransactionLogAccountID.setText("A0001");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -467,13 +454,14 @@ public class ViewAccountBalance extends javax.swing.JInternalFrame {
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButtonRefreshData2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonRefreshAllData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel5))
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabelAccountTransactionLog)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelAccountTransactionLogAccountID))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(66, 66, 66)
                         .addComponent(jLabelTheHBankText2)
@@ -506,245 +494,34 @@ public class ViewAccountBalance extends javax.swing.JInternalFrame {
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4))
+                            .addComponent(jLabelAccountTransactionLogAccountID)
+                            .addComponent(jLabelAccountTransactionLog))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonRefreshData2)
+                        .addComponent(jButtonRefreshAllData)
                         .addGap(19, 19, 19))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonAddAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddAccountActionPerformed
-        String accountID = jTextFieldAccountID.getText();
-        String clientID = jTextFieldClientID.getText().toUpperCase();
-        String accountType = "";
-        String balance = jTextFieldBalanceInPHP.getText();
-
-        boolean accountTypePointer;
-
-        try {
-            accountTypePointer = false;
-            accountType = jComboBoxAccountType.getSelectedItem().toString();
-        } catch(NullPointerException ex) {
-            accountTypePointer = true;
-          }
-
-        // Include NumericPointerException for Mobile No.
-
-        if(jTextFieldLastName.getText().trim().equals("") || jTextFieldFirstName.getText().trim().equals("") || 
-                jTextFieldMiddleName.getText().trim().equals("") || jTextFieldBranch.getText().trim().equals("") ||
-                accountTypePointer || jTextFieldBalanceInPHP.getText().trim().equals(""))
-            JOptionPane.showMessageDialog(rootPane, "Please fill up the form completetely.", "All fields required", JOptionPane.ERROR_MESSAGE);
-        else
-        {
-            if(IsClientIDReplaced())
-                JOptionPane.showMessageDialog(rootPane, "Client ID has been modified!", "Credentials matching error", JOptionPane.ERROR_MESSAGE);
-            else
-            {
-                double currentBalance = Double.valueOf(balance);
-                if (OwnsAccountOfType(clientID, accountType))
-                {
-                    JOptionPane.showMessageDialog(rootPane, "Client already owns an account of the input Account Type!", "Account type ownership limit reached", JOptionPane.ERROR_MESSAGE);
-                    jComboBoxAccountType.requestFocus();
-                }
-                else
-                {
-                    if (currentBalance <= 10000)
-                        JOptionPane.showMessageDialog(rootPane, "Balance cannot be lower than PHP 10,000.00!", "Minimum balance required", JOptionPane.ERROR_MESSAGE);
-                    else
-                    {
-                        PreparedStatement ps;
-                        String insertQuery = "INSERT INTO accounts (accountID, clientID, accountType, currentBalance) VALUES (?,?,?,?)"; 
-
-                        try {
-                            ps = my_connection.createConnection().prepareStatement(insertQuery);
-                            ps.setString(1, accountID.trim());
-                            ps.setString(2, clientID.trim());
-                            ps.setString(3, accountType.trim());
-                            ps.setDouble(4, currentBalance);
-
-                            if(ps.executeUpdate() > 0)
-                            {
-                                JOptionPane.showMessageDialog(this, "Account added successfully.");
-                                GenerateAccountID();
-                                jTextFieldClientID.setText("");
-                                jTextFieldLastName.setText("");
-                                jTextFieldFirstName.setText("");
-                                jTextFieldMiddleName.setText("");
-                                jTextFieldBranch.setText("");
-                                jComboBoxAccountType.setSelectedIndex(-1);
-                                jTextFieldBalanceInPHP.setText("");
-                                jTextFieldClientID.requestFocus();
-                            }
-                            else
-                                JOptionPane.showMessageDialog(this, "Account NOT added successfully.");
-                        } catch (SQLException ex) {
-                            Logger.getLogger(ViewAccountBalance.class.getName()).log(Level.SEVERE, null, ex);
-                          }
-                    }
-                }
-            }
-        }
-    }//GEN-LAST:event_jButtonAddAccountActionPerformed
-
-    private void jButtonClearFieldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearFieldsActionPerformed
-        GenerateAccountID();
-        jTextFieldClientID.setText("");
-        jTextFieldLastName.setText("");
-        jTextFieldFirstName.setText("");
-        jTextFieldMiddleName.setText("");
-        jTextFieldBranch.setText("");
-        jComboBoxAccountType.setSelectedIndex(-1);
-        jTextFieldBalanceInPHP.setText("");
-        jLabelClientIDNotFound.setText(" ");
-        jTextFieldClientID.requestFocus();
-    }//GEN-LAST:event_jButtonClearFieldsActionPerformed
-
-    private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Are you sure you want to leave?", "Close Frame", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
-        {
-            setVisible(false);
-            dispose();
-        }
-        else
-            setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-    }//GEN-LAST:event_jButtonExitActionPerformed
-
     private void jTableClientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableClientMouseClicked
-        if (jTextFieldClientID.getText().trim().equals(""))
-        jButtonEdit.setEnabled(true);
-        else
-        {
-            jButtonModify.setEnabled(false);
-            jButtonBack.setEnabled(false);
-            ShowModifiedClientCredentials();
-        }
-
-        DefaultTableModel model = (DefaultTableModel)jTableClient.getModel();
-        int rIndex = jTableClient.convertRowIndexToModel(jTableClient.getSelectedRow());
-
-        String clientID = model.getValueAt(rIndex,0).toString();
-
-        try {
-            PreparedStatement ps;
-            ResultSet rs;
-            String selectQuery = "SELECT * FROM clients WHERE clientID=?";
-
-            ps = my_connection.createConnection().prepareStatement(selectQuery);
-            ps.setString(1,clientID);
-            rs = ps.executeQuery();
-            rs.next();
-
-            jTextFieldClientID.setText(clientID);
-            jTextFieldLastName.setText(rs.getString("lastName").trim());
-            jTextFieldFirstName.setText(rs.getString("firstName").trim());
-            jTextFieldMiddleName.setText(rs.getString("middleName").trim());
-            jComboBoxGenderAtBirth.setSelectedItem(rs.getString("genderAtBirth").trim());
-            try {
-                Date dateIn = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("dateOfBirth"));
-                jDateChooserDateOfBirth.setDate(dateIn);
-            } catch (ParseException ex) {
-                Logger.getLogger(ClientCredentials.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            jComboBoxCivilStatus.setSelectedItem(rs.getString("civilStatus").trim());
-            jTextFieldHomeAddress.setText(rs.getString("homeAddress").trim());
-            jTextFieldMobileNo.setText(rs.getString("mobileNo").trim());
-            jTextFieldEmail.setText(rs.getString("email").trim());
-            jComboBoxBranch.setSelectedItem(rs.getString("branch").trim());
-        } catch (SQLException ex) {
-            Logger.getLogger(ViewClientCredentials.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }//GEN-LAST:event_jTableClientMouseClicked
 
     private void jButtonRefreshDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshDataActionPerformed
-        ShowModifiedClientCredentials();
-        jButtonEdit.setEnabled(false);
-        jTextFieldClientID.setText("");
-        ClearFields();
-
-        jTableClient.setModel(
-            new javax.swing.table.DefaultTableModel(new Object [][] {},
-                new String [] {"Client ID", "Full Name", "Branch"})
-            {
-                Class[] types = { String.class, String.class, String.class};
-                boolean[] canEdit = { false, false, false };
-
-                @Override
-                public Class getColumnClass(int columnIndex) {
-                    return this.types[columnIndex];
-                }
-
-                public boolean isCellEditable(int columnIndex) {
-                    return this.canEdit[columnIndex];
-                }
-            }
-        );
-
-        FillClientTable(jTableClient);
     }//GEN-LAST:event_jButtonRefreshDataActionPerformed
 
     private void jTableClient1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableClient1MouseClicked
-        if (jTextFieldClientID.getText().trim().equals(""))
-        jButtonEdit.setEnabled(true);
-        else
-        {
-            jButtonModify.setEnabled(false);
-            jButtonBack.setEnabled(false);
-            ShowModifiedClientCredentials();
-        }
-
-        DefaultTableModel model = (DefaultTableModel)jTableClient.getModel();
-        int rIndex = jTableClient.convertRowIndexToModel(jTableClient.getSelectedRow());
-
-        String clientID = model.getValueAt(rIndex,0).toString();
-
-        try {
-            PreparedStatement ps;
-            ResultSet rs;
-            String selectQuery = "SELECT * FROM clients WHERE clientID=?";
-
-            ps = my_connection.createConnection().prepareStatement(selectQuery);
-            ps.setString(1,clientID);
-            rs = ps.executeQuery();
-            rs.next();
-
-            jTextFieldClientID.setText(clientID);
-            jTextFieldLastName.setText(rs.getString("lastName").trim());
-            jTextFieldFirstName.setText(rs.getString("firstName").trim());
-            jTextFieldMiddleName.setText(rs.getString("middleName").trim());
-            jComboBoxGenderAtBirth.setSelectedItem(rs.getString("genderAtBirth").trim());
-            try {
-                Date dateIn = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("dateOfBirth"));
-                jDateChooserDateOfBirth.setDate(dateIn);
-            } catch (ParseException ex) {
-                Logger.getLogger(ClientCredentials.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            jComboBoxCivilStatus.setSelectedItem(rs.getString("civilStatus").trim());
-            jTextFieldHomeAddress.setText(rs.getString("homeAddress").trim());
-            jTextFieldMobileNo.setText(rs.getString("mobileNo").trim());
-            jTextFieldEmail.setText(rs.getString("email").trim());
-            jComboBoxBranch.setSelectedItem(rs.getString("branch").trim());
-        } catch (SQLException ex) {
-            Logger.getLogger(ViewClientCredentials.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }//GEN-LAST:event_jTableClient1MouseClicked
 
-    private void jButtonRefreshData2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshData2ActionPerformed
-        ShowModifiedClientCredentials();
-        jButtonEdit.setEnabled(false);
-        jTextFieldClientID.setText("");
-        ClearFields();
-
-        jTableClient.setModel(
+    private void jTableAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAccountMouseClicked
+        jTableAccountTransactionLog.setModel(
             new javax.swing.table.DefaultTableModel(new Object [][] {},
-                new String [] {"Client ID", "Full Name", "Branch"})
+                new String [] {"Timestamp", "Amount", "Accm. Balance", "Fee"})
             {
-                Class[] types = { String.class, String.class, String.class};
-                boolean[] canEdit = { false, false, false };
+                Class[] types = { String.class, String.class, String.class, String.class};
+                boolean[] canEdit = { false, false, false, false };
 
                 @Override
                 public Class getColumnClass(int columnIndex) {
@@ -757,150 +534,257 @@ public class ViewAccountBalance extends javax.swing.JInternalFrame {
             }
         );
 
-        FillClientTable(jTableClient);
-    }//GEN-LAST:event_jButtonRefreshData2ActionPerformed
+        DefaultTableModel model = (DefaultTableModel)jTableAccount.getModel();
+        int rIndex = jTableAccount.convertRowIndexToModel(jTableAccount.getSelectedRow());
 
-    private void jTableAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAccountMouseClicked
-        if (jTextFieldClientID.getText().trim().equals(""))
-        jButtonEdit.setEnabled(true);
-        else
-        {
-            jButtonModify.setEnabled(false);
-            jButtonBack.setEnabled(false);
-            ShowModifiedClientCredentials();
-        }
-
-        DefaultTableModel model = (DefaultTableModel)jTableClient.getModel();
-        int rIndex = jTableClient.convertRowIndexToModel(jTableClient.getSelectedRow());
-
-        String clientID = model.getValueAt(rIndex,0).toString();
+        String accountID = model.getValueAt(rIndex,0).toString();
+        String clientID = model.getValueAt(rIndex,2).toString();
 
         try {
             PreparedStatement ps;
             ResultSet rs;
-            String selectQuery = "SELECT * FROM clients WHERE clientID=?";
+            String selectQuery = "SELECT * FROM accounts a, clients c WHERE c.clientID=? and a.clientID=? AND a.accountID=?";
 
             ps = my_connection.createConnection().prepareStatement(selectQuery);
             ps.setString(1,clientID);
+            ps.setString(2,clientID);
+            ps.setString(3,accountID);
             rs = ps.executeQuery();
             rs.next();
 
+            jTextFieldAccountID.setText(accountID);
             jTextFieldClientID.setText(clientID);
-            jTextFieldLastName.setText(rs.getString("lastName").trim());
-            jTextFieldFirstName.setText(rs.getString("firstName").trim());
-            jTextFieldMiddleName.setText(rs.getString("middleName").trim());
+            jTextFieldFullName.setText(rs.getString("lastName").trim() + ", " + rs.getString("firstName").trim() + " " + rs.getString("middleName").trim().substring(0,1) + ".");
             jComboBoxGenderAtBirth.setSelectedItem(rs.getString("genderAtBirth").trim());
             try {
                 Date dateIn = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("dateOfBirth"));
                 jDateChooserDateOfBirth.setDate(dateIn);
             } catch (ParseException ex) {
-                Logger.getLogger(ClientCredentials.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ViewAccountBalance.class.getName()).log(Level.SEVERE, null, ex);
             }
-            jComboBoxCivilStatus.setSelectedItem(rs.getString("civilStatus").trim());
-            jTextFieldHomeAddress.setText(rs.getString("homeAddress").trim());
             jTextFieldMobileNo.setText(rs.getString("mobileNo").trim());
             jTextFieldEmail.setText(rs.getString("email").trim());
-            jComboBoxBranch.setSelectedItem(rs.getString("branch").trim());
+            jTextFieldBranch.setText(rs.getString("branch").trim());  
+            jComboBoxAccountType.setSelectedItem(rs.getString("accountType").trim());
+            jTextFieldBalanceInPHP.setText(rs.getString("currentBalance").trim());
         } catch (SQLException ex) {
-            Logger.getLogger(ViewClientCredentials.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jTableAccountMouseClicked
-
-    private void jTableClient4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableClient4MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTableClient4MouseClicked
-
-    private void GenerateAccountID() {
-        try {
-            PreparedStatement ps;
-            ResultSet rs;
-            String selectQuery = "SELECT Max(accountID) FROM accounts";
-            long id;
-
-            ps = my_connection.createConnection().prepareStatement(selectQuery);
-            rs = ps.executeQuery();
-            rs.next();
-
-            if(rs.getString("Max(accountID)")==null)
-                jTextFieldAccountID.setText("A0001");
-            else
-            {
-                id = Long.parseLong(rs.getString("Max(accountID)").substring(2,rs.getString("Max(accountID)").length()));
-                id++;
-                jTextFieldAccountID.setText("A" + String.format("%04d",id));
-            }
-        }  catch (SQLException ex) {
             Logger.getLogger(ViewAccountBalance.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
 
-    private boolean IsClientIDReplaced()
+        FillAccountTransactionLogTable(jTableAccountTransactionLog, accountID, clientID);
+    }//GEN-LAST:event_jTableAccountMouseClicked
+
+    private void jTableAccountTransactionLogMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAccountTransactionLogMouseClicked
+    }//GEN-LAST:event_jTableAccountTransactionLogMouseClicked
+
+    private void jButtonRefreshAllDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshAllDataActionPerformed
+        ClearFields();
+        jLabelAccountTransactionLogAccountID.setText(" ");
+
+        jTableAccount.setModel(
+            new javax.swing.table.DefaultTableModel(new Object [][] {},
+                new String [] {"Account ID", "Account Owner", "Client ID", "Account Type"})
+            {
+                Class[] types = { String.class, String.class, String.class, String.class};
+                boolean[] canEdit = { false, false, false, false };
+
+                @Override
+                public Class getColumnClass(int columnIndex) {
+                    return this.types[columnIndex];
+                }
+
+                public boolean isCellEditable(int columnIndex) {
+                    return this.canEdit[columnIndex];
+                }
+            }
+        );
+
+        jTableAccountTransactionLog.setModel(
+            new javax.swing.table.DefaultTableModel(new Object [][] {},
+                new String [] {"Timestamp", "Amount", "Accm. Balance", "Fee"})
+            {
+                Class[] types = { String.class, String.class, String.class, String.class};
+                boolean[] canEdit = { false, false, false, false };
+
+                @Override
+                public Class getColumnClass(int columnIndex) {
+                    return this.types[columnIndex];
+                }
+
+                public boolean isCellEditable(int columnIndex) {
+                    return this.canEdit[columnIndex];
+                }
+            }
+        );
+
+        FillAccountTable(jTableAccount);
+    }//GEN-LAST:event_jButtonRefreshAllDataActionPerformed
+
+    private void FillAccountTable(JTable jTable)
     {
-            PreparedStatement ps_select;
-            ResultSet rs_select;
-            String selectedClientID = "";
-            String selectQuery = "SELECT clientID FROM clients WHERE lastName=? AND firstName=? AND middleName=?;";
+        jTableAccount.setFocusable(false);
+        jTableAccount.setRowSelectionAllowed(true);
 
-            try {
-                ps_select = my_connection.createConnection().prepareStatement(selectQuery);
+        setJTableColumnsWidth(jTableAccount,210,15,100,15,50);
+        setJTableColumnsWidth(jTableAccountTransactionLog,210,80,50,50,10);
 
-                ps_select.setString(1, jTextFieldLastName.getText().trim());
-                ps_select.setString(2, jTextFieldFirstName.getText().trim());
-                ps_select.setString(3, jTextFieldMiddleName.getText().trim());                    
-                rs_select = ps_select.executeQuery();
-                rs_select.next();
-                selectedClientID = rs_select.getString("clientID").trim();
-            } catch (SQLException ex) {
-                Logger.getLogger(ViewAccountBalance.class.getName()).log(Level.SEVERE, null, ex);
-              }
-
-            return !selectedClientID.equals(jTextFieldClientID.getText().trim().toUpperCase());
-    }
-
-    private boolean OwnsAccountOfType(String clientID, String accountType)
-    {
         PreparedStatement ps;
         ResultSet rs;
-        String query = "SELECT * FROM clients WHERE clientID=? AND accountType=?";
-        try {
-        ps = my_connection.createConnection().prepareStatement(query);
-        ps.setString(1,clientID);
-        ps.setString(2, accountType);
-        rs = ps.executeQuery();
-        rs.next();
+        String selectQuery = "SELECT * FROM accounts a, clients c WHERE c.clientID=a.clientID ORDER BY a.id DESC";
 
-        return rs.getRow() != 0;
-        } catch(SQLException ex) {
-            return true;
-        }
+        try {
+            ps = my_connection.createConnection().prepareStatement(selectQuery);
+            rs = ps.executeQuery();
+
+            DefaultTableModel tableModel = (DefaultTableModel)jTable.getModel();
+            Object[] row;
+
+            while(rs.next())
+            {
+                row = new Object[4];
+                row[0] = rs.getString("accountID");
+                row[1] = rs.getString("lastName") + ", " + rs.getString("firstName") + " " + rs.getString("middleName").trim().substring(0,1) + ". ";
+                row[2] = rs.getString("a.clientID");
+                row[3] = rs.getString("branch");
+
+                tableModel.addRow(row);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewAccountBalance.class.getName()).log(Level.SEVERE, null, ex);
+          }
     }
 
+    private void FillAccountTransactionLogTable(JTable jTable, String accountID, String clientID)
+    {
+        jLabelAccountTransactionLogAccountID.setText(accountID);
+        jTableAccountTransactionLog.setFocusable(false);
+
+        setJTableColumnsWidth(jTableAccountTransactionLog,210,80,50,50,10);
+        
+        PreparedStatement ps;
+        ResultSet rs;
+        String selectQuery = "SELECT a.dateCreated, a.currentBalance, a.currentBalance, 0 " +
+                "FROM clients c, accounts a " +
+                "WHERE a.accountID=? AND c.clientID=? " +
+                "UNION " +
+                "SELECT w.timestamp, w.amountWithdrawn*-1, w.newBalance, 0 " +
+                "FROM clients c, withdraw w " +
+                "WHERE w.accountID=? AND c.clientID=? " +
+                "UNION " +
+                "SELECT d.timestamp, d.amountDeposited, d.newBalance, 0 " +
+                "FROM clients c, deposit d " +
+                "WHERE d.accountID=? AND c.clientID=? " +
+                "UNION " +
+                "SELECT t.timestamp, t.amountToBeTransferred*-1, t.sourceNewBalance,t.sourceTransferFee*-1 " +
+                "FROM clients c, transfer t " +
+                "WHERE t.sourceAccountID=? AND c.clientID=? " +
+                "UNION " +
+                "SELECT t.timestamp, t.amountToBeTransferred, t.destinationNewBalance,t.destinationTransferFee*-1 " +
+                "FROM clients c, transfer t " +
+                "WHERE t.sourceAccountID=? AND c.clientID=? " +
+                "ORDER BY dateCreated DESC;";
+        
+
+        try {
+            ps = my_connection.createConnection().prepareStatement(selectQuery);
+            ps.setString(1,accountID);
+            ps.setString(2,clientID);
+            ps.setString(3,accountID);
+            ps.setString(4,clientID);
+            ps.setString(5,accountID);
+            ps.setString(6,clientID);
+            ps.setString(7,accountID);
+            ps.setString(8,clientID);
+            ps.setString(9,accountID);
+            ps.setString(10,clientID);
+            rs = ps.executeQuery();
+
+            DefaultTableModel tableModel = (DefaultTableModel)jTable.getModel();
+            Object[] row;
+
+            while(rs.next())
+            {
+                row = new Object[4];
+                row[0] = rs.getTimestamp(1);
+
+                row[1] = String.format("%.2f", rs.getDouble(2));
+                row[2] = rs.getDouble(3);
+                row[3] = rs.getDouble(4);
+
+                               
+                
+                tableModel.addRow(row);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewAccountBalance.class.getName()).log(Level.SEVERE, null, ex);
+          }
+
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(SwingConstants.RIGHT);
+//        TableModel tableModel = jTableAccountTransactionLog.getModel();
+//        jTableAccountTransactionLog.getColumnModel().getColumn(0).setCellRenderer(rightRenderer);  
+        jTableAccountTransactionLog.getColumnModel().getColumn(1).setCellRenderer(rightRenderer);  
+        jTableAccountTransactionLog.getColumnModel().getColumn(2).setCellRenderer(rightRenderer);  
+        jTableAccountTransactionLog.getColumnModel().getColumn(3).setCellRenderer(rightRenderer);  
+//        jTableAccountTransactionLog.getColumnModel().getColumn(4).setCellRenderer(rightRenderer);  
+    }
+
+    private void ClearFields()
+    {
+        jTextFieldAccountID.setText("");
+        jTextFieldClientID.setText("");
+        jTextFieldFullName.setText("");
+        jComboBoxGenderAtBirth.setSelectedIndex(-1);
+        jDateChooserDateOfBirth.setDate(null);
+        jTextFieldMobileNo.setText("");
+        jTextFieldEmail.setText("");
+        jTextFieldBranch.setText("");
+        jComboBoxAccountType.setSelectedIndex(-1);
+        jTextFieldBalanceInPHP.setText("");
+        jTextFieldBalanceInPHP.requestFocus();
+    }
+
+    public static void setJTableColumnsWidth(JTable table, int tablePreferredWidth, double... percentages)
+    {
+        double total = 0;
+        for (int i = 0; i < table.getColumnModel().getColumnCount(); i++) {
+            total += percentages[i];
+        }
+
+        for (int i = 0; i < table.getColumnModel().getColumnCount(); i++) {
+            TableColumn column = table.getColumnModel().getColumn(i);
+            column.setPreferredWidth((int)
+                    (tablePreferredWidth * (percentages[i] / total)));
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAddAccount;
-    private javax.swing.JButton jButtonClearFields;
-    private javax.swing.JButton jButtonExit;
+    private javax.swing.JButton jButtonRefreshAllData;
     private javax.swing.JButton jButtonRefreshData;
-    private javax.swing.JButton jButtonRefreshData2;
     private javax.swing.JComboBox<String> jComboBoxAccountType;
+    private javax.swing.JComboBox<String> jComboBoxGenderAtBirth;
+    private com.toedter.calendar.JDateChooser jDateChooserDateOfBirth;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelAccountID;
+    private javax.swing.JLabel jLabelAccountTransactionLog;
+    private javax.swing.JLabel jLabelAccountTransactionLogAccountID;
     private javax.swing.JLabel jLabelAccountType;
     private javax.swing.JLabel jLabelBalanceInPHP;
     private javax.swing.JLabel jLabelBanking2;
     private javax.swing.JLabel jLabelBanking3;
     private javax.swing.JLabel jLabelBanking4;
-    private javax.swing.JLabel jLabelBranch;
+    private javax.swing.JLabel jLabelBranch2;
     private javax.swing.JLabel jLabelClientID;
-    private javax.swing.JLabel jLabelFirstName;
+    private javax.swing.JLabel jLabelDateOfBirth;
+    private javax.swing.JLabel jLabelEmail;
+    private javax.swing.JLabel jLabelGenderAtBirth;
     private javax.swing.JLabel jLabelLastName;
     private javax.swing.JLabel jLabelManagement2;
     private javax.swing.JLabel jLabelManagement3;
     private javax.swing.JLabel jLabelManagement4;
-    private javax.swing.JLabel jLabelMiddleName;
+    private javax.swing.JLabel jLabelMobileNo;
     private javax.swing.JLabel jLabelSystem2;
     private javax.swing.JLabel jLabelSystem3;
     private javax.swing.JLabel jLabelSystem4;
@@ -913,15 +797,15 @@ public class ViewAccountBalance extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTableAccount;
+    private javax.swing.JTable jTableAccountTransactionLog;
     private javax.swing.JTable jTableClient;
     private javax.swing.JTable jTableClient1;
-    private javax.swing.JTable jTableClient4;
     private javax.swing.JTextField jTextFieldAccountID;
     private javax.swing.JTextField jTextFieldBalanceInPHP;
     private javax.swing.JTextField jTextFieldBranch;
     private javax.swing.JTextField jTextFieldClientID;
-    private javax.swing.JTextField jTextFieldFirstName;
-    private javax.swing.JTextField jTextFieldLastName;
-    private javax.swing.JTextField jTextFieldMiddleName;
+    private javax.swing.JTextField jTextFieldEmail;
+    private javax.swing.JTextField jTextFieldFullName;
+    private javax.swing.JTextField jTextFieldMobileNo;
     // End of variables declaration//GEN-END:variables
 }

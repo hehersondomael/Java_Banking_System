@@ -658,7 +658,7 @@ public class ViewClientCredentials extends javax.swing.JInternalFrame {
                 tableModel.addRow(row);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ClientCredentials.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewClientCredentials.class.getName()).log(Level.SEVERE, null, ex);
           }
     }
     
@@ -702,8 +702,8 @@ public class ViewClientCredentials extends javax.swing.JInternalFrame {
             column.setPreferredWidth((int)
                     (tablePreferredWidth * (percentages[i] / total)));
         }
-    }    
-    
+    }
+
 //    IN CASE COMBO BOX ITEMS ARE TO BE RETRIEVED IN THE DATABASE
 //    public void GetBankBranches()
 //    {

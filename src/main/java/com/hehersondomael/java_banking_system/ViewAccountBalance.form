@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <NonVisualComponents>
     <Component class="javax.swing.JLabel" name="jLabelTheHBankText1">
       <Properties>
@@ -179,14 +179,15 @@
               <EmptySpace min="43" pref="43" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jButtonRefreshData2" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jButtonRefreshAllData" alignment="0" max="32767" attributes="0"/>
                       <Component id="jScrollPane4" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane5" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                      <Component id="jLabelAccountTransactionLog" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabelAccountTransactionLogAccountID" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
@@ -226,13 +227,13 @@
                       <Component id="jScrollPane4" min="-2" pref="171" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelAccountTransactionLogAccountID" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelAccountTransactionLog" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane5" min="-2" pref="159" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButtonRefreshData2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonRefreshAllData" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -259,52 +260,33 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
+                  <EmptySpace min="29" pref="29" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabelBranch" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelAccountType" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabelLastName" alignment="0" min="-2" pref="69" max="-2" attributes="0"/>
-                                      <Component id="jLabelFirstName" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabelClientID" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Component id="jLabelMiddleName" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelBalanceInPHP" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                          <Component id="jLabelAccountID" min="-2" pref="89" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jLabelLastName" alignment="0" min="-2" pref="69" max="-2" attributes="0"/>
+                      <Component id="jLabelClientID" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelGenderAtBirth" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelDateOfBirth" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelMobileNo" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelEmail" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelBranch2" alignment="0" min="-2" pref="55" max="-2" attributes="0"/>
+                      <Component id="jLabelAccountType" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                      <Component id="jLabelBalanceInPHP" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelAccountID" min="-2" pref="89" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jButtonExit" alignment="1" min="-2" pref="57" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jTextFieldBalanceInPHP" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jComboBoxAccountType" alignment="0" pref="263" max="32767" attributes="0"/>
-                              <Component id="jTextFieldBranch" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextFieldMiddleName" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextFieldFirstName" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jTextFieldAccountID" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldLastName" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="jButtonAddAccount" min="-2" pref="99" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButtonClearFields" min="-2" pref="95" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jTextFieldAccountID" alignment="0" pref="263" max="32767" attributes="0"/>
+                          <Component id="jTextFieldFullName" alignment="0" max="32767" attributes="0"/>
                           <Component id="jTextFieldClientID" alignment="0" max="32767" attributes="0"/>
                       </Group>
+                      <Component id="jComboBoxGenderAtBirth" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
+                      <Component id="jDateChooserDateOfBirth" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
+                      <Component id="jTextFieldEmail" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
+                      <Component id="jTextFieldBranch" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
+                      <Component id="jComboBoxAccountType" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
+                      <Component id="jTextFieldBalanceInPHP" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
+                      <Component id="jTextFieldMobileNo" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="62" max="32767" attributes="0"/>
               </Group>
@@ -326,40 +308,47 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelLastName" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="jTextFieldLastName" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabelFirstName" min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="jTextFieldFirstName" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="jTextFieldFullName" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabelMiddleName" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="jTextFieldMiddleName" alignment="3" max="32767" attributes="0"/>
+                      <Component id="jComboBoxGenderAtBirth" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelGenderAtBirth" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jDateChooserDateOfBirth" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelDateOfBirth" min="-2" pref="20" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jTextFieldMobileNo" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelMobileNo" min="-2" pref="20" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jTextFieldEmail" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelEmail" min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jTextFieldBranch" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelBranch" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
+                      <Component id="jLabelBranch2" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jComboBoxAccountType" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelAccountType" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextFieldBalanceInPHP" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelBalanceInPHP" alignment="3" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jTextFieldBalanceInPHP" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="jLabelBalanceInPHP" max="32767" attributes="0"/>
+                          <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButtonAddAccount" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButtonClearFields" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButtonExit" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="195" max="-2" attributes="0"/>
+                  <EmptySpace pref="161" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -372,12 +361,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelLastName">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Last Name:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabelFirstName">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="First Name:"/>
+            <Property name="text" type="java.lang.String" value="Full Name:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelBalanceInPHP">
@@ -389,15 +373,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Account Type:"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="jButtonAddAccount">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Add Account"/>
-            <Property name="focusable" type="boolean" value="false"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAddAccountActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBoxAccountType">
           <Properties>
@@ -419,37 +394,9 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="jButtonClearFields">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Clear Fields"/>
-            <Property name="focusable" type="boolean" value="false"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonClearFieldsActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="jButtonExit">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Exit"/>
-            <Property name="focusable" type="boolean" value="false"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonExitActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabelAccountID">
           <Properties>
             <Property name="text" type="java.lang.String" value="Account ID:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabelMiddleName">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Middle Name:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabelBranch">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Branch:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldBalanceInPHP">
@@ -476,7 +423,7 @@
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldLastName">
+        <Component class="javax.swing.JTextField" name="jTextFieldFullName">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -485,27 +432,69 @@
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldFirstName">
+        <Component class="javax.swing.JComboBox" name="jComboBoxGenderAtBirth">
           <Properties>
-            <Property name="editable" type="boolean" value="false"/>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="2">
+                <StringItem index="0" value="Male"/>
+                <StringItem index="1" value="Female"/>
+              </StringArray>
+            </Property>
+            <Property name="selectedIndex" type="int" value="-1"/>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelGenderAtBirth">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Gender at Birth:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelDateOfBirth">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Date of Birth:"/>
+          </Properties>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooserDateOfBirth">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelMobileNo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Mobile No.:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldEmail">
+          <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldMiddleName">
+        <Component class="javax.swing.JLabel" name="jLabelEmail">
           <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="cc" red="cc" type="rgb"/>
-            </Property>
-            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="text" type="java.lang.String" value="Email:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldBranch">
           <Properties>
-            <Property name="editable" type="boolean" value="false"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="cc" type="rgb"/>
+            </Property>
+            <Property name="focusable" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelBranch2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Branch:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldMobileNo">
+          <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
@@ -514,12 +503,12 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButtonRefreshData2">
+    <Component class="javax.swing.JButton" name="jButtonRefreshAllData">
       <Properties>
         <Property name="text" type="java.lang.String" value="Refresh Data"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRefreshData2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRefreshAllDataActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane4">
@@ -536,7 +525,7 @@
               <Font name="Tahoma" size="12" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;&#xa;    },&#xa;    new String [] {&#xa;        &quot;Account ID&quot;, &quot;Owner (Client ID)&quot;, &quot;Account Type&quot;&#xa;    }&#xa;)&#xa;&#xa;// make the jTable cells not editable&#xa;{&#xa;    Class[] types = { String.class, String.class, String.class};&#xa;    boolean[] canEdit = { false, false, false };&#xa;&#xa;    @Override&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return this.types[columnIndex];&#xa;    }&#xa;&#xa;    public boolean isCellEditable(int columnIndex) {&#xa;        return this.canEdit[columnIndex];&#xa;    }&#xa;}" type="code"/>
+              <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;&#xa;    },&#xa;    new String [] {&#xa;        &quot;Account ID&quot;, &quot;Account Owner&quot;, &quot;Client ID&quot;, &quot;Account Type&quot;&#xa;    }&#xa;)&#xa;&#xa;// make the jTable cells not editable&#xa;{&#xa;    Class[] types = { String.class, String.class, String.class, String.class};&#xa;    boolean[] canEdit = { false, false, false, false };&#xa;&#xa;    @Override&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return this.types[columnIndex];&#xa;    }&#xa;&#xa;    public boolean isCellEditable(int columnIndex) {&#xa;        return this.canEdit[columnIndex];&#xa;    }&#xa;}" type="code"/>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0"/>
@@ -601,35 +590,35 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTableClient4">
+        <Component class="javax.swing.JTable" name="jTableAccountTransactionLog">
           <Properties>
-            <Property name="autoCreateRowSorter" type="boolean" value="true"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;&#xa;    },&#xa;    new String [] {&#xa;        &quot;Timestamp&quot;, &quot;Transaction&quot;, &quot;Amount&quot;, &quot;New Balance&quot;&#xa;    }&#xa;)&#xa;&#xa;// make the jTable cells not editable&#xa;{&#xa;    Class[] types = { String.class, String.class, String.class, String.class};&#xa;    boolean[] canEdit = { false, false, false, false};&#xa;&#xa;    @Override&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return this.types[columnIndex];&#xa;    }&#xa;&#xa;    public boolean isCellEditable(int columnIndex) {&#xa;        return this.canEdit[columnIndex];&#xa;    }&#xa;}" type="code"/>
+              <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;&#xa;    },&#xa;    new String [] {&#xa;        &quot;Timestamp&quot;, &quot;Amount&quot;, &quot;Accm. Balance&quot;, &quot;Fee&quot;&#xa;    }&#xa;)&#xa;&#xa;// make the jTable cells not editable&#xa;{&#xa;    Class[] types = { String.class, String.class, String.class, String.class};&#xa;    boolean[] canEdit = { false, false, false, false};&#xa;&#xa;    @Override&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return this.types[columnIndex];&#xa;    }&#xa;&#xa;    public boolean isCellEditable(int columnIndex) {&#xa;        return this.canEdit[columnIndex];&#xa;    }&#xa;}" type="code"/>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableClient4MouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableAccountTransactionLogMouseClicked"/>
           </Events>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="jLabelAccountTransactionLog">
       <Properties>
         <Property name="text" type="java.lang.String" value="Account Transaction Log:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="jLabelAccountTransactionLogAccountID">
       <Properties>
         <Property name="text" type="java.lang.String" value="A0001"/>
       </Properties>

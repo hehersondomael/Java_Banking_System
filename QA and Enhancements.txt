@@ -12,33 +12,24 @@ THE H BANK
 *Shall have a Minimum amount to be deposited
 Improve overall design of the system
 Finish other Menu
-Invalidate non-numeric inputs on 'financial' text fields
+Invalidate non-numeric inputs on 'financial' text fields (possible solution: NumberFormatException)
 Include a search bar
 Set Enter key as "default Submit button"
 Optimize overall code
 
 On launch of Customer
 *Add more Account Type
-*Check if input in balance is not numeric
 
 On launch of Withdraw
-*Add running real time
-*Clear all Labels
-*If input Account is not found, set Labels as N/A
 *Set Balance as floating number
 *Check if withdrawn money makes account sufficient
 
 On launch of Deposit
 *On click of OK button, immediately change balance, clear Account No. fields
-*On click of OK Button, Check if fields are filled up
 *If fields are filled up and user clicked Cancel, show dialog if are you sure? your progress won't be saved
 
 On Transfer Fund
 *Show current balance of both accounts
-*Show if destination account exists in database
-*On click of Transfer, see if all fields have been filled up
-*Shade Balance fields for both accounts
-*Check if input amount is numeric NumberFormatException
 *Function Cancel button
 *Check if source account has sufficient amount to transfer
 
@@ -79,6 +70,10 @@ Withdraw Fund
 Client Credentials
 *Added a sortable, clickable, and uneditable table of registered clients which, upon clicking a data row, will display complete client credentials
 *Added a feature that will allow user to modify existing client credentials
+
+Account Balance
+*Added a sortable, clickable, and uneditable table of registered account which, upon clicking a data row, will display complete account credentials
+*Added a timestamp-sorted table which tracks cash flow of the selected account
 
 Other
 *Improved overall design of internal frames
