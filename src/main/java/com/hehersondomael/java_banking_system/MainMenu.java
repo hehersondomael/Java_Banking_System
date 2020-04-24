@@ -24,21 +24,21 @@ public class MainMenu extends javax.swing.JFrame {
 
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                if (JOptionPane.showConfirmDialog(null, "Are you sure you want to leave? You will be logged out.", "Close Window", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
-                {
-                    e.getWindow().dispose();
-                    LoginPage loginPage = new LoginPage();
-                    loginPage.setVisible(true);
-                    loginPage.pack();
-                    loginPage.setLocationRelativeTo(null);
-                }
-                else
-                    setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-            }
-        });
+//        addWindowListener(new WindowAdapter() {
+//            @Override
+//            public void windowClosing(WindowEvent e) {
+//                if (JOptionPane.showConfirmDialog(null, "Are you sure you want to leave? You will be logged out.", "Close Window", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
+//                {
+//                    e.getWindow().dispose();
+//                    LoginPage loginPage = new LoginPage();
+//                    loginPage.setVisible(true);
+//                    loginPage.pack();
+//                    loginPage.setLocationRelativeTo(null);
+//                }
+//                else
+//                    setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+//            }
+//        });
     }
 
     /**
@@ -68,11 +68,6 @@ public class MainMenu extends javax.swing.JFrame {
         jMenuSettings = new javax.swing.JMenu();
         jMenuItemChangePassword = new javax.swing.JMenuItem();
         jMenuItemLogOut = new javax.swing.JMenuItem();
-        jMenu8 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu9 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -181,45 +176,23 @@ public class MainMenu extends javax.swing.JFrame {
 
         jMenuItemChangePassword.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK));
         jMenuItemChangePassword.setText("Change Password");
+        jMenuItemChangePassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemChangePasswordActionPerformed(evt);
+            }
+        });
         jMenuSettings.add(jMenuItemChangePassword);
 
         jMenuItemLogOut.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.ALT_MASK));
         jMenuItemLogOut.setText("Log Out");
+        jMenuItemLogOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemLogOutActionPerformed(evt);
+            }
+        });
         jMenuSettings.add(jMenuItemLogOut);
 
         jMenuBar1.add(jMenuSettings);
-
-        jMenu8.setText("jMenu8");
-
-        jMenuItem3.setText("Withdraw");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu8.add(jMenuItem3);
-
-        jMenuItem4.setText("Deposit");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMenu8.add(jMenuItem4);
-
-        jMenuBar1.add(jMenu8);
-
-        jMenu9.setText("jMenu9");
-
-        jMenuItem5.setText("Account to Account");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
-            }
-        });
-        jMenu9.add(jMenuItem5);
-
-        jMenuBar1.add(jMenu9);
 
         setJMenuBar(jMenuBar1);
 
@@ -236,27 +209,6 @@ public class MainMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
-        Deposit deposit = new Deposit();
-        jDesktopPane1.add(deposit);
-        deposit.setVisible(true);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-        Withdraw withdraw = new Withdraw();
-        jDesktopPane1.add(withdraw);
-        withdraw.setVisible(true);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
-        Transfer transfer = new Transfer();
-        jDesktopPane1.add(transfer);
-        transfer.setVisible(true);
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItemClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClientActionPerformed
         AddNewClient client = new AddNewClient();
@@ -300,6 +252,26 @@ public class MainMenu extends javax.swing.JFrame {
         viewAccountBalance.setVisible(true);
     }//GEN-LAST:event_jMenuItemAccountBalanceActionPerformed
 
+    private void jMenuItemChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemChangePasswordActionPerformed
+        ChangePassword changePassword = new ChangePassword();
+        jDesktopPane1.add(changePassword);
+        changePassword.setVisible(true);
+    }//GEN-LAST:event_jMenuItemChangePasswordActionPerformed
+
+    private void jMenuItemLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemLogOutActionPerformed
+
+                if (JOptionPane.showConfirmDialog(null, "Are you sure you want to leave? You will be logged out.", "Close Window", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
+                {
+                    dispose();
+                    LoginPage loginPage = new LoginPage();
+                    loginPage.setVisible(true);
+                    loginPage.pack();
+                    loginPage.setLocationRelativeTo(null);
+                }
+                else
+                    setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+    }//GEN-LAST:event_jMenuItemLogOutActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -338,14 +310,9 @@ public class MainMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenu jMenuAddNew;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuItem jMenuItemAccount;
     private javax.swing.JMenuItem jMenuItemAccountBalance;

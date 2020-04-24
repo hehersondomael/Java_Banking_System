@@ -259,34 +259,39 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="29" pref="29" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabelLastName" alignment="0" min="-2" pref="69" max="-2" attributes="0"/>
-                      <Component id="jLabelClientID" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelGenderAtBirth" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelDateOfBirth" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelMobileNo" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelEmail" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelBranch2" alignment="0" min="-2" pref="55" max="-2" attributes="0"/>
-                      <Component id="jLabelAccountType" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
-                      <Component id="jLabelBalanceInPHP" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelAccountID" min="-2" pref="89" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jTextFieldAccountID" alignment="0" pref="263" max="32767" attributes="0"/>
-                          <Component id="jTextFieldFullName" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldClientID" alignment="0" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jButtonExit" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabelLastName" alignment="0" min="-2" pref="69" max="-2" attributes="0"/>
+                              <Component id="jLabelClientID" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelGenderAtBirth" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelDateOfBirth" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelMobileNo" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelEmail" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelBranch2" alignment="0" min="-2" pref="55" max="-2" attributes="0"/>
+                              <Component id="jLabelAccountType" alignment="0" min="-2" pref="84" max="-2" attributes="0"/>
+                              <Component id="jLabelBalanceInPHP" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelAccountID" min="-2" pref="89" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jTextFieldAccountID" alignment="0" pref="263" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldFullName" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldClientID" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="jComboBoxGenderAtBirth" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
+                              <Component id="jDateChooserDateOfBirth" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
+                              <Component id="jTextFieldEmail" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
+                              <Component id="jTextFieldBranch" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
+                              <Component id="jComboBoxAccountType" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
+                              <Component id="jTextFieldBalanceInPHP" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
+                              <Component id="jTextFieldMobileNo" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <Component id="jComboBoxGenderAtBirth" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
-                      <Component id="jDateChooserDateOfBirth" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
-                      <Component id="jTextFieldEmail" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
-                      <Component id="jTextFieldBranch" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
-                      <Component id="jComboBoxAccountType" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
-                      <Component id="jTextFieldBalanceInPHP" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
-                      <Component id="jTextFieldMobileNo" alignment="1" min="-2" pref="263" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="62" max="32767" attributes="0"/>
               </Group>
@@ -348,7 +353,9 @@
                           <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="161" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jButtonExit" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="120" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -500,6 +507,14 @@
             </Property>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButtonExit">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Exit"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonExitActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

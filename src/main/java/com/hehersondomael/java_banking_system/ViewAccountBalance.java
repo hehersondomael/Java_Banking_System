@@ -84,6 +84,7 @@ public class ViewAccountBalance extends javax.swing.JInternalFrame {
         jTextFieldBranch = new javax.swing.JTextField();
         jLabelBranch2 = new javax.swing.JLabel();
         jTextFieldMobileNo = new javax.swing.JTextField();
+        jButtonExit = new javax.swing.JButton();
         jButtonRefreshAllData = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTableAccount = new javax.swing.JTable();
@@ -268,36 +269,46 @@ public class ViewAccountBalance extends javax.swing.JInternalFrame {
         jTextFieldMobileNo.setBackground(new java.awt.Color(204, 204, 204));
         jTextFieldMobileNo.setFocusable(false);
 
+        jButtonExit.setText("Exit");
+        jButtonExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelAddNewAccountLayout = new javax.swing.GroupLayout(jPanelAddNewAccount);
         jPanelAddNewAccount.setLayout(jPanelAddNewAccountLayout);
         jPanelAddNewAccountLayout.setHorizontalGroup(
             jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAddNewAccountLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelClientID)
-                    .addComponent(jLabelGenderAtBirth)
-                    .addComponent(jLabelDateOfBirth)
-                    .addComponent(jLabelMobileNo)
-                    .addComponent(jLabelEmail)
-                    .addComponent(jLabelBranch2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelAccountType, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelBalanceInPHP)
-                    .addComponent(jLabelAccountID, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jTextFieldAccountID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                        .addComponent(jTextFieldFullName, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextFieldClientID, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(jComboBoxGenderAtBirth, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooserDateOfBirth, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldBranch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxAccountType, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldBalanceInPHP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldMobileNo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelAddNewAccountLayout.createSequentialGroup()
+                        .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelClientID)
+                            .addComponent(jLabelGenderAtBirth)
+                            .addComponent(jLabelDateOfBirth)
+                            .addComponent(jLabelMobileNo)
+                            .addComponent(jLabelEmail)
+                            .addComponent(jLabelBranch2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelAccountType, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelBalanceInPHP)
+                            .addComponent(jLabelAccountID, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTextFieldAccountID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                                .addComponent(jTextFieldFullName, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextFieldClientID, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(jComboBoxGenderAtBirth, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateChooserDateOfBirth, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldBranch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxAccountType, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldBalanceInPHP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldMobileNo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanelAddNewAccountLayout.setVerticalGroup(
@@ -345,7 +356,9 @@ public class ViewAccountBalance extends javax.swing.JInternalFrame {
                     .addGroup(jPanelAddNewAccountLayout.createSequentialGroup()
                         .addComponent(jLabelBalanceInPHP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(3, 3, 3)))
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButtonExit)
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
         jButtonRefreshAllData.setText("Refresh Data");
@@ -620,6 +633,16 @@ public class ViewAccountBalance extends javax.swing.JInternalFrame {
         FillAccountTable(jTableAccount);
     }//GEN-LAST:event_jButtonRefreshAllDataActionPerformed
 
+    private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "Are you sure you want to leave?", "Close Frame", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
+        {
+            setVisible(false);
+            dispose();
+        }
+        else
+            setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+    }//GEN-LAST:event_jButtonExitActionPerformed
+
     private void FillAccountTable(JTable jTable)
     {
         jTableAccount.setFocusable(false);
@@ -759,6 +782,7 @@ public class ViewAccountBalance extends javax.swing.JInternalFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonExit;
     private javax.swing.JButton jButtonRefreshAllData;
     private javax.swing.JButton jButtonRefreshData;
     private javax.swing.JComboBox<String> jComboBoxAccountType;
