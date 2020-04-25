@@ -17,13 +17,16 @@
                 <Property name="text" type="java.lang.String" value="About the System"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem10">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemAboutTheDeveloper">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Shift+Alt+D"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="About the Developer"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemAboutTheDeveloperActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

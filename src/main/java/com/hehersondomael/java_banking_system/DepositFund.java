@@ -5,6 +5,7 @@
  */
 package com.hehersondomael.java_banking_system;
 
+import java.awt.event.KeyEvent;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,6 +24,7 @@ public class DepositFund extends javax.swing.JInternalFrame {
 
     MY_CONNECTION my_connection = new MY_CONNECTION();
     Date date = new Date();
+    String storedAccountID = "";
 
     /**
      * Creates new form Customer
@@ -148,6 +150,12 @@ public class DepositFund extends javax.swing.JInternalFrame {
 
         jLabelClientIDNotFound.setForeground(new java.awt.Color(255, 0, 0));
         jLabelClientIDNotFound.setText("Account ID not found.");
+
+        jTextFieldAccountID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldAccountIDKeyPressed(evt);
+            }
+        });
 
         jTextFieldClientID.setEditable(false);
         jTextFieldClientID.setBackground(new java.awt.Color(204, 204, 204));
@@ -337,6 +345,7 @@ public class DepositFund extends javax.swing.JInternalFrame {
 
     private void jButtonFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFindActionPerformed
         String accountID = jTextFieldAccountID.getText().trim().toUpperCase();
+        storedAccountID = jTextFieldAccountID.getText().trim().toUpperCase();
 
         try {
             PreparedStatement ps;
@@ -362,12 +371,12 @@ public class DepositFund extends javax.swing.JInternalFrame {
                 String middleName = rs.getString(4).trim();
                 String branch = rs.getString(5);
                 String accountType = rs.getString(6);
-                String balance = rs.getString(7);
+                Double balance = rs.getDouble(7);
                 jTextFieldClientID.setText(clientID.trim());
                 jTextFieldFullName.setText(lastName.trim() + ", " + firstName.trim() + " " + middleName.substring(0,1) + ".");
                 jTextFieldBranch.setText(branch.trim());
                 jTextFieldAccountType.setText(accountType.trim());
-                jTextFieldBalanceInPHP.setText(balance.trim());
+                jTextFieldBalanceInPHP.setText(String.format("%.2f", balance).trim());
                 jTextFieldAmountToBeDeposited.requestFocus();
             }
         } catch (SQLException ex) {
@@ -376,74 +385,77 @@ public class DepositFund extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonFindActionPerformed
 
     private void jButtonDepositActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDepositActionPerformed
-        String accountID = jTextFieldAccountID.getText().trim().toUpperCase();
-        String clientID = jTextFieldClientID.getText().trim();
-        SimpleDateFormat format_2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String timestamp = format_2.format(date).trim();
+        try {
+            String accountID = jTextFieldAccountID.getText().trim().toUpperCase();
+            String clientID = jTextFieldClientID.getText().trim();
+            SimpleDateFormat format_2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String timestamp = format_2.format(date).trim();
 
-        if(accountID.equals("") || clientID.equals("") || jTextFieldBalanceInPHP.getText().trim().equals("") ||
-                jTextFieldAmountToBeDeposited.getText().trim().equals(""))
-            JOptionPane.showMessageDialog(rootPane, "Please fill up the form completetely.", "All fields required", JOptionPane.ERROR_MESSAGE);
-        else
-        {
-            if(IsAccountIDReplaced())
-                JOptionPane.showMessageDialog(rootPane, "Account ID has been modified!", "Credentials matching error", JOptionPane.ERROR_MESSAGE);
+            if(accountID.equals("") || clientID.equals("") || jTextFieldBalanceInPHP.getText().trim().equals("") ||
+                    jTextFieldAmountToBeDeposited.getText().trim().equals(""))
+                JOptionPane.showMessageDialog(rootPane, "Please fill up the form completetely.", "All fields required", JOptionPane.ERROR_MESSAGE);
             else
             {
-                // check if input balances are nonnumeric
-                double previousBalance = Double.valueOf(jTextFieldBalanceInPHP.getText().trim());
-                double amountDeposited = Double.valueOf(jTextFieldAmountToBeDeposited.getText());
-
-                if (amountDeposited <= 0)
-                    JOptionPane.showMessageDialog(rootPane, "Invalid input Amount to be Deposited.", 
-                            "Input amount error", JOptionPane.ERROR_MESSAGE);
+                if(IsAccountIDReplaced())
+                    JOptionPane.showMessageDialog(rootPane, "Account ID has been modified!", "Credentials matching error", JOptionPane.ERROR_MESSAGE);
                 else
                 {
-//                    In case the bank needs to limit the amount of money to be entered into an account:
-//                    if (previousBalance+amountDeposited < 1000000)
-//                        JOptionPane.showMessageDialog(rootPane, "New balance cannot exceed"
-//                                + " PHP 1,000,000.00!", "Input amount error", JOptionPane.ERROR_MESSAGE);
-//                    else
-//                    {
-                        try {
-                            PreparedStatement ps;
-                            String query = "INSERT INTO deposit (accountID, clientID, timestamp,"
-                                    + "previousBalance, amountDeposited, newBalance) VALUES (?,?,?,?,?,?)";
+                    // check if input balances are nonnumeric
+                    double previousBalance = Double.valueOf(jTextFieldBalanceInPHP.getText().trim());
+                    double amountDeposited = Double.valueOf(jTextFieldAmountToBeDeposited.getText());
 
-                            ps = my_connection.createConnection().prepareStatement(query);
+                    if (amountDeposited <= 0)
+                        JOptionPane.showMessageDialog(rootPane, "Invalid input Amount to be Deposited.", 
+                                "Input amount error", JOptionPane.ERROR_MESSAGE);
+                    else
+                    {
+                        if (previousBalance+amountDeposited > 1000000.0)
+                            JOptionPane.showMessageDialog(rootPane, "New balance cannot exceed"
+                                    + " PHP 1,000,000.00!", "Input amount error", JOptionPane.ERROR_MESSAGE);
+                        else
+                        {
+                            try {
+                                PreparedStatement ps;
+                                String query = "INSERT INTO deposit (accountID, clientID, timestamp,"
+                                        + "previousBalance, amountDeposited, newBalance) VALUES (?,?,?,?,?,?)";
 
-                            ps.setString(1, accountID);
-                            ps.setString(2, clientID.trim());
-                            ps.setString(3, timestamp.trim());
-                            ps.setDouble(4, previousBalance);
-                            ps.setDouble(5, amountDeposited);
-                            ps.setDouble(6, previousBalance+amountDeposited);
+                                ps = my_connection.createConnection().prepareStatement(query);
 
-                            if(ps.executeUpdate() > 0)
-                            {
-                                PreparedStatement ps_update;
+                                ps.setString(1, accountID);
+                                ps.setString(2, clientID.trim());
+                                ps.setString(3, timestamp.trim());
+                                ps.setDouble(4, previousBalance);
+                                ps.setDouble(5, amountDeposited);
+                                ps.setDouble(6, previousBalance+amountDeposited);
 
-                                String query_update = "UPDATE accounts SET currentBalance=? WHERE accountID=?";
-                                ps_update = my_connection.createConnection().prepareStatement(query_update);
-
-                                ps_update.setDouble(1, previousBalance+amountDeposited);
-                                ps_update.setString(2, accountID);
-
-                                if(ps_update.executeUpdate() > 0)
+                                if(ps.executeUpdate() > 0)
                                 {
-                                    JOptionPane.showMessageDialog(this, "Deposit successful.");
-                                    ClearFields();
+                                    PreparedStatement ps_update;
+
+                                    String query_update = "UPDATE accounts SET currentBalance=? WHERE accountID=?";
+                                    ps_update = my_connection.createConnection().prepareStatement(query_update);
+
+                                    ps_update.setDouble(1, previousBalance+amountDeposited);
+                                    ps_update.setString(2, accountID);
+
+                                    if(ps_update.executeUpdate() > 0)
+                                    {
+                                        JOptionPane.showMessageDialog(this, "Deposit successful.");
+                                        ClearFields();
+                                    }
                                 }
-                            }
-                            else
-                                JOptionPane.showMessageDialog(this, "Deposit unsuccessful.");
-                        } catch (SQLException ex) {
-                                    Logger.getLogger(DepositFund.class.getName()).log(Level.SEVERE, null, ex);
-                          }
-//                    }
+                                else
+                                    JOptionPane.showMessageDialog(this, "Deposit unsuccessful.");
+                            } catch (SQLException ex) {
+                                Logger.getLogger(DepositFund.class.getName()).log(Level.SEVERE, null, ex);
+                              }
+                        }
+                    }
                 }
             }
-        }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Please enter a valid amount to be deposited!", "Input amount error", JOptionPane.ERROR_MESSAGE);   
+          }
     }//GEN-LAST:event_jButtonDepositActionPerformed
 
     private void jButtonClearFieldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearFieldsActionPerformed
@@ -463,25 +475,14 @@ public class DepositFund extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jButtonExitActionPerformed
 
+    private void jTextFieldAccountIDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldAccountIDKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER)
+            jButtonFind.doClick();
+    }//GEN-LAST:event_jTextFieldAccountIDKeyPressed
+
     private boolean IsAccountIDReplaced()
     {
-        boolean result=false;
-            try {
-        ResultSet rs_select;
-                PreparedStatement ps_select;
-
-            String selectQuery = "SELECT a.accountID, c.lastName, c.firstName, c.middleName FROM accounts a, clients c WHERE a.accountID=? AND c.clientID=a.clientID";
-
-            ps_select = my_connection.createConnection().prepareStatement(selectQuery);
-            ps_select.setString(1, jTextFieldAccountID.getText().trim());
-            rs_select = ps_select.executeQuery();
-            rs_select.next();
-            return rs_select.getRow()==0;
-            } catch (SQLException ex) {
-                Logger.getLogger(DepositFund.class.getName()).log(Level.SEVERE, null, ex);
-              }
-            System.out.println(result);
-            return result;
+        return !jTextFieldAccountID.getText().trim().toUpperCase().equals(storedAccountID);
     }
     
     private void ClearFields()

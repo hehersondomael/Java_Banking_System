@@ -5,6 +5,7 @@
  */
 package com.hehersondomael.java_banking_system;
 
+import java.awt.event.KeyEvent;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -54,7 +55,7 @@ public class AddNewAccount extends javax.swing.JInternalFrame {
         jComboBoxAccountType = new javax.swing.JComboBox<>();
         jButtonClearFields = new javax.swing.JButton();
         jButtonExit = new javax.swing.JButton();
-        jButtonFindClientID = new javax.swing.JButton();
+        jButtonFind = new javax.swing.JButton();
         jLabelAccountID = new javax.swing.JLabel();
         jLabelMiddleName = new javax.swing.JLabel();
         jLabelBranch = new javax.swing.JLabel();
@@ -133,10 +134,10 @@ public class AddNewAccount extends javax.swing.JInternalFrame {
             }
         });
 
-        jButtonFindClientID.setText("Find");
-        jButtonFindClientID.addActionListener(new java.awt.event.ActionListener() {
+        jButtonFind.setText("Find");
+        jButtonFind.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonFindClientIDActionPerformed(evt);
+                jButtonFindActionPerformed(evt);
             }
         });
 
@@ -152,6 +153,12 @@ public class AddNewAccount extends javax.swing.JInternalFrame {
         jTextFieldAccountID.setEditable(false);
         jTextFieldAccountID.setBackground(new java.awt.Color(204, 204, 204));
         jTextFieldAccountID.setFocusable(false);
+
+        jTextFieldClientID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldClientIDKeyPressed(evt);
+            }
+        });
 
         jTextFieldLastName.setEditable(false);
         jTextFieldLastName.setBackground(new java.awt.Color(204, 204, 204));
@@ -195,8 +202,7 @@ public class AddNewAccount extends javax.swing.JInternalFrame {
                             .addComponent(jTextFieldBalanceInPHP, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBoxAccountType, javax.swing.GroupLayout.Alignment.LEADING, 0, 263, Short.MAX_VALUE)
                             .addComponent(jTextFieldBranch, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldMiddleName, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldFirstName, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addComponent(jTextFieldMiddleName, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jTextFieldAccountID, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jTextFieldLastName, javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,7 +215,8 @@ public class AddNewAccount extends javax.swing.JInternalFrame {
                             .addGroup(jPanelAddNewAccountLayout.createSequentialGroup()
                                 .addComponent(jTextFieldClientID, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonFindClientID)))))
+                                .addComponent(jButtonFind)))
+                        .addComponent(jTextFieldFirstName)))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanelAddNewAccountLayout.setVerticalGroup(
@@ -223,7 +230,7 @@ public class AddNewAccount extends javax.swing.JInternalFrame {
                 .addComponent(jLabelClientIDNotFound)
                 .addGap(1, 1, 1)
                 .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonFindClientID)
+                    .addComponent(jButtonFind)
                     .addComponent(jLabelClientID, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldClientID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -231,9 +238,9 @@ public class AddNewAccount extends javax.swing.JInternalFrame {
                     .addComponent(jLabelLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelAddNewAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelMiddleName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -288,7 +295,7 @@ public class AddNewAccount extends javax.swing.JInternalFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabelDescription1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabelDescription2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,12 +358,12 @@ public class AddNewAccount extends javax.swing.JInternalFrame {
                 double currentBalance = Double.valueOf(balance);
                 if (OwnsAccountOfType(clientID, accountType))
                 {
-                    JOptionPane.showMessageDialog(rootPane, "Client already owns an account of the input Account Type!", "Account type ownership limit reached", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(rootPane, "Client already owns an account of " + accountType + " type!", "Account type ownership limit reached", JOptionPane.ERROR_MESSAGE);
                     jComboBoxAccountType.requestFocus();
                 }
                 else
                 {
-                    if (currentBalance <= 10000)
+                    if (currentBalance < 10000)
                         JOptionPane.showMessageDialog(rootPane, "Balance cannot be lower than PHP 10,000.00!", "Minimum balance required", JOptionPane.ERROR_MESSAGE);
                     else
                     {
@@ -394,7 +401,7 @@ public class AddNewAccount extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jButtonAddAccountActionPerformed
 
-    private void jButtonFindClientIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFindClientIDActionPerformed
+    private void jButtonFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFindActionPerformed
         String clientID = jTextFieldClientID.getText().trim().toUpperCase();
 
         try {
@@ -430,7 +437,7 @@ public class AddNewAccount extends javax.swing.JInternalFrame {
 
                     if (rs_count.getInt("COUNT(clientID)")>=3)
                     {
-                        jLabelClientIDNotFound.setText("Client already owns an account!");
+                        jLabelClientIDNotFound.setText("Client account ownership exceeded!");
                         jTextFieldLastName.setText("");
                         jTextFieldFirstName.setText("");
                         jTextFieldMiddleName.setText("");
@@ -445,6 +452,7 @@ public class AddNewAccount extends javax.swing.JInternalFrame {
                         jTextFieldFirstName.setText(rs.getString("firstName"));
                         jTextFieldMiddleName.setText(rs.getString("middleName"));
                         jTextFieldBranch.setText(rs.getString("branch"));
+                        jComboBoxAccountType.requestFocus();
                     }
                 } catch (SQLException ex) {
                     Logger.getLogger(AddNewAccount.class.getName()).log(Level.SEVERE, null, ex);
@@ -453,7 +461,7 @@ public class AddNewAccount extends javax.swing.JInternalFrame {
         } catch (SQLException ex) {
             Logger.getLogger(AddNewAccount.class.getName()).log(Level.SEVERE, null, ex);
           }
-    }//GEN-LAST:event_jButtonFindClientIDActionPerformed
+    }//GEN-LAST:event_jButtonFindActionPerformed
 
     private void jButtonClearFieldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearFieldsActionPerformed
         GenerateAccountID();
@@ -477,6 +485,11 @@ public class AddNewAccount extends javax.swing.JInternalFrame {
         else
             setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }//GEN-LAST:event_jButtonExitActionPerformed
+
+    private void jTextFieldClientIDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldClientIDKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER)
+            jButtonFind.doClick();
+    }//GEN-LAST:event_jTextFieldClientIDKeyPressed
 
     private void GenerateAccountID() {
         try {
@@ -529,17 +542,18 @@ public class AddNewAccount extends javax.swing.JInternalFrame {
     {
         PreparedStatement ps;
         ResultSet rs;
-        String query = "SELECT * FROM clients WHERE clientID=? AND accountType=?";
+        String query = "SELECT * FROM accounts WHERE clientID=? AND accountType=?";
         try {
-        ps = my_connection.createConnection().prepareStatement(query);
-        ps.setString(1,clientID);
-        ps.setString(2, accountType);
-        rs = ps.executeQuery();
-        rs.next();
+            ps = my_connection.createConnection().prepareStatement(query);
+            ps.setString(1,clientID);
+            ps.setString(2, accountType);
+            rs = ps.executeQuery();
+            rs.next();
 
-        return rs.getRow() != 0;
+            return rs.getRow() != 0;
         } catch(SQLException ex) {
-            return true;
+           Logger.getLogger(AddNewAccount.class.getName()).log(Level.SEVERE, null, ex);
+           return true;
         }
     }
 
@@ -547,7 +561,7 @@ public class AddNewAccount extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButtonAddAccount;
     private javax.swing.JButton jButtonClearFields;
     private javax.swing.JButton jButtonExit;
-    private javax.swing.JButton jButtonFindClientID;
+    private javax.swing.JButton jButtonFind;
     private javax.swing.JComboBox<String> jComboBoxAccountType;
     private javax.swing.JLabel jLabelAccountID;
     private javax.swing.JLabel jLabelAccountType;

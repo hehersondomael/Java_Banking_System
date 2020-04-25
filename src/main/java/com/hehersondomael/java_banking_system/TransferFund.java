@@ -6,6 +6,7 @@
 package com.hehersondomael.java_banking_system;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -215,6 +216,12 @@ public class TransferFund extends javax.swing.JInternalFrame {
 
         jLabel26.setText("Source Account ID:");
 
+        jTextFieldDestinationAccountID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldDestinationAccountIDKeyPressed(evt);
+            }
+        });
+
         jLabelDestinationFullName.setText("Full Name:");
 
         jLabelAccountType.setText("Account Type:");
@@ -226,6 +233,12 @@ public class TransferFund extends javax.swing.JInternalFrame {
         jTextFieldDestinationClientID.setEditable(false);
         jTextFieldDestinationClientID.setBackground(new java.awt.Color(204, 204, 204));
         jTextFieldDestinationClientID.setFocusable(false);
+
+        jTextFieldSourceAccountID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldSourceAccountIDKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelTransferFundLayout = new javax.swing.GroupLayout(jPanelTransferFund);
         jPanelTransferFund.setLayout(jPanelTransferFundLayout);
@@ -547,11 +560,11 @@ public class TransferFund extends javax.swing.JInternalFrame {
                 String firstName = rs.getString(3);
                 String middleName = rs.getString(4).trim();
                 String accountType = rs.getString(5);
-                String balance = rs.getString(6);
+                Double balance = rs.getDouble(6);
                 jTextFieldSourceClientID.setText(clientID.trim());
                 jTextFieldSourceFullName.setText(lastName.trim() + ", " + firstName.trim() + " " + middleName.substring(0,1) + ".");
                 jTextFieldSourceAccountType.setText(accountType.trim());
-                jTextFieldSourceBalanceInPHP.setText(balance.trim());
+                jTextFieldSourceBalanceInPHP.setText(String.format("%.2f", balance).trim());
                 jTextFieldDestinationAccountID.requestFocus();
                 storedSourceAccountID = jTextFieldSourceAccountID.getText().trim().toUpperCase();
             }
@@ -588,11 +601,11 @@ public class TransferFund extends javax.swing.JInternalFrame {
                 String firstName = rs.getString(3);
                 String middleName = rs.getString(4).trim();
                 String accountType = rs.getString(5);
-                String balance = rs.getString(6);
+                Double balance = rs.getDouble(6);
                 jTextFieldDestinationClientID.setText(clientID.trim());
                 jTextFieldDestinationFullName.setText(lastName.trim() + ", " + firstName.trim() + " " + middleName.substring(0,1) + ".");
                 jTextFieldDestinationAccountType.setText(accountType.trim());
-                jTextFieldDestinationBalanceInPHP.setText(balance.trim());
+                jTextFieldDestinationBalanceInPHP.setText(String.format("%.2f", balance).trim());
                 jTextFieldAmountToBeTransferred.requestFocus();
                 storedDestinationAccountID = jTextFieldDestinationAccountID.getText().trim().toUpperCase();
             }
@@ -602,181 +615,190 @@ public class TransferFund extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonFindDestinationActionPerformed
 
     private void jButtonTransferActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransferActionPerformed
-        SimpleDateFormat format_2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String timestamp = format_2.format(date).trim();
-        String sourceAccountID = jTextFieldSourceAccountID.getText().toUpperCase();
-        String sourceClientID = jTextFieldSourceClientID.getText();
-        String sourceAccountType = jTextFieldSourceAccountType.getText();
-        String sourceBalanceInPHP = jTextFieldSourceBalanceInPHP.getText();
-        String destinationAccountID = jTextFieldDestinationAccountID.getText().toUpperCase();
-        String destinationClientID = jTextFieldDestinationClientID.getText();
-        String destinationAccountType = jTextFieldDestinationAccountType.getText();
-        String destinationBalanceInPHP = jTextFieldDestinationBalanceInPHP.getText();
-        String amount = jTextFieldAmountToBeTransferred.getText();        
-        
-        if(sourceAccountID.equals("") || sourceClientID.equals("") || destinationAccountID.equals("") || destinationClientID.equals("") || amount.trim().equals(""))
-            JOptionPane.showMessageDialog(rootPane, "Please fill up the form completetely.", "All fields required", JOptionPane.ERROR_MESSAGE);
-        else
-        {
-            if(IsSourceAccountIDReplaced() && IsDestinationAccountIDReplaced())
-                JOptionPane.showMessageDialog(rootPane, "Source and Destination Account ID has been modified!", "Credentials matching error", JOptionPane.ERROR_MESSAGE);
-            else if(IsSourceAccountIDReplaced())
-                JOptionPane.showMessageDialog(rootPane, "Source Account ID has been modified!", "Credentials matching error", JOptionPane.ERROR_MESSAGE);
-            else if(IsDestinationAccountIDReplaced())
-                JOptionPane.showMessageDialog(rootPane, "Destination Account ID has been modified!", "Credentials matching error", JOptionPane.ERROR_MESSAGE);
+        try {
+            SimpleDateFormat format_2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String timestamp = format_2.format(date).trim();
+            String sourceAccountID = jTextFieldSourceAccountID.getText().toUpperCase();
+            String sourceClientID = jTextFieldSourceClientID.getText();
+            String sourceAccountType = jTextFieldSourceAccountType.getText();
+            String sourceBalanceInPHP = jTextFieldSourceBalanceInPHP.getText();
+            String destinationAccountID = jTextFieldDestinationAccountID.getText().toUpperCase();
+            String destinationClientID = jTextFieldDestinationClientID.getText();
+            String destinationAccountType = jTextFieldDestinationAccountType.getText();
+            String destinationBalanceInPHP = jTextFieldDestinationBalanceInPHP.getText();
+            String amount = jTextFieldAmountToBeTransferred.getText();        
+
+            if(sourceAccountID.equals("") || sourceClientID.equals("") || destinationAccountID.equals("") || destinationClientID.equals("") || amount.trim().equals(""))
+                JOptionPane.showMessageDialog(rootPane, "Please fill up the form completetely.", "All fields required", JOptionPane.ERROR_MESSAGE);
             else
             {
-                int sourceClientIDKey = 1;
-                int destinationClientIDKey = 1;
-                int sourceAccountIDKey = 1;
-                int destinationAccountIDKey = 1;
-
-                PreparedStatement psa;
-                ResultSet rsa;
-                String querya = "SELECT id FROM clients WHERE clientID=?";
-                try {
-                    psa = my_connection.createConnection().prepareStatement(querya);
-                    psa.setString(1, sourceClientID);
-                    rsa = psa.executeQuery();
-                    rsa.next();
-                    sourceClientIDKey = rsa.getInt("id");
-                } catch (SQLException ex) {
-                    Logger.getLogger(TransferFund.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                PreparedStatement psb;
-                ResultSet rsb;
-                String queryb = "SELECT id FROM clients WHERE clientID=?";
-                try {
-                    psb = my_connection.createConnection().prepareStatement(queryb);
-                    psb.setString(1, destinationClientID);
-                    rsb = psb.executeQuery();
-                    rsb.next();
-                    destinationClientIDKey = rsb.getInt("id");
-                } catch (SQLException ex) {
-                    Logger.getLogger(TransferFund.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                PreparedStatement psc;
-                ResultSet rsc;
-                String queryc = "SELECT id FROM accounts WHERE accountID=?";
-                try {
-                    psc = my_connection.createConnection().prepareStatement(queryc);
-                    psc.setString(1, sourceAccountID);
-                    rsc = psc.executeQuery();
-                    rsc.next();
-                    sourceAccountIDKey = rsc.getInt("id");
-                } catch (SQLException ex) {
-                    Logger.getLogger(TransferFund.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                PreparedStatement psd;
-                ResultSet rsd;
-                String queryd = "SELECT id FROM accounts WHERE accountID=?";
-                try {
-                    psd = my_connection.createConnection().prepareStatement(queryd);
-                    psd.setString(1, destinationAccountID);
-                    rsd = psd.executeQuery();
-                    rsd.next();
-                    destinationAccountIDKey = rsd.getInt("id");
-                } catch (SQLException ex) {
-                    Logger.getLogger(TransferFund.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                if (destinationClientIDKey==sourceClientIDKey && sourceAccountID.equals(destinationAccountID))
-                {
-                    JOptionPane.showMessageDialog(rootPane, "Source and destination Account ID cannot be the same!", "Input Account ID error", JOptionPane.ERROR_MESSAGE);
-                    jTextFieldDestinationAccountID.requestFocus();
-                }
-                else if(destinationClientIDKey==sourceClientIDKey)
-                {
-                    JOptionPane.showMessageDialog(rootPane, "Fund transfer to account also owned by source client not allowed!", "Transfer not allowed", JOptionPane.ERROR_MESSAGE);
-                    jTextFieldDestinationAccountID.requestFocus();
-                }
+                if(IsSourceAccountIDReplaced() && IsDestinationAccountIDReplaced())
+                    JOptionPane.showMessageDialog(rootPane, "Source and Destination Account ID has been modified!", "Credentials matching error", JOptionPane.ERROR_MESSAGE);
+                else if(IsSourceAccountIDReplaced())
+                    JOptionPane.showMessageDialog(rootPane, "Source Account ID has been modified!", "Credentials matching error", JOptionPane.ERROR_MESSAGE);
+                else if(IsDestinationAccountIDReplaced())
+                    JOptionPane.showMessageDialog(rootPane, "Destination Account ID has been modified!", "Credentials matching error", JOptionPane.ERROR_MESSAGE);
                 else
                 {
+                    int sourceClientIDKey = 1;
+                    int destinationClientIDKey = 1;
+                    int sourceAccountIDKey = 1;
+                    int destinationAccountIDKey = 1;
+
+                    PreparedStatement psa;
+                    ResultSet rsa;
+                    String querya = "SELECT id FROM clients WHERE clientID=?";
                     try {
-                        double sourceBalance = Double.valueOf(sourceBalanceInPHP);
-                        double destinationBalance = Double.valueOf(destinationBalanceInPHP);
-                        double amountToBeTransferred = Double.valueOf(amount);
-
-                        if (amountToBeTransferred <= 0)
-                            JOptionPane.showMessageDialog(rootPane, "Invalid input Amount to be Transferred.", "Input amount error", JOptionPane.ERROR_MESSAGE);
-                        else
-                        {
-                            double sourceTransferFee = 0.0;
-                            double destinationTransferFee = 0.0;
-                            switch (sourceAccountType)
-                            {
-                                case "Savings": sourceTransferFee=60.0; break;
-                                case "Fixed":   sourceTransferFee=50.0; break;
-                                case "Current": sourceTransferFee=40.0; break;
-                            }
-                            switch (destinationAccountType)
-                            {
-                                case "Savings": destinationTransferFee=80.0; break;
-                                case "Fixed":   destinationTransferFee=75.0; break;
-                                case "Current": destinationTransferFee=50.0; break;
-                            }
-
-                            double newBalance_source = sourceBalance - amountToBeTransferred - sourceTransferFee;
-                            double newBalance_destination = destinationBalance + amountToBeTransferred - destinationTransferFee;
-
-                            PreparedStatement ps_update_source;
-                            String query_update_source = "UPDATE accounts SET currentBalance=? WHERE accountID=?";
-                            ps_update_source = my_connection.createConnection().prepareStatement(query_update_source);
-                            ps_update_source.setDouble(1, newBalance_source);
-                            ps_update_source.setString(2, sourceAccountID);
-
-                            if(ps_update_source.executeUpdate()>0)
-                            {
-                                PreparedStatement ps_update_destination;
-                                String query_update_destination = "UPDATE accounts SET currentBalance=? WHERE accountID=?";
-                                ps_update_destination = my_connection.createConnection().prepareStatement(query_update_destination);
-                                ps_update_destination.setDouble(1, newBalance_destination);
-                                ps_update_destination.setString(2, destinationAccountID);
-
-                                if(ps_update_destination.executeUpdate()>0)
-                                {
-                                    PreparedStatement ps4;
-                                    String query4 = "INSERT INTO transfer (timestamp, sourceAccountID, sourceClientID, destinationAccountID, "
-                                            + "destinationClientID, amountToBeTransferred, sourcePreviousBalance, sourceTransferFee, sourceNewBalance, "
-                                            + "destinationPreviousBalance, destinationTransferFee, destinationNewBalance) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-                                    ps4 = my_connection.createConnection().prepareStatement(query4);
-                                    ps4.setString(1, timestamp);
-                                    ps4.setString(2, sourceAccountID);
-                                    ps4.setString(3, sourceClientID);
-                                    ps4.setString(4, destinationAccountID);
-                                    ps4.setString(5, destinationClientID);
-                                    ps4.setDouble(6, amountToBeTransferred);
-                                    ps4.setDouble(7, sourceBalance);
-                                    ps4.setDouble(8, sourceTransferFee);
-                                    ps4.setDouble(9, newBalance_source);
-                                    ps4.setDouble(10, destinationBalance);
-                                    ps4.setDouble(11, destinationTransferFee);
-                                    ps4.setDouble(12, newBalance_destination);
-
-                                    if(ps4.executeUpdate()>0)
-                                    {
-                                        JOptionPane.showMessageDialog(this, "Transfer successful.");
-                                        ClearDestinationFields();
-                                        ClearSourceFields();
-                                        jTextFieldSourceAccountID.setText("");
-                                        jTextFieldDestinationAccountID.setText("");
-                                        jTextFieldAmountToBeTransferred.setText("");
-                                        jTextFieldSourceAccountID.requestFocus();
-                                    }
-                                }
-                                else
-                                    JOptionPane.showMessageDialog(this, "Transfer unsuccessful.");
-                            }
-                        }
+                        psa = my_connection.createConnection().prepareStatement(querya);
+                        psa.setString(1, sourceClientID);
+                        rsa = psa.executeQuery();
+                        rsa.next();
+                        sourceClientIDKey = rsa.getInt("id");
                     } catch (SQLException ex) {
                         Logger.getLogger(TransferFund.class.getName()).log(Level.SEVERE, null, ex);
-                      }
+                    }
+
+                    PreparedStatement psb;
+                    ResultSet rsb;
+                    String queryb = "SELECT id FROM clients WHERE clientID=?";
+                    try {
+                        psb = my_connection.createConnection().prepareStatement(queryb);
+                        psb.setString(1, destinationClientID);
+                        rsb = psb.executeQuery();
+                        rsb.next();
+                        destinationClientIDKey = rsb.getInt("id");
+                    } catch (SQLException ex) {
+                        Logger.getLogger(TransferFund.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    PreparedStatement psc;
+                    ResultSet rsc;
+                    String queryc = "SELECT id FROM accounts WHERE accountID=?";
+                    try {
+                        psc = my_connection.createConnection().prepareStatement(queryc);
+                        psc.setString(1, sourceAccountID);
+                        rsc = psc.executeQuery();
+                        rsc.next();
+                        sourceAccountIDKey = rsc.getInt("id");
+                    } catch (SQLException ex) {
+                        Logger.getLogger(TransferFund.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    PreparedStatement psd;
+                    ResultSet rsd;
+                    String queryd = "SELECT id FROM accounts WHERE accountID=?";
+                    try {
+                        psd = my_connection.createConnection().prepareStatement(queryd);
+                        psd.setString(1, destinationAccountID);
+                        rsd = psd.executeQuery();
+                        rsd.next();
+                        destinationAccountIDKey = rsd.getInt("id");
+                    } catch (SQLException ex) {
+                        Logger.getLogger(TransferFund.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    if (destinationClientIDKey==sourceClientIDKey && sourceAccountID.equals(destinationAccountID))
+                    {
+                        JOptionPane.showMessageDialog(rootPane, "Source and destination Account ID cannot be the same!", "Input Account ID error", JOptionPane.ERROR_MESSAGE);
+                        jTextFieldDestinationAccountID.requestFocus();
+                    }
+                    else if(destinationClientIDKey==sourceClientIDKey)
+                    {
+                        JOptionPane.showMessageDialog(rootPane, "Fund transfer to account also owned by source client not allowed!", "Transfer not allowed", JOptionPane.ERROR_MESSAGE);
+                        jTextFieldDestinationAccountID.requestFocus();
+                    }
+                    else
+                    {
+                        try {
+                            double sourceBalance = Double.valueOf(sourceBalanceInPHP);
+                            double destinationBalance = Double.valueOf(destinationBalanceInPHP);
+                            double amountToBeTransferred = Double.valueOf(amount);
+
+                            if (amountToBeTransferred <= 0)
+                                JOptionPane.showMessageDialog(rootPane, "Invalid input Amount to be Transferred.", "Input amount error", JOptionPane.ERROR_MESSAGE);
+                            else
+                            {
+                                double sourceTransferFee = 0.0;
+                                double destinationTransferFee = 0.0;
+                                switch (sourceAccountType)
+                                {
+                                    case "Savings": sourceTransferFee=60.0; break;
+                                    case "Fixed":   sourceTransferFee=50.0; break;
+                                    case "Current": sourceTransferFee=40.0; break;
+                                }
+                                switch (destinationAccountType)
+                                {
+                                    case "Savings": destinationTransferFee=80.0; break;
+                                    case "Fixed":   destinationTransferFee=75.0; break;
+                                    case "Current": destinationTransferFee=50.0; break;
+                                }
+
+                                double newBalance_source = sourceBalance - amountToBeTransferred - sourceTransferFee;
+                                double newBalance_destination = destinationBalance + amountToBeTransferred - destinationTransferFee;
+
+                                if (newBalance_source < 10000)
+                                    JOptionPane.showMessageDialog(rootPane, "New source balance will now become less than PHP 10,000.00!", "Transfer not allowed", JOptionPane.ERROR_MESSAGE);
+                                else
+                                {
+                                    PreparedStatement ps_update_source;
+                                    String query_update_source = "UPDATE accounts SET currentBalance=? WHERE accountID=?";
+                                    ps_update_source = my_connection.createConnection().prepareStatement(query_update_source);
+                                    ps_update_source.setDouble(1, newBalance_source);
+                                    ps_update_source.setString(2, sourceAccountID);
+
+                                    if(ps_update_source.executeUpdate()>0)
+                                    {
+                                        PreparedStatement ps_update_destination;
+                                        String query_update_destination = "UPDATE accounts SET currentBalance=? WHERE accountID=?";
+                                        ps_update_destination = my_connection.createConnection().prepareStatement(query_update_destination);
+                                        ps_update_destination.setDouble(1, newBalance_destination);
+                                        ps_update_destination.setString(2, destinationAccountID);
+
+                                        if(ps_update_destination.executeUpdate()>0)
+                                        {
+                                            PreparedStatement ps4;
+                                            String query4 = "INSERT INTO transfer (timestamp, sourceAccountID, sourceClientID, destinationAccountID, "
+                                                    + "destinationClientID, amountToBeTransferred, sourcePreviousBalance, sourceTransferFee, sourceNewBalance, "
+                                                    + "destinationPreviousBalance, destinationTransferFee, destinationNewBalance) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+                                            ps4 = my_connection.createConnection().prepareStatement(query4);
+                                            ps4.setString(1, timestamp);
+                                            ps4.setString(2, sourceAccountID);
+                                            ps4.setString(3, sourceClientID);
+                                            ps4.setString(4, destinationAccountID);
+                                            ps4.setString(5, destinationClientID);
+                                            ps4.setDouble(6, amountToBeTransferred);
+                                            ps4.setDouble(7, sourceBalance);
+                                            ps4.setDouble(8, sourceTransferFee);
+                                            ps4.setDouble(9, newBalance_source);
+                                            ps4.setDouble(10, destinationBalance);
+                                            ps4.setDouble(11, destinationTransferFee);
+                                            ps4.setDouble(12, newBalance_destination);
+
+                                            if(ps4.executeUpdate()>0)
+                                            {
+                                                JOptionPane.showMessageDialog(this, "Transfer completed successfully.");
+                                                ClearDestinationFields();
+                                                ClearSourceFields();
+                                                jTextFieldSourceAccountID.setText("");
+                                                jTextFieldDestinationAccountID.setText("");
+                                                jTextFieldAmountToBeTransferred.setText("");
+                                                jTextFieldSourceAccountID.requestFocus();
+                                            }
+                                        }
+                                        else
+                                            JOptionPane.showMessageDialog(this, "Transfer completed unsuccessfully.");
+                                    }
+                                }
+                            }
+                        } catch (SQLException ex) {
+                            Logger.getLogger(TransferFund.class.getName()).log(Level.SEVERE, null, ex);
+                          }
+                    }
                 }
             }
-        }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Please enter a valid amount to be deposited!", "Input amount error", JOptionPane.ERROR_MESSAGE);   
+          }
     }//GEN-LAST:event_jButtonTransferActionPerformed
 
     private void jButtonClearFieldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearFieldsActionPerformed
@@ -803,6 +825,16 @@ public class TransferFund extends javax.swing.JInternalFrame {
             jTextFieldSourceAccountID.requestFocus();
         }
     }//GEN-LAST:event_jButtonExitActionPerformed
+
+    private void jTextFieldSourceAccountIDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSourceAccountIDKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER)
+            jButtonFindSource.doClick();
+    }//GEN-LAST:event_jTextFieldSourceAccountIDKeyPressed
+
+    private void jTextFieldDestinationAccountIDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDestinationAccountIDKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER)
+            jButtonFindDestination.doClick();
+    }//GEN-LAST:event_jTextFieldDestinationAccountIDKeyPressed
 
     private void ClearSourceFields()
     {

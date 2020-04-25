@@ -1,83 +1,45 @@
-THE H BANK
-*Hypothetical bank
-*Minimum balance required to secure account: P10,000.00
-*Client can earn only up to two (2) accounts
-*Account-to-account fund transfer fee
-	For Source Account:		For Source Account:
+THE H BANK: FEATURES
+*Consists of three account types: Savings, Fixed, Current
+*Requires a minimum balance of PHP 10,000.00 for all types of account
+*Requires a minimum balance of PHP 1,000,000.00 for all types of account
+*Allows client to register up to one (1) account for each account type
+*Imposes the following fund transfer fees for account-to-account fund transfer transactions:
+	For Source Account:		For Destination Account:
 	Savings	PHP 60.00		Savings	PHP 80.00
 	Fixed	PHP 50.00		Fixed	PHP 75.00
 	Current	PHP 40.00		Current	PHP 50.00
-*No interest bank
-
-*Shall have a Minimum amount to be deposited
-Improve overall design of the system
-Finish other Menu
-Invalidate non-numeric inputs on 'financial' text fields (possible solution: NumberFormatException)
-Include a search bar
-Set Enter key as "default Submit button"
-Optimize overall code
-
-On launch of Customer
-*Add more Account Type
-
-On launch of Withdraw
-*Set Balance as floating number
-*Check if withdrawn money makes account sufficient
-
-On launch of Deposit
-*On click of OK button, immediately change balance, clear Account No. fields
-*If fields are filled up and user clicked Cancel, show dialog if are you sure? your progress won't be saved
-
-On Transfer Fund
-*Show current balance of both accounts
-*Function Cancel button
-*Check if source account has sufficient amount to transfer
+*Imposes interest-free rates on saved funds
 
 
 COMPLETED ENHANCEMENTS
-Features
+*General enhancements
+	Improved overall design of internal frames
+	Set windows as non-resizeable
+	Set uniform size of internal frames
+	Added shortcut keys for menu lists
+	Added "Clear Fields" button on selected internal frames which consist of fill-up forms that require input data
+	Added "Exit" button on all internal frames which allows user to close the selected internal frame
+	Set "Enter" as trigger key for selected buttons
+	Invalidate non-numeric inputs or those that are equal to or less than 0 on text fields requiring numeric inputs
+	Added an alert box that will prompt user to complete input data on fill-up forms with required input data
+	Added an alert box that will prompt user if balance of the selected source account on a transaction will become below PHP10,000.00
+	Added a sortable, clickable, and uneditable table of registered accounts or clients which, upon clicking a data row, will display complete account or client credentials on menu lists at View menu
 *Login Page
-*Main Menu (Menu lists accessible via shortcut keys)
-	Home (About the System, About the Developer)
-	Add New (Client, Account)
-	Transact (Deposit, Withdraw, Transfer Fund)
-	View (Client Credentials)
-	Settings (Change Password, Log Out)
+	Set login credentials as case-sensitive
+*Main Menu
+	Consists of the following menu and menu lists:
+		Home (About the System, About the Developer)
+		Add New (Client, Account)
+		Transact (Deposit, Withdraw, Transfer Fund)
+		View (Client Credentials)
+		Settings (Change Password, Log Out)
+*Client Credentials
+	Added a feature that allows user to modify existing client credentials
+*Account Balance
+	Added a timestamp-sorted table which tracks cash flow of the selected account
+	
 
-Login Page
-*Set login credentials as case-sensitive
-
-Add New Client
-*Added "Clear Fields" button
-*Added "Exit" button
-*Added an alert box that will prompt user to complete input data
-*Set auto-generated texts in some Text Fields as uneditable
-
-Add New Account
-*Added "Clear Fields" button
-*Added "Exit" button
-*Added an alert box that will prompt user to complete input data
-*Added an alert box that will prompt user if balance is below PHP10,000.00
-*Set auto-generated texts in some Text Fields as uneditable
-
-Deposit Fund
-*Added an alert box that will prompt user if new balance is below PHP10,000.00
-*Added an alert box that will prompt user if "Amount to be Deposited" is less than or equal to 0
-
-Withdraw Fund
-*Added an alert box that will prompt user if "Amount to be Withdrawn" is less than or equal to 0
-
-Client Credentials
-*Added a sortable, clickable, and uneditable table of registered clients which, upon clicking a data row, will display complete client credentials
-*Added a feature that will allow user to modify existing client credentials
-
-Account Balance
-*Added a sortable, clickable, and uneditable table of registered account which, upon clicking a data row, will display complete account credentials
-*Added a timestamp-sorted table which tracks cash flow of the selected account
-
-Other
-*Improved overall design of internal frames
-*Set windows as non-resizeable
-*Set uniform size of internal frames
-*Showed dialog when user closes the Main Menu Window
-*Added shortcut keys for each menu
+RECOMMENDATIONS
+*Show a menu which will allow the user to view earnings from Transfer Fund transactions
+*Include a search bar for Client Credentials and Account Balance
+*Optimize overall code

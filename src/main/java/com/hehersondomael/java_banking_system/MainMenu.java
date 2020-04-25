@@ -5,8 +5,6 @@
  */
 package com.hehersondomael.java_banking_system;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -54,7 +52,7 @@ public class MainMenu extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItemAboutTheDeveloper = new javax.swing.JMenuItem();
         jMenuAddNew = new javax.swing.JMenu();
         jMenuItemClient = new javax.swing.JMenuItem();
         jMenuItemAccount = new javax.swing.JMenuItem();
@@ -91,9 +89,14 @@ public class MainMenu extends javax.swing.JFrame {
         jMenuItem9.setText("About the System");
         jMenu1.add(jMenuItem9);
 
-        jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK));
-        jMenuItem10.setText("About the Developer");
-        jMenu1.add(jMenuItem10);
+        jMenuItemAboutTheDeveloper.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK));
+        jMenuItemAboutTheDeveloper.setText("About the Developer");
+        jMenuItemAboutTheDeveloper.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAboutTheDeveloperActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemAboutTheDeveloper);
 
         jMenuBar1.add(jMenu1);
 
@@ -272,6 +275,12 @@ public class MainMenu extends javax.swing.JFrame {
                     setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }//GEN-LAST:event_jMenuItemLogOutActionPerformed
 
+    private void jMenuItemAboutTheDeveloperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAboutTheDeveloperActionPerformed
+        AboutTheDeveloper aboutTheDeveloper = new AboutTheDeveloper();
+        jDesktopPane1.add(aboutTheDeveloper);
+        aboutTheDeveloper.setVisible(true);
+    }//GEN-LAST:event_jMenuItemAboutTheDeveloperActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -312,8 +321,8 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenuAddNew;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem jMenuItemAboutTheDeveloper;
     private javax.swing.JMenuItem jMenuItemAccount;
     private javax.swing.JMenuItem jMenuItemAccountBalance;
     private javax.swing.JMenuItem jMenuItemChangePassword;

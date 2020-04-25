@@ -575,7 +575,7 @@ public class ViewAccountBalance extends javax.swing.JInternalFrame {
             } catch (ParseException ex) {
                 Logger.getLogger(ViewAccountBalance.class.getName()).log(Level.SEVERE, null, ex);
             }
-            jTextFieldMobileNo.setText(rs.getString("mobileNo").trim());
+            jTextFieldMobileNo.setText("0" + rs.getString("mobileNo").trim());
             jTextFieldEmail.setText(rs.getString("email").trim());
             jTextFieldBranch.setText(rs.getString("branch").trim());  
             jComboBoxAccountType.setSelectedItem(rs.getString("accountType").trim());
@@ -731,8 +731,8 @@ public class ViewAccountBalance extends javax.swing.JInternalFrame {
                 row[0] = rs.getTimestamp(1);
 
                 row[1] = String.format("%.2f", rs.getDouble(2));
-                row[2] = rs.getDouble(3);
-                row[3] = rs.getDouble(4);
+                row[2] = String.format("%.2f", rs.getDouble(3));
+                row[3] = String.format("%.2f", rs.getDouble(4));
 
                                
                 

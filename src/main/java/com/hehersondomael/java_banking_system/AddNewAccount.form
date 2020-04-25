@@ -53,7 +53,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="151" max="32767" attributes="0"/>
+              <EmptySpace pref="152" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -186,7 +186,6 @@
                               <Component id="jComboBoxAccountType" alignment="0" pref="263" max="32767" attributes="0"/>
                               <Component id="jTextFieldBranch" alignment="0" max="32767" attributes="0"/>
                               <Component id="jTextFieldMiddleName" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextFieldFirstName" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
@@ -202,9 +201,10 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jTextFieldClientID" min="-2" pref="204" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButtonFindClientID" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButtonFind" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <Component id="jTextFieldFirstName" alignment="1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="62" max="32767" attributes="0"/>
@@ -223,7 +223,7 @@
                   <Component id="jLabelClientIDNotFound" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButtonFindClientID" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonFind" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelClientID" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="jTextFieldClientID" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -233,9 +233,9 @@
                       <Component id="jTextFieldLastName" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabelFirstName" min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="jTextFieldFirstName" min="-2" pref="20" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabelFirstName" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="jTextFieldFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -336,12 +336,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonExitActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButtonFindClientID">
+        <Component class="javax.swing.JButton" name="jButtonFind">
           <Properties>
             <Property name="text" type="java.lang.String" value="Find"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonFindClientIDActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonFindActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelAccountID">
@@ -379,6 +379,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldClientID">
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldClientIDKeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldLastName">
           <Properties>

@@ -453,7 +453,7 @@ public class ViewClientCredentials extends javax.swing.JInternalFrame {
               }
             jComboBoxCivilStatus.setSelectedItem(rs.getString("civilStatus").trim());
             jTextFieldHomeAddress.setText(rs.getString("homeAddress").trim());
-            jTextFieldMobileNo.setText(rs.getString("mobileNo").trim());
+            jTextFieldMobileNo.setText("0" + rs.getString("mobileNo").trim());
             jTextFieldEmail.setText(rs.getString("email").trim());
             jComboBoxBranch.setSelectedItem(rs.getString("branch").trim());
         } catch (SQLException ex) {

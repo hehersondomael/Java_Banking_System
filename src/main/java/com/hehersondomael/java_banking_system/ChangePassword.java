@@ -6,6 +6,7 @@
 package com.hehersondomael.java_banking_system;
 
 import java.awt.Desktop;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -126,6 +127,24 @@ public class ChangePassword extends javax.swing.JInternalFrame {
         jLabelAccountID.setText("Username:");
 
         jLabelAccountID1.setText("user");
+
+        jPasswordFieldOldPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPasswordFieldOldPasswordKeyPressed(evt);
+            }
+        });
+
+        jPasswordFieldNewPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPasswordFieldNewPasswordKeyPressed(evt);
+            }
+        });
+
+        jPasswordFieldReTypeNewPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPasswordFieldReTypeNewPasswordKeyPressed(evt);
+            }
+        });
 
         jLabelTheOldPassword.setForeground(new java.awt.Color(255, 0, 0));
         jLabelTheOldPassword.setText("Old password is incorrect.");
@@ -347,6 +366,21 @@ public class ChangePassword extends javax.swing.JInternalFrame {
             Logger.getLogger(ChangePassword.class.getName()).log(Level.SEVERE, null, ex);
           }
     }//GEN-LAST:event_jLabelClickMeHereMouseClicked
+
+    private void jPasswordFieldOldPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldOldPasswordKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER)
+            jPasswordFieldNewPassword.requestFocus();
+    }//GEN-LAST:event_jPasswordFieldOldPasswordKeyPressed
+
+    private void jPasswordFieldNewPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldNewPasswordKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER)
+            jPasswordFieldReTypeNewPassword.requestFocus();
+    }//GEN-LAST:event_jPasswordFieldNewPasswordKeyPressed
+
+    private void jPasswordFieldReTypeNewPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldReTypeNewPasswordKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER)
+            jPasswordFieldOldPassword.requestFocus();
+    }//GEN-LAST:event_jPasswordFieldReTypeNewPasswordKeyPressed
 
     private void ClearFields()
     {
