@@ -20,7 +20,6 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -37,6 +36,7 @@ public class ViewAccountBalance extends javax.swing.JInternalFrame {
         initComponents();
         FillAccountTable(jTableAccount);
         jLabelAccountTransactionLogAccountID.setText(" ");
+        jButtonRefreshData.requestFocus();
     }
 
     /**

@@ -31,7 +31,7 @@ public class ChangePassword extends javax.swing.JInternalFrame {
      */
     public ChangePassword() {
         initComponents();
-        jLabelClickMeHere.setText("<html><u>Click me here</u></html>");
+        jLabelClickMeHere.setText("<html>here.</html>");
         jLabelTheOldPassword.setText(" ");
     }
 
@@ -215,10 +215,10 @@ public class ChangePassword extends javax.swing.JInternalFrame {
 
         jLabelDescription3.setText("to secure your account. Have a secured and nice day ahead!");
 
-        jLabelDescription4.setText("How can I choose a good password for my account?");
+        jLabelDescription4.setText("How can I choose a good password for my account? Click");
 
         jLabelClickMeHere.setForeground(new java.awt.Color(0, 51, 204));
-        jLabelClickMeHere.setText("Click me here.");
+        jLabelClickMeHere.setText("here.");
         jLabelClickMeHere.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelClickMeHere.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -253,7 +253,7 @@ public class ChangePassword extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(96, 96, 96)
                 .addComponent(jLabelDescription4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(4, 4, 4)
                 .addComponent(jLabelClickMeHere)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

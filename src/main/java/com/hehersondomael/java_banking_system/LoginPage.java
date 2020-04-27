@@ -45,14 +45,8 @@ public class LoginPage extends javax.swing.JFrame {
         jPasswordFieldUserPassword = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabelOverview1 = new javax.swing.JLabel();
-        jLabelOverview2 = new javax.swing.JLabel();
-        jLabelOverview3 = new javax.swing.JLabel();
-        jLabelOverview4 = new javax.swing.JLabel();
-        jLabelOverview5 = new javax.swing.JLabel();
-        jLabelOverview6 = new javax.swing.JLabel();
-        jLabelOverview7 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -70,7 +64,6 @@ public class LoginPage extends javax.swing.JFrame {
         jLabel2.setText("Password:");
 
         jTextFieldUsername.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextFieldUsername.setText("user");
         jTextFieldUsername.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldUsernameKeyPressed(evt);
@@ -88,7 +81,6 @@ public class LoginPage extends javax.swing.JFrame {
         jLabelInvalidCredentials.setForeground(new java.awt.Color(255, 0, 0));
         jLabelInvalidCredentials.setText("Invalid username or password.");
 
-        jPasswordFieldUserPassword.setText("userpass");
         jPasswordFieldUserPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jPasswordFieldUserPasswordKeyPressed(evt);
@@ -144,30 +136,12 @@ public class LoginPage extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("BANKING");
 
+        jLabelOverview1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabelOverview1.setText("<html><p>\nThis banking management system enables digital operation of the fastest rising financial institution in the Pearl of the Orient Seas in order to increase its efficiency in terms of allowing the stakeholders to look forward for a secure and fulfilling future.\n</p></html>");
+
         jLabel3.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("The leading hypotethical bank in the Philippines");
-
-        jLabelOverview1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabelOverview1.setText("This banking management system");
-
-        jLabelOverview2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabelOverview2.setText("enables digital operation of the fastest");
-
-        jLabelOverview3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabelOverview3.setText("rising financial institution in the Pearl");
-
-        jLabelOverview4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabelOverview4.setText("of the Orient Seas in order to increase");
-
-        jLabelOverview5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabelOverview5.setText("its efficiency in terms of allowing the");
-
-        jLabelOverview6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabelOverview6.setText("stakeholders to look forward for a");
-
-        jLabelOverview7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabelOverview7.setText("secured and fulfilling future.");
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -198,14 +172,7 @@ public class LoginPage extends javax.swing.JFrame {
                                 .addGap(5, 5, 5)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabelOverview1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabelOverview2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabelOverview3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabelOverview4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabelOverview5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabelOverview6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabelOverview7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(jLabelOverview1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -227,8 +194,13 @@ public class LoginPage extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(34, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel5)
@@ -241,24 +213,8 @@ public class LoginPage extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel17)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabelOverview1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelOverview2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelOverview3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelOverview4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelOverview5))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelOverview6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelOverview7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelOverview1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addComponent(jLabel13)
                 .addContainerGap(43, Short.MAX_VALUE))
         );
@@ -364,12 +320,6 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelInvalidCredentials;
     private javax.swing.JLabel jLabelOverview1;
-    private javax.swing.JLabel jLabelOverview2;
-    private javax.swing.JLabel jLabelOverview3;
-    private javax.swing.JLabel jLabelOverview4;
-    private javax.swing.JLabel jLabelOverview5;
-    private javax.swing.JLabel jLabelOverview6;
-    private javax.swing.JLabel jLabelOverview7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordFieldUserPassword;
     private javax.swing.JTextField jTextFieldUsername;

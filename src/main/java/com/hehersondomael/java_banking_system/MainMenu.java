@@ -51,7 +51,7 @@ public class MainMenu extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItemAboutTheSystem = new javax.swing.JMenuItem();
         jMenuItemAboutTheDeveloper = new javax.swing.JMenuItem();
         jMenuAddNew = new javax.swing.JMenu();
         jMenuItemClient = new javax.swing.JMenuItem();
@@ -85,9 +85,14 @@ public class MainMenu extends javax.swing.JFrame {
 
         jMenu1.setText("Home");
 
-        jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK));
-        jMenuItem9.setText("About the System");
-        jMenu1.add(jMenuItem9);
+        jMenuItemAboutTheSystem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK));
+        jMenuItemAboutTheSystem.setText("About the System");
+        jMenuItemAboutTheSystem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAboutTheSystemActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemAboutTheSystem);
 
         jMenuItemAboutTheDeveloper.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK));
         jMenuItemAboutTheDeveloper.setText("About the Developer");
@@ -262,17 +267,16 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemChangePasswordActionPerformed
 
     private void jMenuItemLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemLogOutActionPerformed
-
-                if (JOptionPane.showConfirmDialog(null, "Are you sure you want to leave? You will be logged out.", "Close Window", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
-                {
-                    dispose();
-                    LoginPage loginPage = new LoginPage();
-                    loginPage.setVisible(true);
-                    loginPage.pack();
-                    loginPage.setLocationRelativeTo(null);
-                }
-                else
-                    setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        if (JOptionPane.showConfirmDialog(null, "Are you sure you want to leave? You will be logged out.", "Close Window", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
+        {
+            dispose();
+            LoginPage loginPage = new LoginPage();
+            loginPage.setVisible(true);
+            loginPage.pack();
+            loginPage.setLocationRelativeTo(null);
+        }
+        else
+            setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }//GEN-LAST:event_jMenuItemLogOutActionPerformed
 
     private void jMenuItemAboutTheDeveloperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAboutTheDeveloperActionPerformed
@@ -280,6 +284,12 @@ public class MainMenu extends javax.swing.JFrame {
         jDesktopPane1.add(aboutTheDeveloper);
         aboutTheDeveloper.setVisible(true);
     }//GEN-LAST:event_jMenuItemAboutTheDeveloperActionPerformed
+
+    private void jMenuItemAboutTheSystemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAboutTheSystemActionPerformed
+        AboutTheSystem aboutTheSystem = new AboutTheSystem();
+        jDesktopPane1.add(aboutTheSystem);
+        aboutTheSystem.setVisible(true);
+    }//GEN-LAST:event_jMenuItemAboutTheSystemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -321,8 +331,8 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenuAddNew;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuItem jMenuItemAboutTheDeveloper;
+    private javax.swing.JMenuItem jMenuItemAboutTheSystem;
     private javax.swing.JMenuItem jMenuItemAccount;
     private javax.swing.JMenuItem jMenuItemAccountBalance;
     private javax.swing.JMenuItem jMenuItemChangePassword;
