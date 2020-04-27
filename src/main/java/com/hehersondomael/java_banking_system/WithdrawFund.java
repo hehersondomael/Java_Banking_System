@@ -360,6 +360,7 @@ public class WithdrawFund extends javax.swing.JInternalFrame {
             if(!rs.next())
             {
                 jLabelClientIDNotFound.setText("Account ID not found.");
+                jButtonFind.requestFocus();
                 ClearFields();
             }
             else
@@ -441,6 +442,8 @@ public class WithdrawFund extends javax.swing.JInternalFrame {
                                     if(ps_update.executeUpdate() > 0)
                                     {
                                         JOptionPane.showMessageDialog(this, "Withdraw successful.");
+                                        jTextFieldAccountID.setText("");
+                                        jTextFieldAccountID.requestFocus();
                                         ClearFields();
                                     }
                                 }
@@ -459,6 +462,8 @@ public class WithdrawFund extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonWithdrawActionPerformed
 
     private void jButtonClearFieldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearFieldsActionPerformed
+        jTextFieldAccountID.setText("");
+        jTextFieldAccountID.requestFocus();
         ClearFields();
     }//GEN-LAST:event_jButtonClearFieldsActionPerformed
 
@@ -482,14 +487,12 @@ public class WithdrawFund extends javax.swing.JInternalFrame {
 
     private void ClearFields()
     {
-        jTextFieldAccountID.setText("");
         jTextFieldClientID.setText("");
         jTextFieldFullName.setText("");
         jTextFieldBranch.setText("");
         jTextFieldAccountType.setText("");
         jTextFieldBalanceInPHP.setText("");
         jTextFieldAmountToBeWithdrawn.setText("");
-        jTextFieldAccountID.requestFocus();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

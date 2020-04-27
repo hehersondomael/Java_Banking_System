@@ -686,7 +686,7 @@ public class ViewAccountBalance extends javax.swing.JInternalFrame {
         
         PreparedStatement ps;
         ResultSet rs;
-        String selectQuery = "SELECT a.dateCreated, a.currentBalance, a.currentBalance, 0 " +
+        String selectQuery = "SELECT a.dateCreated, a.originalBalance, a.originalBalance, 0 " +
                 "FROM clients c, accounts a " +
                 "WHERE a.accountID=? AND c.clientID=? " +
                 "UNION " +
@@ -704,7 +704,7 @@ public class ViewAccountBalance extends javax.swing.JInternalFrame {
                 "UNION " +
                 "SELECT t.timestamp, t.amountToBeTransferred, t.destinationNewBalance,t.destinationTransferFee*-1 " +
                 "FROM clients c, transfer t " +
-                "WHERE t.sourceAccountID=? AND c.clientID=? " +
+                "WHERE t.destinationAccountID=? AND c.clientID=? " +
                 "ORDER BY dateCreated DESC;";
         
 
@@ -729,7 +729,6 @@ public class ViewAccountBalance extends javax.swing.JInternalFrame {
             {
                 row = new Object[4];
                 row[0] = rs.getTimestamp(1);
-
                 row[1] = String.format("%.2f", rs.getDouble(2));
                 row[2] = String.format("%.2f", rs.getDouble(3));
                 row[3] = String.format("%.2f", rs.getDouble(4));

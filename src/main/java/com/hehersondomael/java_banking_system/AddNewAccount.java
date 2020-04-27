@@ -9,6 +9,9 @@ import java.awt.event.KeyEvent;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -21,6 +24,7 @@ import javax.swing.JOptionPane;
 public class AddNewAccount extends javax.swing.JInternalFrame {
 
     MY_CONNECTION my_connection = new MY_CONNECTION();
+    Date date = new Date();
 
     /**
      * Creates new form AddNewAccount
@@ -368,7 +372,7 @@ public class AddNewAccount extends javax.swing.JInternalFrame {
                     else
                     {
                         PreparedStatement ps;
-                        String insertQuery = "INSERT INTO accounts (accountID, clientID, accountType, currentBalance) VALUES (?,?,?,?)"; 
+                        String insertQuery = "INSERT INTO accounts (accountID, clientID, accountType, originalBalance, currentBalance, dateCreated) VALUES (?,?,?,?,?,?)"; 
 
                         try {
                             ps = my_connection.createConnection().prepareStatement(insertQuery);
@@ -376,6 +380,9 @@ public class AddNewAccount extends javax.swing.JInternalFrame {
                             ps.setString(2, clientID.trim());
                             ps.setString(3, accountType.trim());
                             ps.setDouble(4, currentBalance);
+                            ps.setDouble(5, currentBalance);
+                            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+                            ps.setString(6, timestamp.toString());
 
                             if(ps.executeUpdate() > 0)
                             {
