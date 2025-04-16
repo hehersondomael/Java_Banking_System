@@ -109,9 +109,9 @@ public class AboutTheDeveloper extends javax.swing.JInternalFrame {
 
         jLabelDescription8.setText("Filipino");
 
-        jLabelDescription7.setText("August 18, 1998");
+        jLabelDescription7.setText("****** **, ****");
 
-        jLabelDescription6.setText("Heherson Alonzo Ignacio Domael");
+        jLabelDescription6.setText("Heherson ****** ******* ******");
 
         jButtonExit.setText("Exit");
         jButtonExit.addActionListener(new java.awt.event.ActionListener() {
